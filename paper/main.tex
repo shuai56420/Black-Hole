@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\pdfoutput=1
 \usepackage{jheppub}
 \usepackage{tikz}
 
@@ -13,7 +14,7 @@
 \affiliation{Kavli Institute for Theoretical Sciences and School of Quantum,\\
 University of Chinese Academy of Sciences, Beijing 100190, China}
 \emailAdd{wangxiaoshuai@ucas.ac.cn}
-\abstract{We construct complex radial geodesic contours with repeated turns near the spacelike singularity of a planar Schwarzschild--AdS black brane. In bulk dimension \(d+1\), an adjacent-turning-point cycle changes the action at fixed boundary time by order \(E^{-d/(d-2)}\) for \(d\geq5\) at large energy \(E\). The local period vanishes in AdS\(_5\), and all fixed-cycle contours approach the same complex null time. We derive a scalar Stokes multiplier and connect its fixed-mass corrections to the primitive two-reflection sector in AdS\(_7\). At a tuned dimension \(\Delta=3+3/\sqrt{11}\), the first correction vanishes, and the shift of the quasinormal poles scales as \(\omega^{-12/5}\), as verified by solving the full radial equation. We also solve the ingoing problem exactly for curvature-coupled scalars in a Lovelock family of bulk dimension \(4K+1\), \(K\geq2\). The full continued Wightman function has primitive \(n\)-bounce singularities at \(t=\tfrac{n\beta}{2}(\pm1+\ii)\) with leading power \(2\nu+1\), where \(\Delta=d/2+\nu\). We determine the corresponding mixed-image singularities and the jumps between their lateral continuations.}
+\abstract{We construct complex radial geodesic contours with repeated turns near the spacelike singularity of a planar Schwarzschild--AdS black brane. In bulk dimension \(d+1\), an adjacent-turning-point cycle changes the action at fixed boundary time by order \(E^{-d/(d-2)}\) for \(d\geq5\) at large energy \(E\). The local period vanishes in AdS\(_5\), and all fixed-cycle contours approach the same complex null time. We derive a scalar Stokes multiplier and connect it to repeated reflections in AdS\(_7\). At a tuned dimension \(\Delta=3+3/\sqrt{11}\), the first correction vanishes. We verify the \(\omega^{-12/5}\) term in the quasinormal pole shifts and in the two- and three-reflection harmonics by solving the full radial equation. We also solve the ingoing problem exactly for curvature-coupled scalars in a Lovelock family of bulk dimension \(4K+1\), \(K\geq2\). The full continued Wightman function has primitive \(n\)-bounce singularities at \(t=\tfrac{n\beta}{2}(\pm1+\ii)\) with leading power \(2\nu+1\), where \(\Delta=d/2+\nu\). We determine the corresponding mixed-image singularities and the jumps between their lateral continuations.}
 
 \begin{document}
 \maketitle
@@ -23,7 +24,7 @@ University of Chinese Academy of Sciences, Beijing 100190, China}
 
 In planar Schwarzschild--AdS, a radial spacelike geodesic can approach the spacelike curvature singularity as its energy increases. Its null limit determines a complex-time singularity of the geodesic approximation, reached by analytic continuation of the boundary correlator \cite{Fidkowski:2003}. The association depends on the continuation and on which saddles the correlator selects \cite{AliAhmad:2026,Grozdanov:2026}. High-frequency calculations provide a complementary description in terms of wave reflection and the Stokes data of the radial equation \cite{AfkhamiJeddi:2025,Jia:2026,Valach:2026}. In particular, ref.~\cite{AfkhamiJeddi:2025} identifies a series of repeated singularity-to-boundary reflections for the AdS\(_5\) current correlator.
 
-We compute the periods of a radial cycle visiting two near-singularity turning points and compare the on-shell actions at the same boundary time. A local connection problem in the mass scaling of ref.~\cite{AfkhamiJeddi:2025} fixes the reflected amplitude between specified rays. In AdS\(_7\), we use the exterior transport of ref.~\cite{Jia:2026} to obtain the two-reflection contribution at a tuned scalar mass, and independently solve for the quasinormal frequencies to check the relevant connection coefficient. We also solve the full ingoing problem in a planar Lovelock family with a tuned scalar curvature coupling. There the exact boundary spectrum determines the leading singularities at the primitive and mixed images and the jump across each cut.
+We compute the periods of a radial cycle visiting two near-singularity turning points and compare the on-shell actions at the same boundary time. A local connection problem in the mass scaling of ref.~\cite{AfkhamiJeddi:2025} fixes the reflected amplitude between specified rays. In AdS\(_7\), we use the exterior transport of ref.~\cite{Jia:2026} to relate the scalar Stokes multiplier to repeated reflections. We check the leading and subleading coefficients of the two- and three-reflection harmonics in the full numerical response near the quasinormal ray. We also solve the full ingoing problem in a planar Lovelock family with a tuned scalar curvature coupling. There the exact boundary spectrum determines the leading singularities at the primitive and mixed images and the jump across each cut.
 
 \section{Radial geodesics and endpoint data}
 \label{sec:radial}
@@ -200,7 +201,13 @@ Reduction of order gives a second solution \(V=U\int \dd x/(x U^2)\). A single c
 
 \section{Conclusion}
 
-The local time period decays as \(E^{-1-d/(d-2)}\), and the action splitting at fixed time decays as \(E^{-d/(d-2)}\). The double-scaled Einstein-brane equation gives a finite-mass Stokes multiplier and a unipotent transfer for repeated windings. In planar Schwarzschild--AdS\(_7\) a tuned mass eliminates the \(\omega^{-6/5}\) core correction. The next term determines both the shift of the quasinormal frequencies and a weaker singular power in the primitive two-reflection sector. In the solvable Lovelock example the full continued correlator has primitive reflection singularities at times set by the finite optical round trip. The bare probe mass changes their phases and singular powers. Mixed images have the same leading power on the two lateral continuations. The jumps between these continuations are fixed by the gamma-envelope residues. A sheet-resolved result of this type for the Einstein correlator remains open.
+The local time period decays as \(E^{-1-d/(d-2)}\), and the action splitting at fixed time decays as \(E^{-d/(d-2)}\). The double-scaled Einstein-brane equation gives a finite-mass Stokes multiplier and a unipotent transfer for repeated windings. In planar Schwarzschild--AdS\(_7\) a tuned mass eliminates the \(\omega^{-6/5}\) core correction. The next term determines the shift of the quasinormal frequencies and a weaker singular power in the primitive reflection sectors. The matched boundary response resolves this term in the second and third harmonics. In the solvable Lovelock example the full continued correlator has primitive reflection singularities at times set by the finite optical round trip. The bare probe mass changes their phases and singular powers. Mixed images have the same leading power on the two lateral continuations. The jumps between these continuations are fixed by the gamma-envelope residues. A sheet-resolved result of this type for the Einstein correlator remains open.
+
+\section*{Declarations}
+
+\paragraph{Code availability.} The Python scripts that generate the numerical tables and perform the convergence checks are provided alongside the manuscript sources in the project repository.
+
+\paragraph{Use of generative AI.} OpenAI Codex assisted in developing and checking the analytic derivations, implementing and running the numerical calculations, and drafting the manuscript.
 
 \bibliographystyle{JHEP}
 \bibliography{references}

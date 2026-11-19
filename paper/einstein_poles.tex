@@ -1,4 +1,4 @@
-\section{Quasinormal poles and the two-reflection sector in \texorpdfstring{AdS\(_7\)}{AdS7}}
+\section{Quasinormal poles and repeated reflections in \texorpdfstring{AdS\(_7\)}{AdS7}}
 \label{sec:einstein-poles}
 
 At fixed scalar mass, the terms dropped in \eqref{eq:bessel-core} are
@@ -113,7 +113,92 @@ within \(10^{-10}\) in \(\omega_n\). At the tuned mass, the complex
 ratio of the measured shift to the \(\omega^{-12/5}\) prediction
 is within \(0.7\%\) of one at \(n=30\).
 
-\subsection{Time dependence of the primitive two-reflection sector}
+\subsection{Harmonics of the full boundary response}
+
+To check the repeated-reflection coefficients away from the poles, we
+solve for the response at complex frequencies near the quasinormal ray.
+Let \(\mathcal A,\mathcal B\) be the coefficients of the source
+\(U_{\rm S}\sim u^{1/2-\nu}\) and the normalizable solution
+\(U_{\rm N}\sim u^{1/2+\nu}\) in the ingoing solution \(U_{\rm H}\).
+At the same matching point used for the pole calculation, write
+\(D_j=U'_j/U_j\), where the derivative is with respect to \(u\).
+Then
+\begin{equation}
+ \frac{\mathcal B}{\mathcal A}
+ =\frac{U_{\rm S}}{U_{\rm N}}\,
+   \frac{D_{\rm H}-D_{\rm S}}{D_{\rm N}-D_{\rm H}} .
+ \label{eq:einstein-match-response}
+\end{equation}
+We use the Frobenius source solution with unit leading coefficient
+and the vacuum normalization
+\((\mathcal B/\mathcal A)_{\rm vac}=
+-e^{-\ii\pi\nu}\Gamma(1-\nu)(\omega/2)^{2\nu}/\Gamma(1+\nu)\).
+This follows by expanding \(\sqrt{u}H_\nu^{(1)}(\omega u)\) near
+the boundary. At the tuned mass the difference \(2\nu_*\) between
+the indicial exponents is noninteger.
+
+Define
+\begin{equation}
+ \mathcal H(\omega)=
+ \frac{(\mathcal B/\mathcal A)/(\mathcal B/\mathcal A)_{\rm vac}-1}
+      {1-e^{2\ii\pi\nu}},\qquad
+ \xi=-2q(\omega).
+\end{equation}
+The exterior transport ratio of ref.~\cite{Jia:2026} gives
+\(\mathcal H=qR/(1-qR)\) up to boundary corrections of order
+\(\omega^{-d}\) and terms exponentially small in \(\operatorname{Re}\omega\).
+Along a line displaced
+from the pole ray, fix \(0<\chi<1\) and take
+\begin{equation}
+ \omega=\omega_n^{(0)}+\frac{\theta-\ii\log\chi}{2\mathcal Z},
+ \qquad 0\leq\theta\leq2\pi,\qquad \xi=\chi e^{\ii\theta}.
+ \label{eq:einstein-phase-line}
+\end{equation}
+The reflection factor then has finite magnitude at large \(n\).
+With \(R=-2+r_2\omega^{-2p}+O(\omega^{-3p})\) at \(\nu=\nu_*\),
+where \(r_2=\sigma(2p)B_{\nu_*}^{\rm E}D^{2p-2}e^{-\ii\pi p}\),
+the two quantities extracted from the response are
+\begin{align}
+ \mathcal H&=\frac{\xi}{1-\xi}+O(\omega^{-2p}),\notag\\
+ \mathcal J&\equiv
+ \frac{\mathcal H-\xi/(1-\xi)}{-r_2\omega^{-2p}}
+ =\frac{\xi}{2(1-\xi)^2}+O(\omega^{-p}) .
+ \label{eq:einstein-harmonic-test}
+\end{align}
+In \(\mathcal J\) the subtraction and division use the frequency
+at each \(\theta\). This retains the slow variation of the
+correction along the segment.
+
+For \(m\geq1\), define
+\(\mathcal P_m[f]=(2\pi)^{-1}\int_0^{2\pi}
+\xi^{-m} f(\omega(\theta))\,\dd\theta\).
+The two leading functions in \eqref{eq:einstein-harmonic-test} have
+\(\mathcal P_m\) equal to \(1\) and \(m/2\), respectively. This gives
+separate predictions for the leading and subleading pieces of each
+reflection harmonic. Table~\ref{tab:einstein-harmonics} uses the full
+boundary response from \eqref{eq:einstein-match-response} with
+\(\chi=0.4\). The two calculations use 48 and 72 equally spaced phase
+samples and the same changes of matching point, series order and
+arithmetic precision as in the pole check.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(n\) & \(\lvert \mathcal P_2[\mathcal H]-1\rvert\)
+       & \(\lvert \mathcal P_3[\mathcal H]-1\rvert\)
+       & \(\lvert \mathcal P_2[\mathcal J]-1\rvert\)
+       & \(\lvert \tfrac23\mathcal P_3[\mathcal J]-1\rvert\) \\
+ \hline
+ \input{einstein_harmonic_rows.tex}
+ \end{tabular}
+ \caption{Deviations from the limiting two- and three-reflection
+ coefficients in planar Schwarzschild--AdS\(_7\) at \(\nu_*\).
+ The integer \(n\) labels the segment \eqref{eq:einstein-phase-line}.}
+ \label{tab:einstein-harmonics}
+\end{table}
+
+\subsection{Time dependence of the primitive reflection sectors}
 
 For real positive \(\omega\), write \(2\mathcal Z=A+\ii\beta/2\)
 with \(A=(\beta/2)\cot(\pi/6)\). The transfer formula of
@@ -147,10 +232,16 @@ then has the singular terms
 \end{equation}
 The second term diverges with power \(2\nu_*+1-12/5\simeq0.4091\).
 Its coefficient is fixed by the same local potential term that
-controls the tuned pole shift. The time \(4\mathcal Z\) equals
-\(\sqrt3\,\beta+\ii\beta\), whereas a geodesic with any fixed
-number of local cycles approaches \(T_*\). Equation
-\eqref{eq:einstein-two-time} is a statement about the
-high-frequency sector. The exact sheet-resolved continuation of
-the full Einstein correlator would also require controlling the
-other frequency sectors.
+controls the tuned pole shift. More generally, in the primitive
+series the \(m\)-th power \(q^mR^m\) has time
+\(t_{m,+}=2m\mathcal Z\), leading coefficient proportional to
+\((-2)^m e^{-\ii m\pi\nu_*}\), and relative frequency correction
+\(-\tfrac m2 r_2\omega^{-12/5}\). In particular the next
+time is \(t_{3,+}=\tfrac32\beta(\sqrt3+\ii)\), with the same
+subleading singular power. These times are spaced by the finite
+optical round trip. The time delay of any fixed number of local
+geodesic cycles tends to zero. Equation \eqref{eq:einstein-two-time}
+and its higher harmonics give the Laplace singularities of the isolated
+high-frequency terms. A sheet-resolved continuation of the full
+Einstein correlator would also require controlling the other
+frequency sectors.

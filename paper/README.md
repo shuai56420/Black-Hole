@@ -5,9 +5,9 @@ joining two complex turning points that approach the spacelike singularity of
 a planar Schwarzschild–AdS black brane. The numerical check compares the
 on-shell actions at the same complex boundary time. A second calculation
 obtains the local scalar connection and the transfer for repeated radial
-windings. The AdS₇ scalar calculation checks the first two powers of the
-pole shift against the full radial equation. The final calculation solves
-a tuned scalar problem in a higher-dimensional Lovelock family, including
+windings. The AdS₇ scalar calculation checks the pole shifts and the
+second and third harmonics against the full radial equation. The final
+calculation solves a tuned scalar problem in a higher-dimensional Lovelock family, including
 the two-bounce contribution to the spectrum and its complex-time poles.
 Changing the bare scalar mass
 at fixed curvature coupling gives a continuous family of exact spectra.
@@ -35,6 +35,8 @@ finite-energy periods and the action at fixed boundary time. The second
 integrates the scalar modes on rotated rays and checks their transfer
 product against Frobenius monodromy. The third matches the ingoing and
 normalizable scalar series to compute AdS₇ quasinormal frequencies.
+It also includes the source series to extract two- and three-reflection
+coefficients from the retarded response.
 The fourth integrates the original
 nonminimally coupled scalar equation in nine and thirteen dimensions
 and compares its retarded spectrum with the exact result, including
@@ -44,6 +46,9 @@ singular coefficients for primitive and mixed images, and compares the
 residue series with direct integration on tilted contours.
 
 The Lovelock example gives a sheet-resolved continuation of the exact
-boundary response. The Einstein calculation gives the two-reflection
-term of the high-frequency expansion and checks its core coefficient
-against the pole spectrum.
+boundary response. The Einstein calculation checks the repeated
+reflections of the high-frequency expansion against the full response
+near the quasinormal ray.
+
+The JHEP source archive uses `main.tex` as the master file and includes
+the generated tables, bibliography, and bibliography output.

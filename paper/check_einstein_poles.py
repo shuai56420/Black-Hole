@@ -1,4 +1,4 @@
-"""Match the ingoing and normalizable scalar series in Schwarzschild–AdS."""
+"""Check Einstein-brane quasinormal poles and reflection harmonics."""
 
 import cmath
 import math
@@ -49,7 +49,7 @@ def about_horizon(coefficients, sign=1):
     ]
 
 
-def equation(d, nu, omega, horizon):
+def equation(d, nu, omega, horizon, source):
     """Polynomials A, B, C multiplying z**2 psi'', z psi', psi."""
     potential = nu*nu - Decimal('0.25')
     geometric = Decimal((d-1)**2) / 4
@@ -68,7 +68,7 @@ def equation(d, nu, omega, horizon):
     else:
         a, b = a[2:], b[1:]
         powers = (1,)
-        exponent = ComplexDecimal(nu + Decimal('0.5'))
+        exponent = ComplexDecimal(Decimal('0.5') + (-nu if source else nu))
         degree_shift = 2
     c = [ComplexDecimal(value) for value in c]
     for index, value in enumerate(powers, start=degree_shift):
@@ -76,9 +76,9 @@ def equation(d, nu, omega, horizon):
     return tuple(zip(a, b, c)), exponent
 
 
-def logarithmic_derivative(d, nu, omega, point, terms, horizon):
-    """Evaluate a Frobenius series after stripping its power from the value."""
-    operator, exponent = equation(d, nu, omega, horizon)
+def endpoint_series(d, nu, omega, point, terms, horizon=False, source=False):
+    """Return the regular part of a Frobenius solution and its log derivative."""
+    operator, exponent = equation(d, nu, omega, horizon, source)
     coefficients = [ComplexDecimal(1)]
     derivatives = [exponent + n for n in range(terms+1)]
     second = [degree*(degree-1) for degree in derivatives]
@@ -102,13 +102,14 @@ def logarithmic_derivative(d, nu, omega, point, terms, horizon):
     for coefficient, first in zip(reversed(coefficients[:-1]), reversed(first_coefficients[:-1])):
         value = value*z + coefficient
         derivative = derivative*z + first
-    return derivative / value / (-z if horizon else z)
+    return value, derivative / value / (-z if horizon else z)
 
 
 def find_pole(d, nu, guess, point, terms):
     def mismatch(omega):
-        return (logarithmic_derivative(d, nu, omega, point, terms, True)
-                - logarithmic_derivative(d, nu, omega, point, terms, False))
+        _, horizon_derivative = endpoint_series(d, nu, omega, point, terms, horizon=True)
+        _, normal_derivative = endpoint_series(d, nu, omega, point, terms)
+        return horizon_derivative - normal_derivative
 
     left = ComplexDecimal(str(guess.real), str(guess.imag))
     right = left + Decimal('0.015')
@@ -123,10 +124,13 @@ def find_pole(d, nu, guess, point, terms):
     raise ArithmeticError(f"Pole root did not converge near {guess}")
 
 
-def leading_pole(d, nu, n):
+def optical_distance(d):
     theta = math.pi/d
-    optical = theta*cmath.exp(1j*theta)/math.sin(theta)
-    return (math.pi*(n+(nu-1)/2) + 0.5j*math.log(2))/optical
+    return theta*cmath.exp(1j*theta)/math.sin(theta)
+
+
+def leading_pole(d, nu, n):
+    return (math.pi*(n+(nu-1)/2) + 0.5j*math.log(2))/optical_distance(d)
 
 
 def stokes_slope(power):
@@ -135,24 +139,94 @@ def stokes_slope(power):
     return 2*b_prime*(math.cos(math.pi*power)-1)
 
 
+def tuned_reflection_coefficient(d, nu):
+    """Coefficient of omega**(-2*p) in the tuned R(omega) + 2."""
+    power = 2*d/(d-1)
+    a = (d-1)/(2*d-1)
+    b = (d-1)/(3*d-1)
+    coefficient = nu**2 - 0.25 + (d-1)**2*(3*a*a-2*b)/4
+    return stokes_slope(power)*coefficient*(d-1)**(power-2)*cmath.exp(-0.5j*math.pi*power)
+
+
 def scaled_shift(d, nu, n, pole, tuned):
     p = d/(d-1)
-    theta = math.pi/d
-    optical = theta*cmath.exp(1j*theta)/math.sin(theta)
     leading = leading_pole(d, nu, n)
     if tuned:
-        # The first Puiseux term vanishes. The coefficient of r**2
-        # in V + 1/(4*(x-x_s)**2) then fixes the next term.
-        a = (d-1)/(2*d-1)
-        b = (d-1)/(3*d-1)
-        coefficient = nu**2 - 0.25 + (d-1)**2*(3*a*a-2*b)/4
         power = 2*p
-        norm = -0.25j*stokes_slope(power)*coefficient
+        norm = -0.25j*tuned_reflection_coefficient(d, nu)
     else:
         power = p
-        norm = 0.25j*stokes_slope(power)
-    norm *= (d-1)**(power-2)*cmath.exp(-0.5j*math.pi*power)
-    return (pole-leading)*optical*leading**power/norm
+        norm = 0.25j*stokes_slope(p)*(d-1)**(p-2)*cmath.exp(-0.5j*math.pi*p)
+    return (pole-leading)*optical_distance(d)*leading**power/norm
+
+
+def vacuum_normalized_response(d, nu, frequency, point, terms):
+    """Compute B/A of the ingoing solution in the Frobenius basis at u=0."""
+    omega = ComplexDecimal(str(frequency.real), str(frequency.imag))
+    _, horizon_derivative = endpoint_series(d, nu, omega, point, terms, horizon=True)
+    normal, normal_derivative = endpoint_series(d, nu, omega, point, terms)
+    source, source_derivative = endpoint_series(d, nu, omega, point, terms, source=True)
+    ratio = (source / normal * (horizon_derivative - source_derivative)
+             / (normal_derivative - horizon_derivative) * point**(-2*nu))
+    dimension = float(nu)
+    vacuum = (
+        -cmath.exp(-1j*math.pi*dimension)
+        * math.gamma(1-dimension)/math.gamma(1+dimension)
+        * (frequency/2)**(2*dimension)
+    )
+    return complex(ratio) / vacuum
+
+
+def reflection_harmonics(d, nu, n, radius, samples, point, terms):
+    """Project the exact response over one phase period on the tilted line."""
+    optical = optical_distance(d)
+    dimension = float(nu)
+    initial_pole = leading_pole(d, dimension, n)
+    r2 = tuned_reflection_coefficient(d, dimension)
+    power = 2*d/(d-1)
+    phase_factor = 1-cmath.exp(2j*math.pi*dimension)
+    leading = [0j, 0j]
+    correction = [0j, 0j]
+    for index in range(samples):
+        theta = math.tau*index/samples
+        frequency = initial_pole + (theta-1j*math.log(radius))/(2*optical)
+        symbol = radius*cmath.exp(1j*theta)
+        response = vacuum_normalized_response(d, nu, frequency, point, terms)
+        reduced = (response-1)/phase_factor
+        subtracted = (reduced-symbol/(1-symbol))/(-r2*frequency**(-power))
+        for slot, harmonic in enumerate((2, 3)):
+            weight = symbol**(-harmonic)/samples
+            leading[slot] += weight*reduced
+            correction[slot] += weight*subtracted*(2/harmonic)
+    return leading, correction
+
+
+def check_reflection_harmonics(d, nu):
+    rows = []
+    for n in (5, 15, 30):
+        leading, correction = reflection_harmonics(d, nu, n, 0.4, 48, Decimal('0.53'), 420)
+        with localcontext() as check_context:
+            check_context.prec += 25
+            check_leading, check_correction = reflection_harmonics(
+                d, nu, n, 0.4, 72, Decimal('0.61'), 540
+            )
+        leading_change = max(abs(a-b) for a, b in zip(leading, check_leading))
+        correction_change = max(abs(a-b) for a, b in zip(correction, check_correction))
+        assert leading_change < 2e-5
+        assert correction_change < 5e-3
+        print(f"n={n} leading harmonics={check_leading} "
+              f"normalized corrections={check_correction}", flush=True)
+        print(f"  refinement changes: {leading_change:.2e}, {correction_change:.2e}", flush=True)
+        leading_errors = [abs(value-1) for value in check_leading]
+        correction_errors = [abs(value-1) for value in check_correction]
+        if n == 30:
+            assert max(leading_errors) < 6e-6
+            assert max(correction_errors) < 0.007
+        values = " & ".join(f"{error:.3e}" for error in leading_errors + correction_errors)
+        rows.append(f"{n} & {values} " + r"\\")
+    Path(__file__).with_name("einstein_harmonic_rows.tex").write_text(
+        "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
+    )
 
 
 def main():
@@ -184,6 +258,7 @@ def main():
                 )
             assert errors[2] < errors[1] < errors[0]
             assert errors[2] < (0.007 if tuned else 0.002)
+        check_reflection_harmonics(d, tuned_nu)
     Path(__file__).with_name("einstein_pole_rows.tex").write_text(
         "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
     )
