@@ -40,7 +40,7 @@ def analytic_slope(n, nu):
     return complex(pole), complex(slope)
 
 
-def heun_operator(nu, momentum_squared, omega, horizon):
+def heun_operator(nu, momentum_squared, omega, horizon, source=False):
     """Polynomials multiplying z**2 A'', z A', and A."""
     mass = (nu*nu-1)/4
     a = [0, 0, 1, 0, -2, 0, 1]
@@ -55,7 +55,7 @@ def heun_operator(nu, momentum_squared, omega, horizon):
         a, b = a[2:], b[1:]
         frequency_powers = (1,)
         start = 1
-        exponent = ComplexDecimal((1+nu)/2)
+        exponent = ComplexDecimal((1-nu if source else 1+nu)/2)
     c = [ComplexDecimal(value) for value in c]
     frequency = omega*omega/4
     for index, factor in enumerate(frequency_powers, start=start):
