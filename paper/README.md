@@ -27,6 +27,7 @@ python check_periods.py
 python check_connection.py
 python check_einstein_poles.py
 python check_lovelock.py
+python check_lovelock_momentum.py
 python check_time_continuation.py
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 bibtex main
@@ -47,7 +48,9 @@ The fourth integrates the original
 nonminimally coupled scalar equation in nine and thirteen dimensions
 and compares its retarded spectrum with the exact result, including
 four bare-mass variations in nine dimensions.
-The fifth evaluates the continued Wightman function, checks the leading
+The fifth checks the exact small-momentum dispersion and its Airy limit
+against finite-momentum pole matching and high overtones.
+The sixth evaluates the continued Wightman function, checks the leading
 singular coefficients for primitive and mixed images, and compares the
 residue series with direct integration on tilted contours.
 

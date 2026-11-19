@@ -79,6 +79,13 @@ def equation(d, nu, omega, horizon, source):
 def endpoint_series(d, nu, omega, point, terms, horizon=False, source=False):
     """Return the regular part of a Frobenius solution and its log derivative."""
     operator, exponent = equation(d, nu, omega, horizon, source)
+    coordinate = 1-point if horizon else point
+    value, derivative = frobenius_at(operator, exponent, coordinate, terms)
+    return value, derivative*(-1 if horizon else 1)
+
+
+def frobenius_at(operator, exponent, coordinate, terms):
+    """Evaluate the regular part and log derivative in the series coordinate."""
     coefficients = [ComplexDecimal(1)]
     derivatives = [exponent + n for n in range(terms+1)]
     second = [degree*(degree-1) for degree in derivatives]
@@ -96,13 +103,12 @@ def endpoint_series(d, nu, omega, point, terms, horizon=False, source=False):
         coefficients.append(coefficient)
         first_coefficients.append(coefficient*derivatives[n])
 
-    z = 1-point if horizon else point
     value = coefficients[-1]
     derivative = first_coefficients[-1]
     for coefficient, first in zip(reversed(coefficients[:-1]), reversed(first_coefficients[:-1])):
-        value = value*z + coefficient
-        derivative = derivative*z + first
-    return value, derivative / value / (-z if horizon else z)
+        value = value*coordinate + coefficient
+        derivative = derivative*coordinate + first
+    return value, derivative / value / coordinate
 
 
 def find_pole(d, nu, guess, point, terms):
@@ -111,6 +117,11 @@ def find_pole(d, nu, guess, point, terms):
         _, normal_derivative = endpoint_series(d, nu, omega, point, terms)
         return horizon_derivative - normal_derivative
 
+    return find_zero(mismatch, guess)
+
+
+def find_zero(mismatch, guess):
+    """Refine a complex zero of the endpoint mismatch with the secant method."""
     left = ComplexDecimal(str(guess.real), str(guess.imag))
     right = left + Decimal('0.015')
     f_left = mismatch(left)
