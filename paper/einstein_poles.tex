@@ -1,0 +1,156 @@
+\section{Quasinormal poles and the two-reflection sector in \texorpdfstring{AdS\(_7\)}{AdS7}}
+\label{sec:einstein-poles}
+
+At fixed scalar mass, the terms dropped in \eqref{eq:bessel-core} are
+of the same order as its first mass correction. To combine them,
+put \(x=\int_r^\infty\dd r'/f(r')\), \(D=d-1\),
+\(\psi=r^{D/2}\phi\) and \(\nu=\sqrt{d^2/4+M^2}\) in
+\eqref{eq:wave}. The exact potential is
+\begin{equation}
+ -\partial_x^2\psi+V\psi=\omega^2\psi,\qquad
+ V=f\left[\nu^2-\frac14+\frac{D^2}{4r^d}\right].
+ \label{eq:einstein-potential}
+\end{equation}
+Choose the horizon detour for which the singularity is at
+\(x=\mathcal Z=T_*^*/2\). With \(s=x-\mathcal Z\) near zero,
+\begin{equation}
+ s=\frac{r^D}{D}\left(1+a r^d+b r^{2d}+O(r^{3d})\right),
+ \qquad a=\frac{D}{2d-1},\quad b=\frac{D}{3d-1}.
+\end{equation}
+Subtracting the inverse-square term gives
+\begin{equation}
+ \begin{aligned}
+ V+\frac{1}{4s^2}
+ &=-A_\nu r^{-(d-2)}+B_\nu^{\rm E}r^2+O(r^{d+2}),\\
+ A_\nu&=\nu^2-\frac{d^2}{4(2d-1)},\\
+ B_\nu^{\rm E}&=\nu^2-\frac14+\frac{D^2}{4}(3a^2-2b).
+ \end{aligned}
+ \label{eq:einstein-shifts}
+\end{equation}
+At \(\nu_*={d}/[{2\sqrt{2d-1}}]\), the first Puiseux term
+vanishes. The residual potential begins at
+\(B_{\nu_*}^{\rm E}(D s)^{2p-2}\), with \(p=d/D\) as in
+section~\ref{sec:connection}.
+
+Use \(z=\ii\omega s\) and \(\psi=\sqrt z F(z)\). The linear
+correction to the inner equation is then a term
+\(g_P z^{P-1}F\) in \eqref{eq:bessel-core}. For generic \(\nu\)
+take \(P=p\) and \(g_p=A_\nu D^{p-2}(\ii\omega)^{-p}\).
+At \(\nu=\nu_*\) take \(P=2p\) and
+\(g_{2p}=-B_{\nu_*}^{\rm E}D^{2p-2}(\ii\omega)^{-2p}\).
+The coefficient \(\sigma(P)\) of \(g_P\) in the three-ray
+multiplier is
+\begin{equation}
+ \sigma(P)=2[\cos(\pi P)-1]
+ \left[-\frac{\tan(\pi P/2)}{\pi}\,
+       \frac{2^{P-3}\Gamma(P/2)^4}{\Gamma(P)}\right].
+ \label{eq:einstein-stokes-slope}
+\end{equation}
+For \(P=2p\), this use of \eqref{eq:bessel-moments} is at the
+level of the linear perturbation of \(K_0\). The integral with
+\(K_0^2\) converges and the integral with \(I_0K_0\) uses the
+same finite-part subtraction \(R^{P-1}/[2(P-1)]\).
+After subtracting \(1/(2t)\) from \(I_0(t)K_0(t)\), the large
+\(t\) integrand is \(O(t^{P-4})\), which is integrable for
+\(P<3\). Rotating the linear term gives \(e^{\pm\ii\pi P}\)
+on the adjacent rays. This establishes \eqref{eq:einstein-stokes-slope}
+without imposing a finite-coupling boundary condition at
+\(P=2p>2\).
+
+For \(d=6\), use the exterior transport in eqs.~(14.40) and (15.26)
+of ref.~\cite{Jia:2026} to connect these core data to boundary observables. In its
+positive lateral convention, the primitive transport factor is
+\begin{equation}
+ q(\omega)R(\omega),\qquad
+ q(\omega)=e^{2\ii\mathcal Z\omega-\ii\pi\nu},\qquad
+ R(\omega)=-2-\sigma(P)g_P+O(\omega^{-P-p}) .
+ \label{eq:einstein-primitive-transport}
+\end{equation}
+The boundary phase in \(q\) comes from the normalizable Bessel
+solution. The nonspiralling Stokes crossing in AdS\(_7\) contributes
+at the thermal scale \(e^{-\beta\omega}\). In the pole
+condition this crossing gives an exponentially small correction
+on the positive-real-part quasinormal ray. The algebraic pole
+positions follow from \(1-qR=0\). With the overtone index fixed
+by the leading expression, they are
+\begin{align}
+ \omega_n^{(0)}&=\frac{\pi[n+(\nu-1)/2]+\tfrac{\ii}{2}\log2}
+                         {\mathcal Z},\notag\\
+ \mathcal Z(\omega_n-\omega_n^{(0)})
+   &=\frac{\ii}{4}\sigma(P)g_P(\omega_n^{(0)})
+       +O\big((\omega_n^{(0)})^{-P-p}\big).
+ \label{eq:einstein-qnm-shift}
+\end{align}
+The phase branch of \((\ii\omega)^{-P}\) is continued from
+\(\omega>0\) towards \(\arg\omega=-\pi/6\). At
+\(\nu_*=3/\sqrt{11}\), the coefficient of
+\((\omega_n^{(0)})^{-12/5}\) in
+\(\mathcal Z(\omega_n-\omega_n^{(0)})\) is
+\(0.0258400+0.0355657\ii\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(\nu\) & \(n\) & \(\omega_n\) & Scaled shift & Limit \\
+ \hline
+ \input{einstein_pole_rows.tex}
+ \end{tabular}
+ \caption{Poles of the full scalar equation in planar Schwarzschild--AdS\(_7\).
+ The scaled shift is the left-hand side of \eqref{eq:einstein-qnm-shift}
+ divided by its leading prediction for \(\nu=\nu_*\). For the other
+ masses, it is divided by that prediction per unit \(A_\nu\).}
+ \label{tab:einstein-poles}
+\end{table}
+
+For table~\ref{tab:einstein-poles} we solve the full boundary-value
+problem using \(u=1/r\). The series at \(u=0\) has leading power
+\(u^{1/2+\nu}\) and the ingoing series at \(u=1\) has leading power
+\((1-u)^{-\ii\omega/d}\). We match their logarithmic derivatives
+at \(u=0.53\), then recompute the poles at \(u=0.61\) with more
+series terms and higher precision. The two calculations agree to
+within \(10^{-10}\) in \(\omega_n\). At the tuned mass, the complex
+ratio of the measured shift to the \(\omega^{-12/5}\) prediction
+is within \(0.7\%\) of one at \(n=30\).
+
+\subsection{Time dependence of the primitive two-reflection sector}
+
+For real positive \(\omega\), write \(2\mathcal Z=A+\ii\beta/2\)
+with \(A=(\beta/2)\cot(\pi/6)\). The transfer formula of
+ref.~\cite{Jia:2026} gives the primitive second harmonic
+through the required order in \(\rho/\rho_{\rm vac}\) as
+\(q^2 R^2\) and its complex conjugate. Indeed, expanding the
+retarded ratio of eq.~(14.40) of ref.~\cite{Jia:2026} gives
+\(1+(1-e^{2\ii\pi\nu})(qR+q^2R^2)\) through quadratic
+order in the primitive symbol. Taking the imaginary part with the
+vacuum phase \(e^{-\ii\pi\nu}\) gives \(2\operatorname{Re}(q^2R^2)\)
+at this harmonic. At this exponential order the boundary
+normalization in the median prescription and the mixed product
+of the two reflections contribute at zero real time displacement.
+The thermal factor that converts \(\rho\) to \(G^>\) also changes
+the zero-displacement term at this order. The perturbative
+boundary factor starts at relative order \(\omega^{-d}\).
+
+At the tuned mass, write \(R=-2+r_2\omega^{-12/5}+\cdots\),
+where \(r_2=\sigma(2p)B_{\nu_*}^{\rm E}D^{2p-2}e^{-\ii\pi p}\).
+Using \(\rho_{\rm vac}=C_{\nu_*}\omega^{2\nu_*}\) for positive
+frequency, and \(w=\ii(t-4\mathcal Z)\), the Laplace integral
+of the primitive positive-displacement two-reflection sector
+then has the singular terms
+\begin{equation}
+ G^>_{2,+}(t)\ \supset+ \frac{4 C_{\nu_*} e^{-2\ii\pi\nu_*}}{2\pi}
+ \left[
+ \frac{\Gamma(2\nu_*+1)}{w^{2\nu_*+1}}
+ -r_2\frac{\Gamma(2\nu_*+1-12/5)}{w^{2\nu_*+1-12/5}}
+ \right].
+ \label{eq:einstein-two-time}
+\end{equation}
+The second term diverges with power \(2\nu_*+1-12/5\simeq0.4091\).
+Its coefficient is fixed by the same local potential term that
+controls the tuned pole shift. The time \(4\mathcal Z\) equals
+\(\sqrt3\,\beta+\ii\beta\), whereas a geodesic with any fixed
+number of local cycles approaches \(T_*\). Equation
+\eqref{eq:einstein-two-time} is a statement about the
+high-frequency sector. The exact sheet-resolved continuation of
+the full Einstein correlator would also require controlling the
+other frequency sectors.
