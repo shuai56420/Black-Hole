@@ -31,6 +31,7 @@ python check_lovelock_momentum.py
 python check_lovelock_crossover.py
 python check_lovelock_residues.py
 python check_lovelock_scaled_momentum.py
+python check_lovelock_geometric_momentum.py
 python check_lovelock_momentum_time.py
 python check_time_continuation.py
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
@@ -61,6 +62,9 @@ its pole residues, and the zero-momentum time-domain mode sum.
 The finite scaled-momentum check solves the Airy connection and compares
 the shifted pole and two- and three-reflection amplitudes with direct
 Frobenius matching at three overtones.
+The geometric momentum check compares the elliptic transverse period
+with finite-energy geodesic quadratures and tests the nonlinear optical action
+against the shifted Airy connection at large scaled mass.
 The perturbative time-domain check verifies the reflection harmonics and the
 leading coefficient of the pole-motion term at the primitive times.
 The final check evaluates the continued Wightman function, checks the leading
@@ -74,3 +78,8 @@ near the quasinormal ray.
 
 The JHEP source archive uses `main.tex` as the master file and includes
 the generated tables, bibliography, and bibliography output.
+The title page lists three keywords from the
+[JHEP keyword list](https://jhep.sissa.it/jhep/help/keywordsList.jsp).
+JHEP requires the arXiv identifier of the same manuscript version
+and a code availability selection in its submission form.
+[JHEP author instructions](https://jhep.sissa.it/jhep/help/JHEP/JHEP_author.jsp)

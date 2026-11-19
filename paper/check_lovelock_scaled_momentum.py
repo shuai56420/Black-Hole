@@ -14,37 +14,44 @@ from check_lovelock_residues import numerical_response
 ROTATION = cmath.exp(2j*math.pi/3)
 
 
-def airy_ray(coupling, cutoff, step, terms):
-    """Return the constant and finite derivative of the recessive inner mode."""
+def airy_ray(coupling, cutoff, step, terms, shift=0j):
+    """Return the origin data of the mode normalized to Ai(X - shift)."""
     coefficients = [1+0j]
     for j in range(terms-1):
         correction = (2*j+1)*(2*j-3)*coefficients[j-2]/16 if j >= 2 else 0j
-        coefficients.append(-(coupling*coefficients[j]+correction)/(j+1))
+        momentum = sum((-shift)**power*coefficients[j-2*power] for power in range(j//2+1))
+        coefficients.append(-(coupling*momentum+correction)/(j+1))
 
-    v = cutoff**(-0.5)
+    v = (cutoff-shift)**(-0.5)
     value = sum(coefficient*v**j for j, coefficient in enumerate(coefficients))
     derivative = sum(-0.5*j*coefficient*v**(j+2) for j, coefficient in enumerate(coefficients))
 
     def scaled_equation(x, y, dy):
-        return dy, (2*math.sqrt(x)+0.5/x)*dy-(coupling/x+5/(16*x*x))*y
+        shifted = x-shift
+        return dy, ((2*cmath.sqrt(shifted)+0.5/shifted)*dy
+                    -(coupling/x+5/(16*shifted**2))*y)
 
     value, derivative = evolve(scaled_equation, cutoff, 1, (value, derivative), step)
-    prefactor = math.exp(-2/3)/(2*math.sqrt(math.pi))
-    value, derivative = prefactor*value, prefactor*(derivative-1.25*value)
+    shifted = 1-shift
+    prefactor = shifted**(-0.25)*cmath.exp(-2*shifted**1.5/3)/(2*math.sqrt(math.pi))
+    derivative = prefactor*(derivative-(cmath.sqrt(shifted)+0.25/shifted)*value)
+    value *= prefactor
 
     def end_equation(z, y, dy):
         x = math.exp(z)
-        return x*dy, (x*x-coupling)*y
+        return x*dy, (x*(x-shift)-coupling)*y
 
     log_end = -29
     value, derivative = evolve(end_equation, 0, log_end, (value, derivative), step)
     return value, derivative+coupling*value*log_end
 
 
-def connection_multiplier(coupling, cutoff=18, step=0.015, terms=18):
+def connection_multiplier(coupling, cutoff=18, step=0.015, terms=18, shift=0j):
     """Normalized Stokes multiplier and adjacent Wronskian residual."""
     def ray(index):
-        value, regular_derivative = airy_ray(coupling*ROTATION**index, cutoff, step, terms)
+        value, regular_derivative = airy_ray(
+            coupling*ROTATION**index, cutoff, step, terms, shift*ROTATION**(-index)
+        )
         derivative = ROTATION**(-index)*regular_derivative
         derivative += coupling*value*index*2j*math.pi/3
         return value, derivative

@@ -96,54 +96,97 @@ in the tail \cite{NIST:DLMF}. Changing the matching radius
 from 13 to 16 and increasing the truncation order checks that
 this numerical error is below the finite-overtone effect.
 
-\subsubsection{The geometric limit of the momentum derivative}
+\subsubsection{Geometric action at finite scaled transverse momentum}
 
-Take \(\chi\) large after the joint limit. In \(X/\zeta\) the
-simple-turning-point problem has large WKB parameter
-\(\zeta^{3/2}\), and the distant pole at \(X=0\) stays outside
-the connection from the outer oscillatory region to the
-displaced turning point. The leading \(g\) derivative of
-the WKB action from the turning point to infinity is
+Take \(\chi\) large after the joint limit and keep
+\(\eta=-g/\zeta^2\) fixed. In \(u=X/\zeta\) the shifted
+Airy potential is \(\zeta(u-1+\eta/u)\), with the two turning
+points \(a_\pm\) of section~\ref{sec:finite-transverse-geodesic}.
+Consider the continuation from \(\eta=0\) on which the reflection
+follows the simple turn at \(X_+=\zeta a_+\).
+The WKB parameter is \(\zeta^{3/2}\).
+The action \(\mathcal S\) from that turning point to large \(X\)
+has a finite momentum difference. At fixed \(\zeta\),
 \begin{equation}
- -\frac12\int_0^\infty\frac{\dd t}{(\zeta+t)\sqrt t}
-    =-\frac{\pi}{2\sqrt\zeta}.
+ \partial_g\mathcal S
+ =-\frac12\int_{X_+}^\infty
+      \frac{\dd X}{X\sqrt{X-\zeta-g/X}}
+ =-\frac{\mathcal J(\eta)}{2\sqrt\zeta}.
  \label{eq:lovelock-displaced-action}
 \end{equation}
-The endpoint derivative of the action vanishes at the
-turning point. The path \(X=\zeta+t\) and the square root
-are continued from positive \(\zeta\) to the optical branch.
-The simple-turning-point multiplier at the root has its universal
-Airy value. Expressing the incoming and outgoing modes in the
-normalization at infinity multiplies their ratio by the exponential
-of minus twice the action shift in \eqref{eq:lovelock-displaced-action}.
-Thus the leading WKB term is \(D_{\rm A}(\zeta)\sim\pi/\sqrt\zeta\),
-and \eqref{eq:lovelock-crossover} gives
+The turning-point contribution to this derivative vanishes.
+The square root and contour are continued from positive \(\zeta\)
+and small real \(\eta\) to the optical branch. The local Airy
+multiplier is unchanged at a simple turn. Relative to zero
+momentum the normalization at infinity gives minus twice
+the action difference in the logarithm of the multiplier.
+Since \(\dd g=-\zeta^2\dd\eta\), the leading result is
+\begin{equation}
+ \log\frac{S_{\rm A}(g,\zeta)}{S_{\rm A}(0,\zeta)}
+ =-\zeta^{3/2}\mathcal A(\eta)+o(|\zeta|^{3/2}).
+ \label{eq:lovelock-nonlinear-wkb}
+\end{equation}
+The logarithm is continued from \(\eta=0\).
+
+To compare with the geodesic on the positive-real-part
+quasinormal ray, choose \(E=\ii\omega/M\) and
+\(\boldsymbol P=\ii\boldsymbol k/M\), with
+\(M=\sqrt{\nu^2-1}\) in the scalar reduction. In the radial
+eikonal equation these assignments give \(Y^2=E^2+f(1-P^2/r^2)\).
+On the lower horizon detour, the propagation factor of the
+cycle is \(e^{ME T_*^*}=e^{2\ii\omega\mathcal Z_{\rm L}}\).
+Using
+\(\zeta=e^{-2\pi\ii/3}M^2/(4w^{4/3})\) and
+\(g=e^{-\pi\ii/3}k^2/(4w^{2/3})\) gives
+\begin{equation}
+ \eta=E^2P^2=-g/\zeta^2,\qquad
+ \zeta^{3/2}=\frac{M}{2E^2}.
+\end{equation}
+Equation \eqref{eq:lovelock-nonlinear-wkb} thus agrees with
+\(M[W_{\rm opt}(E,P^2)-W_{\rm opt}(E,0)]\) from
+\eqref{eq:jacobi-elliptic-action}. A term with \(m\) reflections
+has \(m\) times that action in its logarithm.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\eta\) & \(\chi=3\) & \(\chi=4\) & \(\chi=5\) \\
+ \hline
+ \input{lovelock_geometric_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative error of the elliptic action
+ in \eqref{eq:lovelock-nonlinear-wkb} compared with the direct
+ shifted Airy connection.}
+ \label{tab:lovelock-geometric-momentum}
+\end{table}
+
+Table~\ref{tab:lovelock-geometric-momentum} tests the nonlinear
+action for two \(\eta\) on the physical ray. We integrate the
+three recessive solutions of \eqref{eq:lovelock-displaced-airy}
+and obtain the multiplier from their values at the origin as in
+\eqref{eq:lovelock-scaled-reflection}, with both parameters rotated.
+Factoring the Airy asymptotic form in \(X-\zeta\) gives initial
+data on each ray. The changes in the multiplier under cutoff
+and step refinement are below \(10^{-6}\) relative. The
+geodesic action agrees with the logarithm of the full connection
+coefficient to within \(0.24\%\) at \(\chi=5\).
+
+The linear term in \(\mathcal A\) gives
+\(D_{\rm A}(\zeta)\sim\pi/\sqrt\zeta\), equivalently a
+logarithmic \(k^2\) derivative \(\pi/(2M)\). In the pole condition
+this gives \(b_n\sim(1+\ii)/(2M)\), or
 \begin{equation}
  \mathcal B(\chi)\sim\frac{1+\ii}{2\chi}.
  \label{eq:lovelock-massive-limit}
 \end{equation}
-For example, at \(\chi=5\) the Airy quadrature gives
+For \(\chi=5\), the Airy quadrature gives
 \(\chi\mathcal B(\chi)=0.50139+0.50137\ii\).
 For \(\chi=10\) and \(n=256\), the exact pole slope gives
 \(\chi N^{2/3}b_n\simeq0.500019(1+\ii)\).
-
-The same momentum derivative follows from the optical geodesic.
-In this metric the inner-to-outer cycle has
-\(J_{\rm opt}=\pi\), as in \eqref{eq:jacobi-ads5}.
-If \(M\simeq\nu\) is the large worldline mass and \(k=MP\),
-then the optical cycle action satisfies
-\(\partial_{P^2}W_{\rm opt}=-J_{\rm opt}/2\).
-Consequently the logarithmic \(k^2\) derivative of
-\(\exp(-MW_{\rm opt})\) equals \(\pi/(2M)\). In the
-pole condition with optical phase \(2\omega\mathcal Z_{\rm L}\)
-this yields \(b_n\sim\ii\pi/(4M\mathcal Z_{\rm L})=(1+\ii)/(2M)\),
-in agreement with \eqref{eq:lovelock-massive-limit}.
-For \(|E|=|\omega|/M\), the condition \(M|E|^{-2}\gg1\) for the
-geodesic approximation is \(\chi^3/8\gg1\) in this limit.
-Each additional optical reflection adds the same quadratic
-momentum term in the exponent. Its Gaussian integral has the
-transverse multiplicity \(d-1\) and the repetition dependence
-of \eqref{eq:jacobi-ratio}. The comparison fixes this part of the
-amplitude in the overlap regime. The full correlator also requires
-the residues and contour weights. Section~\ref{sec:lovelock-residues}
-determines the residue shifts at first order in \(k^2\).
+The overlap condition \(M|E|^{-2}\gg1\) is \(\chi^3/8\gg1\).
+The transverse Gaussian from this quadratic term has the
+repetition dependence of \eqref{eq:jacobi-ratio}.
+The calculation fixes the part of the reflection amplitude
+set by the optical action. Section~\ref{sec:lovelock-residues}
+derives the separate variation of the pole weights.

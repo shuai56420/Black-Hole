@@ -174,3 +174,76 @@ For fixed \(n,k\) this means \(ME^{-q}\gg1\). The endpoint factor
 describes that semiclassical regime. The contribution to a
 correlator additionally requires the weight of each complex
 saddle on its integration contour.
+
+\subsection{Finite transverse momentum for the Lovelock lapse}
+\label{sec:finite-transverse-geodesic}
+
+The lapse \(f=r^2-r^{-2}\), which also occurs in the Lovelock
+family of section~\ref{sec:lovelock}, permits a resummation of the
+transverse response. Write \(P^2=\boldsymbol P^2\) and use
+\(u=E^2r^2\), \(\eta=E^2P^2\). The exact equation is
+\begin{equation}
+ \frac{Y^2}{E^2}=1-\frac1u+\frac{\eta}{u^2}
+       +E^{-4}(u-\eta).
+\end{equation}
+At fixed \(0\leq\eta<1/4\), the inner turn of the optical cycle
+tends to \(u=a_+(\eta)\), with
+\(a_\pm(\eta)=(1\pm\sqrt{1-4\eta})/2\).
+The integral \(\int \dd r/(r^2Y)\) on the doubled positive ray
+converges to the elliptic period
+\begin{align}
+ \mathcal J(\eta)
+ &=\int_{a_+}^{\infty}
+     \frac{\dd u}{\sqrt{u(u-a_+)(u-a_-)}} \notag\\
+ &=\frac{2}{\sqrt{a_+}}\,\mathbb K(a_-/a_+),\qquad
+ \mathbb K(m)=\int_0^{\pi/2}
+      \frac{\dd\theta}{\sqrt{1-m\sin^2\theta}} .
+ \label{eq:jacobi-elliptic}
+\end{align}
+The substitution \(u=a_+/\cos^2\theta\) removes the endpoint
+square root and gives the second line. It also gives convergence
+uniformly on compact \(\eta\) intervals before the two inner
+roots coalesce. The doubled tail from the imaginary outer root
+is \(O(E^{-2})\), since \(r_{\rm b}\sim\ii E\). Thus both the
+reference path and the optical cycle have limiting transverse
+period \(\mathcal J(\eta)\), and the sequence with \(n\) inner
+turns has displacement \(n\boldsymbol P\,\mathcal J(\eta)+o(P)\).
+At \(\eta=0\), \(\mathcal J(0)=\pi\) reproduces the linear
+response. As the inner roots coalesce at \(\eta=1/4\), the
+period diverges logarithmically \cite{NIST:DLMF}.
+
+Let \(W_{\rm opt}=\oint Y\,\dd r/f\) on one optical cycle.
+Differentiation at fixed \(E\) gives
+\(\partial_{P^2}W_{\rm opt}=-\tfrac12\oint\dd r/(r^2Y)\).
+Simple turning points give zero endpoint terms. Integrating
+from zero transverse momentum therefore yields
+\begin{align}
+ W_{\rm opt}(E,P^2)-W_{\rm opt}(E,0)
+   &=-\frac{\mathcal A(\eta)}{2E^2}+o(E^{-2}),\qquad
+    \mathcal A(\eta)=\int_0^\eta\mathcal J(s)\,\dd s,\notag\\
+ \mathcal A(\eta)&=\pi\big(\eta+\tfrac38\eta^2+O(\eta^3)\big).
+ \label{eq:jacobi-elliptic-action}
+\end{align}
+Each additional optical cycle adds this same action shift.
+The reference path contributes one copy to leading order, so
+the shift for \(n\) inner visits has coefficient \(n\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(\eta\) & \(\mathcal J(\eta)\) & \(E=8\) & \(E=32\) & \(E=128\) \\
+ \hline
+ \input{geodesic_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative errors of the finite-energy optical period
+ compared with the elliptic limit in \eqref{eq:jacobi-elliptic}.}
+ \label{tab:geodesic-momentum}
+\end{table}
+
+For table~\ref{tab:geodesic-momentum}, we compute the two
+finite-energy turning points on the optical cycle and subtract
+the imaginary-ray tail from the positive-ray integral.
+Section~\ref{sec:lovelock-crossover} uses the analytic continuation
+from \(\eta=0\) to compare the nonlinear action with the scalar
+connection coefficient.
