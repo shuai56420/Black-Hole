@@ -46,6 +46,8 @@ finite-energy periods, the action at fixed boundary time, the optical
 limits of geodesics with two and three inner turns, and their transverse
 Jacobi maps. The finite-separation geodesic calculation matches complex
 contours at the same boundary time and prescribed spatial displacement.
+It also compares the logarithmic endpoint slopes near the merger of the
+inner turning points with direct finite-energy contour integrals.
 The connection calculation
 integrates the scalar modes on rotated rays and checks their transfer
 product against Frobenius monodromy. The AdS₇ calculation matches the ingoing and

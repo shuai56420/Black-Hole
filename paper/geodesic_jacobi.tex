@@ -316,6 +316,125 @@ length errors for two and three visits are below \(3\times10^{-4}\).
 The common-energy action in \eqref{eq:einstein-transverse-action}
 agrees to relative error below \(5\times10^{-4}\) at the same energy.
 
+\subsection{Approach to the merger of the inner turning points}
+\label{sec:critical-transverse-geodesic}
+
+At finite \(E\), define \(\epsilon_E=E^{-2q}\) and
+\begin{equation}
+ H_E(x)=x^2-\frac{x^d}{1-\epsilon_E x^d},\qquad
+ \frac{Y^2}{E^2}=\frac{1-\epsilon_E x^d}{x^d}\,[\eta-H_E(x)] .
+\end{equation}
+Inside the horizon \(H_E\) has one maximum at \(x_E\), with
+\(d x_E^m=2(1-\epsilon_E x_E^d)^2\). The critical momentum
+is \(\eta_E=H_E(x_E)\). Expanding at large \(E\) gives
+\begin{equation}
+ x_E=x_c\left[1-\frac{2x_c^d}{m}\epsilon_E
+                       +O(\epsilon_E^2)\right],\qquad
+ \eta_E=\eta_c-x_c^{2d}\epsilon_E+O(\epsilon_E^2).
+ \label{eq:critical-momentum-shift}
+\end{equation}
+The shift in \(\eta_E\) matters when the distance from the
+merger is comparable to \(E^{-2q}\).
+
+Write \(\Delta_\eta=\eta_E-\eta>0\),
+\(U_E=1-\epsilon_E x_E^d\), and
+\begin{equation}
+ H_2=-\tfrac12 H_E''(x_E)=m+\frac{2d\epsilon_E x_E^d}{U_E},
+ \qquad \kappa_E=\sqrt{\frac{U_E H_2}{x_E^d}} .
+\end{equation}
+The adjacent positive turns are
+\(x_E\pm\sqrt{\Delta_\eta/H_2}+O(\Delta_\eta)\).
+
+On the outer side of the maximum, set
+\(v=\sqrt{H_E(x_E)-H_E(x)}\). The cap integral near the
+larger turn then has denominator \(\sqrt{v^2-\Delta_\eta}\).
+Its constant-numerator part integrates to
+\(\operatorname{arcosh}(v/\sqrt{\Delta_\eta})\). After doubling
+the leg, the resulting coefficient of \(\log(1/\Delta_\eta)\)
+is the value of the numerator at the critical turn. With
+\(r_E=E^{-2/m}x_E\), \(P_E=E^{-2/m}\sqrt{\eta_E}\), and
+\(f_E=f(r_E)\), the coefficients for \(n\) visits are
+\begin{equation}
+ C_L=\frac{n E^{-q}}{\kappa_E},\qquad
+ C_T=\frac{E}{f_E}C_L,\qquad C_X=\frac{P_E}{r_E^2}C_L .
+ \label{eq:critical-log-coefficients}
+\end{equation}
+In particular \(C_T<0\) on the real interior cap. The affine
+length diverges at the merger.
+
+The joint large-\(E\) estimates are
+\begin{align}
+ L^{(n)}&=2\log(2/E)+\ii\pi(n-1)
+           +C_L\log(1/\Delta_\eta)+O(E^{-q}),\notag\\
+ T^{(n)}&=nT_*-\frac2E
+           +C_T\log(1/\Delta_\eta)+O(E^{-q-1}),\notag\\
+ X^{(n)}&=C_X\log(1/\Delta_\eta)+O(E^{-1}).
+ \label{eq:critical-log-endpoints}
+\end{align}
+The errors here are uniform for \(0<\Delta_\eta\) below a
+sufficiently small fixed constant. Subtracting the numerator's
+value at \(v=0\) makes the remaining cap integrand integrable
+uniformly in the gap. Outside this cap, the \(\eta\) derivatives
+of the length and time densities on the rescaled positive ray
+are bounded by integrable multiples of \(E^{-q}\) and
+\(E^{-q-1}\), respectively. The time derivative cancels its
+horizon denominator because \(\partial_\eta Y^2\) is proportional
+to \(f\). The outer-ray integrals vary analytically in the
+small parameter \(P^2/E^2=\epsilon_E\eta\). These estimates
+allow the regular length and time contributions to be compared
+with a reference contour at a fixed gap.
+
+The reduced action remains finite. Indeed,
+\(C_L+EC_T-P_E C_X=0\) by the turning-point equation at \(r_E\).
+At fixed \(E\), integrating \(\partial_\eta W=-E^{-4/m}J/2\)
+then gives
+\begin{equation}
+ W^{(n)}(E,\eta)-W^{(n)}(E,\eta_E)=
+ \frac{C_L}{2x_E^2}\Delta_\eta\log(1/\Delta_\eta)
+    +O_E(\Delta_\eta).
+\end{equation}
+Thus the logarithm in the endpoint data gives a weaker
+nonanalyticity in the reduced action.
+
+In the joint limit with \(\sigma=E^{-q}\log(1/\Delta_\eta)>0\)
+fixed, the time logarithm competes with the exterior
+\(2/E\) deficit. Setting \(\kappa_\infty=\sqrt{m/x_c^d}\)
+in \eqref{eq:critical-log-endpoints} yields
+\begin{equation}
+ E(nT_*-T^{(n)})\longrightarrow
+        2+\frac{n\sigma x_c^m}{\kappa_\infty},
+ \qquad
+ \frac{X^{(n)}}{E^{q-1}}\longrightarrow
+        \frac{n\sigma\sqrt{\eta_c}}{\kappa_\infty x_c^2}.
+\end{equation}
+The length shift from the zero-momentum contour tends to
+\(n\sigma/\kappa_\infty\). This regime occurs at exponentially
+small gaps and extends the finite-\(X/\delta\) limit of
+\eqref{eq:einstein-transverse-fixed-endpoints}.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccccccc}
+ \hline
+ \(d\) & \(n\) & \(E\) & gap interval & \(L\) & \(T\) & \(X\) & \(W\) \\
+ \hline
+ \input{einstein_critical_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative errors of the logarithmic slopes
+ in \eqref{eq:critical-log-coefficients}, from direct quadratic-cap
+ contour integrals with the indicated pairs of \(\Delta_\eta\).
+ The \(W\) column gives the magnitude of its measured slope
+ divided by \(C_L\).}
+ \label{tab:critical-transverse-geodesic}
+\end{table}
+
+For table~\ref{tab:critical-transverse-geodesic} we prescribe the
+larger turn and compute its momentum from \(H_E\).
+The finite differences of \(L,T,X\) with respect to
+\(\log(1/\Delta_\eta)\) approach their predicted coefficients
+as both gaps decrease. In the final intervals the largest
+relative error is below \(8\times10^{-5}\).
+
 \subsection{Elliptic limit for the Lovelock lapse}
 \label{sec:finite-transverse-geodesic}
 

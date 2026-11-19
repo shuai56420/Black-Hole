@@ -43,7 +43,7 @@ def limiting_period(d, eta):
     return integrate(integrand)
 
 
-def repeated_geodesic(d, bounces, energy, eta):
+def repeated_geodesic(d, bounces, energy, eta, inner_scaled_root=None):
     """Return the renormalized length, lifted time and transverse period."""
     m = d-2
     scale = energy**(-2/m)
@@ -53,8 +53,9 @@ def repeated_geodesic(d, bounces, energy, eta):
     outer_momentum = momentum_squared/energy**2
 
     def inner_equation(x):
-        value = 1-x**(-m)+eta*x**(-d)+inner_epsilon*(x*x-eta)
-        derivative = m*x**(-m-1)-d*eta*x**(-d-1)+2*inner_epsilon*x
+        outer_correction = 1+inner_epsilon*(x*x-eta)
+        value = x**d*outer_correction-x*x+eta
+        derivative = d*x**(d-1)*outer_correction-2*x+2*inner_epsilon*x**(d+1)
         return value, derivative
 
     def outer_equation(x):
@@ -62,7 +63,9 @@ def repeated_geodesic(d, bounces, energy, eta):
         derivative = 2*x+outer_epsilon*(m*x**(-m-1)-d*outer_momentum*x**(-d-1))
         return value, derivative
 
-    inner = scale*turning_root(inner_equation, 1)
+    if inner_scaled_root is None:
+        inner_scaled_root = turning_root(inner_equation, 1)
+    inner = scale*inner_scaled_root
     outer = energy*turning_root(outer_equation, 1j)
     radius = 2*abs(energy)
     angle = cmath.phase(outer)
@@ -159,6 +162,74 @@ def length_at_endpoints(d, bounces, energy, eta, target_time, target_space):
     raise ArithmeticError("fixed-endpoint solve did not converge")
 
 
+def check_critical_turning_points():
+    rows = []
+    for d, bounces, energy in ((5, 2, 8), (6, 3, 12), (8, 3, 16)):
+        m = d-2
+        scale = energy**(-2/m)
+        epsilon = (scale/energy)**2
+
+        def turning_momentum(x):
+            return x**2-x**d/(1-epsilon*x**d)
+
+        def stationary_equation(x):
+            horizon_factor = 1-epsilon*x**d
+            value = d*x**m-2*horizon_factor**2
+            derivative = d*m*x**(m-1)+4*epsilon*d*x**(d-1)*horizon_factor
+            return value, derivative
+
+        limiting_root = (2/d)**(1/m)
+        critical_root = turning_root(stationary_equation, limiting_root)
+        critical_eta = turning_momentum(critical_root)
+        critical_radius = scale*critical_root
+        critical_momentum_value = scale*math.sqrt(critical_eta)
+        horizon_factor = 1-epsilon*critical_root**d
+        curvature = m+2*epsilon*d*critical_root**d/horizon_factor
+        radial_coefficient = math.sqrt(curvature*horizon_factor/critical_root**d)
+        length_slope = bounces*scale/(energy*radial_coefficient)
+        expected = (
+            length_slope,
+            length_slope*energy/(critical_radius**2-critical_radius**(-m)),
+            length_slope*critical_momentum_value/critical_radius**2,
+        )
+        finite_shift = (critical_momentum(d)-critical_eta)/(epsilon*limiting_root**(2*d))
+        assert abs(finite_shift-1) < 0.003
+
+        values = []
+        for offset in (0.025, 0.008, 0.0025, 0.0008, 0.00025):
+            # Prescribe the larger root to stay on the continued exterior sheet.
+            root = critical_root+offset
+            eta = turning_momentum(root)
+            momentum = scale*math.sqrt(eta)
+            length, time, period = repeated_geodesic(d, bounces, energy, eta, root)
+            if offset == 0.025:
+                automatic = repeated_geodesic(d, bounces, energy, eta)
+                assert max(abs(a-b) for a, b in zip((length, time, period), automatic)) < 5e-11
+            space = momentum*period
+            action = length+energy*time-momentum*space
+            values.append((critical_eta-eta, (length, time, space, action)))
+
+        errors = []
+        for (gap, previous), (next_gap, current) in zip(values, values[1:]):
+            log_ratio = math.log(gap/next_gap)
+            slopes = [(end-start)/log_ratio for start, end in zip(previous, current)]
+            discrepancies = [abs(slope/prediction-1)
+                             for slope, prediction in zip(slopes[:3], expected)]
+            discrepancies.append(abs(slopes[3])/length_slope)
+            errors.append(discrepancies)
+        assert all(all(new < old for old, new in zip(first, second))
+                   for first, second in zip(errors, errors[1:]))
+        assert max(errors[-1]) < 0.00015
+        gap_range = "{:.2e}--{:.2e}".format(values[-2][0], values[-1][0])
+        cells = " & ".join(f"{error:.2e}" for error in errors[-1])
+        rows.append(f"{d} & {bounces} & {energy} & {gap_range} & {cells} " + r"\\")
+        print(f"d={d}, n={bounces}, E={energy}: critical eta={critical_eta:.9f}, "
+              f"gap range {gap_range}, logarithmic slope errors {errors[-1]}", flush=True)
+    Path(__file__).with_name("einstein_critical_momentum_rows.tex").write_text(
+        "\n".join(rows+[r"\hline"])+"\n", encoding="ascii"
+    )
+
+
 def main():
     d, energy = 6, 16
     reference = (*reference_path(d, energy), transverse_reference(d, energy))
@@ -208,6 +279,7 @@ def main():
     Path(__file__).with_name("einstein_geodesic_momentum_rows.tex").write_text(
         "\n".join(rows+[r"\hline"])+"\n", encoding="ascii"
     )
+    check_critical_turning_points()
 
 
 if __name__ == "__main__":
