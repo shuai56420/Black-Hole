@@ -94,12 +94,12 @@ def numerical_response(frequency, nu, momentum_squared, point, terms):
     )
 
 
-def numerical_response_slope(frequency, nu):
+def numerical_response_slope(frequency, nu, terms=180):
     differences = []
-    for step, point, terms in ((Decimal('0.006'), Decimal('0.53'), 180),
-                               (Decimal('0.003'), Decimal('0.61'), 280)):
-        plus = numerical_response(frequency, nu, step, point, terms)
-        minus = numerical_response(frequency, nu, -step, point, terms)
+    for step, point, count in ((Decimal('0.006'), Decimal('0.53'), terms),
+                               (Decimal('0.003'), Decimal('0.61'), terms+100)):
+        plus = numerical_response(frequency, nu, step, point, count)
+        minus = numerical_response(frequency, nu, -step, point, count)
         differences.append((plus-minus)/(2*float(step)))
     return (4*differences[1]-differences[0])/3
 

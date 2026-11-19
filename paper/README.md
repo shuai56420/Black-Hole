@@ -30,6 +30,7 @@ python check_lovelock.py
 python check_lovelock_momentum.py
 python check_lovelock_crossover.py
 python check_lovelock_residues.py
+python check_lovelock_momentum_time.py
 python check_time_continuation.py
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 bibtex main
@@ -56,7 +57,9 @@ The sixth compares the joint mass and overtone limit with the displaced
 Airy connection integral and checks the geometric momentum derivative.
 The seventh checks the momentum derivative of the retarded response,
 its pole residues, and the zero-momentum time-domain mode sum.
-The eighth evaluates the continued Wightman function, checks the leading
+The eighth checks the momentum-dependent reflection harmonics and the
+leading coefficient of the pole-motion term at the primitive times.
+The ninth evaluates the continued Wightman function, checks the leading
 singular coefficients for primitive and mixed images, and compares the
 residue series with direct integration on tilted contours.
 
