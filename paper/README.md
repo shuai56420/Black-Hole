@@ -20,7 +20,35 @@ and mixed-image singularities for arbitrary positive mass parameter.
 A residue series gives the jump between lateral continuations of the
 mixed thermal images.
 
-Run the following from this directory:
+## Build the manuscript
+
+Run from the `paper` directory with pdfLaTeX and BibTeX. The
+table inputs are included in the repository.
+
+~~~sh
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+bibtex main
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+~~~
+
+This produces `main.pdf`. To create the JHEP source archive from
+the same directory, run the appropriate command after the build.
+
+~~~sh
+tar -czf jhep-source.tar.gz *.tex *.sty *.bst *.bib main.bbl
+~~~
+
+~~~powershell
+$sourceFiles = Get-ChildItem -File |
+    Where-Object { $_.Extension -in '.tex', '.sty', '.bst', '.bib' } |
+    Select-Object -ExpandProperty Name
+tar -czf jhep-source.tar.gz @sourceFiles main.bbl
+~~~
+
+## Reproduce the numerical tables
+
+Run from the `paper` directory with Python 3, then rebuild the manuscript.
 
 ~~~text
 python check_periods.py
@@ -35,10 +63,6 @@ python check_lovelock_scaled_momentum.py
 python check_lovelock_geometric_momentum.py
 python check_lovelock_momentum_time.py
 python check_time_continuation.py
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ~~~
 
 The scripts use only the Python standard library. The first checks the
