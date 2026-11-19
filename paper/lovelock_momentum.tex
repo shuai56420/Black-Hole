@@ -1,0 +1,228 @@
+\subsection{Exact small-momentum dispersion}
+\label{sec:lovelock-momentum}
+
+Let \(k\) be the magnitude of the spatial wave vector and
+\(w=\omega/2\). With the same curvature coupling and mass
+parameter \(\nu\) as in section~\ref{sec:detuning}, the reduced
+equation at finite \(k\) is
+\begin{equation}
+ (rfA')'+\left(\frac{\omega^2 r}{f}
+      -(\nu^2-1)r-\frac{k^2}{r}\right)A=0 .
+ \label{eq:lovelock-k-radial}
+\end{equation}
+In \eqref{eq:detune-v} this adds the potential
+\(-k^2/[4v(v^2-1)]\), with a fourth regular singular point at
+\(v=0\). The zero-momentum solution suffices to find the exact
+first derivative of every quasinormal pole.
+
+Use \(N=n+h\), \(h=(1+\nu)/2\), for the overtone \(n\geq0\).
+On the positive-real-part branch the unperturbed pole is
+\(\omega_n^0=2(1-\ii)N\). It is simple because only the gamma
+factor with argument \(h-s_+\) gives a zero of the source there.
+Write \(x=(v-1)/(v+1)\) and \(\alpha=-\ii\omega_n^0/2\).
+The polynomial at the pole can be converted by Pfaff's transformation
+to a Jacobi polynomial normalized to unity at \(x=0\):
+\begin{align}
+ A_n(x)&=x^{\alpha/2}(1-x)^h \mathcal P_n(x),\notag\\
+ \mathcal P_n(x)&={}_2F_1(-n,n+\alpha+\nu+1;\alpha+1;x).
+ \label{eq:lovelock-jacobi-mode}
+\end{align}
+The overall normalization is arbitrary. The endpoint \(x=0\)
+is the horizon and \(x=1\) is the AdS boundary.
+
+Set \(b_n=\partial_{k^2}\omega_n|_{k=0}\). Differentiate
+\eqref{eq:lovelock-k-radial} along the pole, multiply by
+\(A_n\), and subtract the equation for \(A_n\) times the
+differentiated mode. Integrating the resulting Wronskian gives
+\begin{equation}
+ 2\omega_n^0 b_n \operatorname{FP}\!\int_1^\infty
+      \frac{r}{f}A_n^2\,\dd r
+   =\operatorname{FP}\!\int_1^\infty \frac{A_n^2}{r}\,\dd r .
+ \label{eq:lovelock-bilinear}
+\end{equation}
+Here \(\operatorname{FP}\) denotes the constant part after subtracting
+the horizon power terms. The boundary Wronskian vanishes because
+both modes have zero source. At the horizon the variation of the
+ingoing exponent produces a logarithm in the differentiated mode.
+In the Wronskian the logarithm cancels, leaving powers
+\(x^{\alpha+j}\) with integer \(j\geq0\). These terms have vanishing
+finite part. Equivalently, the moment integrals in \(x\) are analytic
+continuations from \(\operatorname{Re}\alpha>0\). Equation
+\eqref{eq:lovelock-bilinear} is bilinear in the mode.
+
+With weight \(x^\alpha(1-x)^\nu\), the two integrals use
+\((1+x)/(4x)\) and \(1/(1+x)\), respectively. Jacobi orthogonality
+replaces \(\mathcal P_n^2/(1+x)\) in the second integral by
+\(\mathcal P_n(-1)\mathcal P_n(x)/(1+x)\), since the difference
+contains a polynomial of degree \(n-1\) times \(\mathcal P_n\).
+The same argument replaces \(\mathcal P_n^2/x\) by
+\(\mathcal P_n/x\). Integrating the Jacobi Rodrigues formula \cite{NIST:DLMF}
+by parts then gives
+\begin{equation}
+ b_n=
+ \frac{2\mathcal P_n(-1)}
+ {\omega_n^0\left(1+\dfrac{\alpha}{2n+\alpha+\nu+1}\right)}
+ \frac{(\alpha)_{n+1}}{(\alpha+\nu+n+1)_{n+1}}\,
+ {}_2F_1(n+1,\alpha+n+1;\alpha+\nu+2n+2;-1).
+ \label{eq:lovelock-exact-dispersion}
+\end{equation}
+To see the normalization, put
+\(\mathcal I_{-1}=n!B(\alpha,n+\nu+1)/(\alpha+1)_n\) for the
+continued \(1/x\) moment. The Jacobi squared norm is
+\(\mathcal I_{-1}\alpha/(2n+\alpha+\nu+1)\).
+The continued \(1/(1+x)\) moment is the product of
+\(\mathcal P_n(-1)n!B(\alpha+n+1,n+\nu+1)/(\alpha+1)_n\)
+and the hypergeometric function in \eqref{eq:lovelock-exact-dispersion}.
+The beta function ratio produces the two Pochhammer symbols.
+The negative-real-part branch obeys
+\(\omega_n^-(k)=-[\omega_n^+(k)]^*\) for real \(k\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\nu\) & \(n\) & \(b_n\) from \eqref{eq:lovelock-exact-dispersion}
+     & Absolute error from pole matching \\
+ \hline
+ \input{lovelock_momentum_rows.tex}
+ \end{tabular}
+ \caption{First momentum derivative of the Lovelock scalar poles.
+ The numerical column reports the difference between the analytic
+ result and independent finite-momentum pole matching.}
+ \label{tab:lovelock-momentum}
+\end{table}
+
+For table~\ref{tab:lovelock-momentum} we match the ingoing and
+normalizable Frobenius series in \(u=r^{-2}\) for the full
+equation \eqref{eq:lovelock-k-radial}. We use two centered
+differences in \(k^2\), with steps \(0.02\) and \(0.01\), and
+extrapolate quadratically in the step. The calculation also
+changes the matching point from \(u=0.54\) to \(u=0.61\) and
+increases the number of series terms.
+
+\subsection{Airy limit of the momentum shift}
+\label{sec:lovelock-airy}
+
+The large-overtone momentum scale follows from the singularity
+at \(z_s=\ii\pi/2\) on the upper optical-time branch. The equation
+at finite \(k\) in the coordinate of \eqref{eq:lovelock-z} is
+\begin{equation}
+ A_{zz}+\left[
+  \frac{\omega^2-k^2}{4}\coth z+\frac{k^2}{4}\tanh z
+        -\frac{\nu^2-1}{4\sinh^2 z}\right]A=0 .
+ \label{eq:lovelock-k-z}
+\end{equation}
+For \(y=w^{2/3}(z-z_s)\), the leading inner equation is
+\(A_{yy}+[y+\lambda/y]A=0\), with
+\(\lambda=k^2/(4w^{2/3})\). This follows from the simple zero of
+\(\coth z\) and the simple pole of \(\tanh z\) at \(z_s\).
+The terms depending on the bare mass vanish at leading order
+when \(\nu\) is fixed.
+
+For the matching phase, let \(\mathcal Z_{\rm L}=\pi(1+\ii)/4\)
+be the optical distance on the branch reached below the
+physical horizon. The boundary ray \(r=e^{-\ii\pi/4}R\), \(R>0\),
+has \(x_{\rm opt}-\mathcal Z_{\rm L}\) of phase \(-3\pi/4\)
+near the singularity. Here \(x_{\rm opt}\) is the tortoise
+coordinate with zero at the boundary. At the unperturbed pole
+\(\arg w=-\pi/4\), the Airy coordinate \(X=e^{\ii\pi/3}y\)
+has phase \(-\pi/3\) on that boundary ray, since
+\(z-z_s\sim r^2\). The adjacent ray towards the physical
+horizon has \(\arg r=\pi/12\) near the core, giving
+\(\arg X=\pi/3\). In \(X\) the inner equation becomes
+\begin{equation}
+ F''-XF+\frac{g}{X}F=0,\qquad
+ g=e^{-\ii\pi/3}\frac{k^2}{4w^{2/3}}.
+ \label{eq:lovelock-perturbed-airy}
+\end{equation}
+Across the two matching rays the continuation of the
+ingoing exponential changes by the Stokes multiplier of
+the outgoing solution, recessive on \(X>0\).
+
+Normalize the recessive solution \(F(X;g)\) to \(\operatorname{Ai}(X)\)
+as \(X\to+\infty\), and let \(a(g)=F(0;g)\).
+Although the derivative can have a logarithm at the origin,
+\(a(g)\) is finite. With \(\sigma=e^{2\pi\ii/3}\), the rotated
+solutions are \(F_j(X)=F(\sigma^{-j}X;\sigma^j g)\).
+The WKB-normalized adjacent Wronskians have their values at \(g=0\),
+since the \(g/X\) term makes a correction that tends to zero
+in the large-\(X\) asymptotics. Thus
+\(F_{-1}+\sigma F_1=S_{\rm A}(g)F_0\).
+Evaluating this relation at \(X=0\) gives
+\begin{equation}
+ S_{\rm A}(0)=-\sigma^{-1},\qquad
+ \left.\partial_g\log S_{\rm A}\right|_{0}=-3\,\frac{a'(0)}{a(0)}.
+\end{equation}
+
+Variation of parameters with \(\operatorname{Ai}\) and
+\(\operatorname{Bi}\) yields the convergent integral
+\begin{equation}
+ \frac{a'(0)}{a(0)}
+ =\pi\int_0^\infty\frac{\operatorname{Ai}(t)
+ [\sqrt3\,\operatorname{Ai}(t)-\operatorname{Bi}(t)]}{t}\,\dd t
+ =-\frac{\Gamma(1/3)^2}{3^{4/3}}.
+ \label{eq:lovelock-airy-moment}
+\end{equation}
+For the last equality, put \(s=2t^{3/2}/3\) and use the Airy
+representations in terms of \(I_{1/3}\) and \(K_{1/3}\) \cite{NIST:DLMF}.
+The resulting Bessel moment is
+\begin{equation}
+ \int_0^\infty s^{-1/3} I_{1/3}(s)K_{1/3}(s)\,\dd s
+ =2^{-4/3}\Gamma(1/3)^2.
+\end{equation}
+It follows by Mellin transformation of the product representation
+\begin{equation}
+ I_{1/3}(s)K_{1/3}(s)=\int_0^\infty
+      e^{-2v/3}J_0(2s\sinh v)\,\dd v
+\end{equation}
+and continuation from the strip of absolute convergence.
+
+The leading pole condition uses the boundary phase
+\(e^{-\ii\pi\nu}\) and the round-trip symbol
+\(e^{2\ii\omega\mathcal Z_{\rm L}}\). Its reflection coefficient
+is fixed to \(-1\) at \(g=0\) by the exact pole locations.
+The Airy matching multiplies it by \(S_{\rm A}(g)/S_{\rm A}(0)\),
+since the ratio of the WKB amplitudes changes by the same
+Stokes coefficient. Exterior momentum corrections from outside
+a matching radius \(|z-z_s|=\varepsilon\) are of order
+\(k^2 |w|^{-1}\varepsilon^{-1/2}\), which is subleading when
+\(\varepsilon\gg |w|^{-2/3}\) and \(\varepsilon\to0\).
+The resulting leading WKB prediction for the slope is
+\begin{align}
+ N^{2/3} b_n &\longrightarrow
+ \mathcal B_{\rm A}
+ =\frac{\ii e^{-\ii\pi/3}\Gamma(1/3)^2}
+        {8\,\mathcal Z_{\rm L}\,3^{1/3}(1-\ii)^{2/3}}\notag\\
+ &=0.42932943+0.11503847\ii .
+ \label{eq:lovelock-airy-limit}
+\end{align}
+The power of \(1-\ii\) is continued from real positive \(w\).
+Equation \eqref{eq:lovelock-exact-dispersion} gives an independent
+test of the complex coefficient in this prediction.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\nu\) & \(n=16\) & \(n=64\) & \(n=256\) \\
+ \hline
+ \input{lovelock_airy_rows.tex}
+ \end{tabular}
+ \caption{Absolute error \(\lvert N^{2/3}b_n-\mathcal B_{\rm A}\rvert\)
+ using the exact momentum slopes in \eqref{eq:lovelock-exact-dispersion}.}
+ \label{tab:lovelock-airy}
+\end{table}
+
+Table~\ref{tab:lovelock-airy} tests the coefficient at several
+values of the bare mass. The scale \(k\sim|\omega|^{1/3}\)
+controls the Airy reflection equation at fixed \(\nu\).
+Because the Lovelock lapse has the same radial form as in AdS\(_5\),
+the pure optical geodesics here have
+\(J_{n,0}=n\pi-\arctan(2/E^2)\) from \eqref{eq:jacobi-ads5},
+with transverse multiplicity \(d-1\).
+The worldline Gaussian factor assumes a large mass and a transverse
+Gaussian width small compared to the inner turning radius.
+The following calculation connects the momentum derivative in the
+two regimes.
+
+\input{lovelock_crossover}

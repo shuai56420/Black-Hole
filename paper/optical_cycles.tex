@@ -1,0 +1,146 @@
+\section{Geodesic contours with several optical round trips}
+\label{sec:optical-cycles}
+
+The local cycle joins roots that both approach \(r=0\). To construct
+a cycle with finite optical time, we use an outer root.
+In addition to the \(m=d-2\) roots at
+\(r=O(E^{-2/m})\), the turning-point equation has a pair of roots
+asymptotic to \(\pm\ii E\). With \(r=E x\) the equation is
+\(1+x^2-E^{-d}x^{-m}=0\), so the upper outer root is
+\begin{equation}
+ r_{\rm b}=\ii E[1+O(E^{-d})].
+\end{equation}
+For each fixed \(d\geq4\) and sufficiently large real \(E\), take the
+path from \(r_0\) to the positive exterior through the upper horizon
+detour of section~\ref{sec:radial}. Follow that leg to radius
+\(R>2\max(E,1)\), rotate counterclockwise to \(\arg r_{\rm b}\), and
+decrease the radius to \(r_{\rm b}\). On the exterior arc the
+sheet is specified by \(Y\sim r\). Return from \(r_{\rm b}\)
+to \(r_0\) on the other sheet. We denote the length and time
+periods of this cycle by \(\Lambda_L\) and \(\Lambda_T\).
+Every turn is regular at finite \(E\), since \(r-r_j\) is
+quadratic in the local affine parameter at a simple root.
+
+Insert \(n-1\) such cycles in the reference contour. The geodesic
+then visits \(r_0\) \(n\) times and \(r_{\rm b}\) \(n-1\) times
+before exiting on the reference outgoing sheet. For this sequence
+at common energy the endpoint data are
+\begin{align}
+ L^{(n)}(E)&=L_0(E)+(n-1)\Lambda_L(E),&
+ T^{(n)}(E)&=T_0(E)+(n-1)\Lambda_T(E).
+ \label{eq:optical-insertions}
+\end{align}
+Only the two AdS endpoints require length counterterms. The repeated
+turns take place on the complexified spacetime with the time lifted
+along the contour.
+
+\subsection{Optical time and finite-energy corrections}
+
+The periods can be evaluated by subtracting twice the exterior
+integral from \(r_{\rm b}\) to infinity from the reference result.
+The exterior integral takes the ray out from \(r_{\rm b}\) and rotates
+back to the positive axis. In this calculation the length subtraction
+at the reference endpoint and at the exterior-integral endpoint
+is the same. Writing \(r=r_{\rm b}y\), \(y\geq1\), gives
+\begin{equation}
+ \frac{Y^2}{r_{\rm b}^{\,2}}
+ =y^2-1+r_{\rm b}^{-d}(1-y^{-m}) .
+ \label{eq:optical-outer-factor}
+\end{equation}
+The ratio \((1-y^{-m})/(y^2-1)\) is bounded, including at the
+turning point. Thus the doubled exterior length is
+\(2\log(2/E)-\ii\pi+O(E^{-d})\), with the phase from transporting
+the logarithm back to the positive axis. The leading integral
+uses \(\int_1^Y (y^2-1)^{-1/2}\dd y=\operatorname{arcosh}(Y)\).
+The leading exterior time comes from
+\(\int_1^\infty [y^2\sqrt{y^2-1}]^{-1}\dd y=1\); multiplying by
+\(2E/r_{\rm b}^{\,2}\) gives \(-2/E+O(E^{-d-1})\).
+
+To resolve the first correction to the full cycle, compare
+\(L_0(E)\) with the pure AdS half-line integral. Subtract their
+integrands and write \(r=r_0 x\). Since \(r_0/E\sim E^{-q}\),
+where \(q=d/(d-2)\), the coefficient of \(E^{-q}\) is
+\begin{align}
+ K_d
+ &=2\left[\int_1^\infty
+  \left(\frac{1}{\sqrt{1-x^{-m}}}-1\right)\dd x-1\right]
+ =\frac{2}{m}B(-1/m,1/2).
+ \label{eq:optical-kd}
+\end{align}
+Here the beta function is understood by continuation. The change
+of variables \(v=x^{-m}\) subtracts the constant term in the
+integrand at \(v=0\). The subtracted original integrand after
+rescaling is bounded by a constant times \(x^{-m}\) for \(x\geq2\)
+and by an integrable inverse square root near \(x=1\). The omitted
+pure AdS interval \(0\leq r\leq r_0\) gives the \(-1\) in brackets.
+Using \(L'_0=-E T'_0\) and the limiting \(T_*\) in
+\eqref{eq:tstar} then gives
+\begin{align}
+ L_0(E)&=2\log(2/E)+K_d E^{-q}+o(E^{-q}),\notag\\
+ T_0(E)&=T_*-\frac{2}{E}
+         -\frac{q}{q+1}K_d E^{-q-1}+o(E^{-q-1}) .
+ \label{eq:optical-ref-correction}
+\end{align}
+For \(d\geq4\), \(d>q\). Hence the leading exterior tail removes
+the \(E^{-1}\) correction from each inserted cycle, and the
+families in \eqref{eq:optical-insertions} have
+\begin{align}
+ L^{(n)}(E)&=2\log(2/E)+\ii\pi(n-1)+nK_d E^{-q}+o(E^{-q}),\notag\\
+ T^{(n)}(E)&=nT_*-\frac2E
+   -\frac{nq}{q+1}K_d E^{-q-1}+o(E^{-q-1}) .
+ \label{eq:optical-period-asymptotics}
+\end{align}
+The \(1/E\) time correction comes from the two exterior endpoint
+legs. In terms of \(\delta=nT_*-T^{(n)}\), elimination of \(E\)
+gives
+\begin{equation}
+ L^{(n)}
+   =2\log\delta+\ii\pi(n-1)
+    +\frac{nK_d}{q+1}\left(\frac{\delta}{2}\right)^q
+    +o(\delta^q).
+ \label{eq:optical-fixed-time}
+\end{equation}
+Thus the classical worldline factor contains
+\(e^{-\ii\pi M(n-1)}\delta^{-2M}\). Section~\ref{sec:geodesic-jacobi}
+computes the corresponding endpoint Gaussian factor.
+
+In AdS\(_5\), \(K_4=0\) and the cycle periods simplify exactly.
+In \(y=r^2\) the doubled length integrand is
+\(\dd y/\sqrt{y^2+E^2 y-1}\). The two cycle endpoints are the two
+roots of this quadratic. The primitive
+\(\operatorname{arcosh}[(2y+E^2)/\sqrt{E^4+4}]\) changes by
+\(\ii\pi\) on the prescribed upper exterior path from the positive
+root to the negative one. It follows that \(\Lambda_L=\ii\pi\).
+The differential identity \(\Lambda'_L=-E\Lambda'_T\) and the
+large-\(E\) limit then imply \(\Lambda_T=T_*\) for \(E>0\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(d\) & \(n\) & \(E\) &
+ \(E^q[L^{(n)}-2\log(2/E)-\ii\pi(n-1)]\) &
+ \(E^{q+1}[T^{(n)}-nT_*+2/E]\) \\
+ \hline
+ \input{optical_cycle_rows.tex}
+ \end{tabular}
+ \caption{Finite-energy quadratures for geodesics with \(n\)
+ visits to the inner turning point. The limit rows are the
+ coefficients in \eqref{eq:optical-period-asymptotics}.}
+ \label{tab:optical-cycles}
+\end{table}
+
+Table~\ref{tab:optical-cycles} compares two- and three-visit
+contours with the analytic asymptotics. To check the contour
+prescription, we compute the cycle directly over the two caps,
+the explicit horizon detour and the exterior arc. The absolute
+agreement with the exterior-tail subtraction is below
+\(2\times10^{-14}\) in the examples shown. The scaled fixed-time
+coefficient of \eqref{eq:optical-fixed-time} agrees with the
+quadrature to absolute error below \(0.003\) at \(E=128\).
+Replacing the upper by
+the lower detour of the physical horizon changes the time by
+\(\ii\beta\) per optical trip and leaves the length unchanged.
+It therefore gives the limiting time \(nT_*^*\). In AdS\(_7\)
+this is the time \(2n\mathcal Z\) of the primitive reflection
+sectors in section~\ref{sec:einstein-poles}.

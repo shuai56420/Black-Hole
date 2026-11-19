@@ -1,0 +1,509 @@
+\section{Endpoint response of the repeated geodesics}
+\label{sec:geodesic-jacobi}
+
+Let \(\boldsymbol P=r^2\dd\boldsymbol{x}/\dd s\) be the conserved
+transverse momentum per unit worldline mass. Allow it to vary near
+zero while transporting the turning points and the contour. The
+radial equation becomes
+\begin{equation}
+ Y^2=E^2+f(r)\left(1-\frac{\boldsymbol P^2}{r^2}\right).
+ \label{eq:geodesic-transverse}
+\end{equation}
+Write \(\boldsymbol X\) for the spatial separation of the
+endpoints. At \(\boldsymbol P=0\), the Jacobi map for each transverse
+direction is given by a single radial integral,
+\begin{equation}
+ \left.\frac{\partial X_i}{\partial P_j}\right|_{E,\boldsymbol P=0}
+   =\delta_{ij}J,\qquad
+ J=\int_{\rm contour}\frac{\dd r}{r^2Y}.
+ \label{eq:geodesic-jacobi-integral}
+\end{equation}
+Indeed \(\dd\boldsymbol{x}=\boldsymbol P\,\dd s/r^2\), and the
+variation of \(r\) starts at order \(\boldsymbol P^2\). The
+turning points are simple, so their contributions to the
+linearization are regular in the square-root coordinate.
+The time response is even in \(\boldsymbol P\), and at
+\(\boldsymbol P=0\) the mixed time--space response vanishes.
+
+Consider the contour of section~\ref{sec:optical-cycles} with \(n-1\)
+optical cycles and insert \(k\geq0\) copies of the adjacent-root
+cycle of section~\ref{sec:cycles}. The response is additive at
+common energy,
+\begin{equation}
+ J_{n,k}=J_0+(n-1)(J_0-J_{\rm ext})+k\Pi_J,\qquad
+ \Pi_J=\oint_{\mathcal C}\frac{\dd r}{r^2Y}.
+ \label{eq:jacobi-additivity}
+\end{equation}
+Here \(J_0\) is for the reference path and \(J_{\rm ext}\) is twice
+the integral from \(r_{\rm b}\) to infinity on the sheet used in
+\eqref{eq:optical-outer-factor}. These integrals converge at
+infinity. The integrand is regular at a horizon, so the horizon
+detour does not affect \(J\).
+
+\subsection{Transverse periods in the null limit}
+
+For the reference path, let \(y=r/r_0\) and
+\(\mu=(r_0/E)^2\). The exact integral is
+\begin{equation}
+ J_0=\frac{2}{Er_0}\int_1^\infty
+ \frac{\dd y}{y^2\sqrt{1-y^{-m}+\mu(y^2-y^{-m})}}.
+ \label{eq:jacobi-reference}
+\end{equation}
+At \(\mu=0\) the integral gives \(B(1/m,1/2)/m\).
+The first correction comes from the exterior scaling
+\(z=\sqrt{\mu}\,y\) in the difference between the integrals
+at \(\mu\) and zero. Dividing the difference by \(\sqrt\mu\)
+gives the limit
+\begin{equation}
+ \int_0^\infty\frac{(1+z^2)^{-1/2}-1}{z^2}\,\dd z=-1 .
+\end{equation}
+On \(1\leq y\leq2\) the difference contributes \(O(\mu)\).
+For \(y\geq2\), the subtracted integrand in \(z\) is bounded
+by a constant times \(\min(1,z^{-2})\).
+Using \(r_0=E^{-2/m}[1+O(E^{-2q})]\) therefore gives
+\begin{equation}
+ J_0=c_d E^{q-2}-2E^{-2}+o(E^{-2}),\qquad
+ c_d=\frac{2}{m}B(1/m,1/2).
+ \label{eq:jacobi-reference-asymptotic}
+\end{equation}
+The exterior integral in \eqref{eq:jacobi-additivity} uses the same
+leading integral as the exterior time in section~\ref{sec:optical-cycles},
+with factor \(2/r_{\rm b}^{\,2}\). It equals
+\(-2E^{-2}+O(E^{-d-2})\).
+
+For \(d>4\), each cap of \(\Pi_J\) has the leading differential
+\(-\ii r^{m/2-2}\dd r/\sqrt{1-E^2r^m}\). With
+\(\alpha_J=1/2-1/m>0\), the transported phase on the next cap
+is \(e^{2\pi\ii\alpha_J}\). Factoring the simple root as in
+\eqref{eq:root-factor} gives the leading period
+\begin{align}
+ \Pi_J(E)&=
+ -\frac{2\ii}{m}(e^{2\pi\ii\alpha_J}-1)B(\alpha_J,1/2)
+       E^{q-2}+O(E^{-q-2})\notag\\
+ &= c_d(1-e^{-2\pi\ii/m})E^{q-2}+O(E^{-q-2}).
+ \label{eq:jacobi-local-period}
+\end{align}
+The second equality uses the gamma reflection identity. In AdS\(_5\),
+the two cap integrals cancel by \(r\mapsto-r\), with the logarithm
+transported through the upper half-plane. The arc at \(r=0\)
+now has the leading differential \(-\ii\dd r/r\). Its contribution
+on the half-turn is \(\pi\), doubled by the return on the other
+sheet. Consequently \(\Pi_J=2\pi\) exactly. This is also the
+\(m\to2\) limit of the coefficient in \eqref{eq:jacobi-local-period}.
+
+Combining the optical and local periods yields
+\begin{equation}
+ J_{n,k}(E)
+ =c_d\big[n+k(1-e^{-2\pi\ii/m})\big] E^{q-2}
+       -2E^{-2}+o(E^{-2}).
+ \label{eq:jacobi-combined}
+\end{equation}
+The \(E^{-2}\) term comes solely from the two endpoint legs in
+this formula for fixed \(n,k\). In AdS\(_5\), using \(u=r^{-2}\)
+reduces \(J_0\) to the integral of
+\(\dd u/\sqrt{1+E^2u-u^2}\) from zero to its positive root.
+The exterior integral has the same antiderivative with the
+negative root as endpoint and the orientation from \(r_{\rm b}\)
+toward infinity. These integrals give
+\begin{equation}
+ J_{n,k}^{\mathrm{AdS}_5}(E)
+     =(n+2k)\pi-\arctan(2/E^2).
+ \label{eq:jacobi-ads5}
+\end{equation}
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccc}
+ \hline
+ \(d\) & \(E\) & \(E^2\big\{J_{3,1}-c_d(4-e^{-2\pi\ii/m})E^{q-2}\big\}\) \\
+ \hline
+ \input{jacobi_rows.tex}
+ \end{tabular}
+ \caption{Transverse response for three optical visits and one
+ additional adjacent-root cycle. The entries approach \(-2\).}
+ \label{tab:geodesic-jacobi}
+\end{table}
+
+For table~\ref{tab:geodesic-jacobi} the optical part is integrated
+along the caps, horizon detour and arc used in section~\ref{sec:optical-cycles}.
+The direct optical integral and the reference-minus-exterior result
+agree to absolute error below \(10^{-12}\). The AdS\(_5\) values
+also reproduce the exact reference integral and both cycle periods.
+
+\subsection{Endpoint Hessian and Gaussian factor}
+
+The endpoint variation of the length is
+\(\dd L=-E\dd T+\boldsymbol P\cdot\dd\boldsymbol X\).
+At \(\boldsymbol X=0\) this yields
+\begin{equation}
+ \partial_T^2 L=-(T'_{n,k})^{-1},\qquad
+ \partial_T\partial_{X_i}L=0,\qquad
+ \partial_{X_i}\partial_{X_j}L=\delta_{ij}J_{n,k}^{-1},
+ \label{eq:jacobi-hessian}
+\end{equation}
+where \(T_{n,k}\) includes the two types of cycle.
+The leading transverse coefficient has positive real part
+for \(n\geq1\) and \(k\geq0\), so the endpoint map is invertible
+at sufficiently large finite \(E\).
+In particular, the first spatial correction at fixed
+\(T\) is \(\boldsymbol X^2/(2J_{n,k})\). In AdS\(_5\) the
+adjacent-root cycle has zero radial length and time periods
+at every \(E\), while \eqref{eq:jacobi-ads5} gives distinct
+quadratic responses for different \(k\).
+
+The reduced action \(W=L+ET-\boldsymbol P\cdot\boldsymbol X\)
+has time block \(T'_{n,k}\) and spatial block
+\(-J_{n,k}\mathbf 1_{d-1}\) in its Hessian.
+The endpoint Gaussian factor on the associated saddle is
+\(\mathcal D_{n,k}=(T'_{n,k}J_{n,k}^{d-1})^{-1/2}\), up to
+the phase of the Gaussian contour. For fixed \(n,k\),
+the endpoint time tails give \(T'_{n,k}\sim 2/E^2\).
+At a common small deficit \(\delta\) from the respective optical
+times, each energy satisfies \(E\sim2/\delta\).
+The ratio of endpoint Gaussian magnitudes is therefore
+\begin{equation}
+ \left|\frac{\mathcal D_{n,k}}{\mathcal D_{1,0}}\right|
+ \longrightarrow
+ \big|n+k(1-e^{-2\pi\ii/m})\big|^{-(d-1)/2}.
+ \label{eq:jacobi-ratio}
+\end{equation}
+For the pure optical family the factors are \(n^{-(d-1)/2}\).
+The Gaussian approximation in transverse momentum requires a
+width \((M|J_{n,k}|)^{-1/2}\) small compared with \(r_0\).
+For fixed \(n,k\) this means \(ME^{-q}\gg1\). The endpoint factor
+describes that semiclassical regime. The contribution to a
+correlator additionally requires the weight of each complex
+saddle on its integration contour.
+
+\subsection{Finite transverse separation at the repeated-bounce times}
+\label{sec:einstein-transverse-geodesic}
+
+Consider the optical family with \(n\) inner visits and no
+adjacent-root insertions. Write \(P^2=\boldsymbol P^2\) and scale
+the momentum with the inner turning radius by setting
+\(x=rE^{2/m}\) and \(\eta=P^2 E^{4/m}\). The exact radial equation is
+\begin{equation}
+ \frac{Y^2}{E^2}=\mathcal F_\eta(x)+E^{-2q}(x^2-\eta),
+ \qquad \mathcal F_\eta(x)=1-x^{-m}+\eta x^{-m-2},
+ \qquad q=d/m .
+ \label{eq:einstein-transverse-core}
+\end{equation}
+The larger positive root \(x_+(\eta)\) of \(x^d-x^2+\eta=0\)
+continues the inner turning point from \(x_+(0)=1\).
+It stays simple for \(0\leq\eta<\eta_c\), where
+\begin{equation}
+ x_c=(2/d)^{1/m},\qquad \eta_c=\frac{m}{d}x_c^2 .
+\end{equation}
+At this value the two positive turning points coalesce.
+
+The rescaled transverse integral on the doubled positive ray
+is
+\begin{equation}
+ \mathcal J_d(\eta)=2\int_{x_+(\eta)}^\infty
+    \frac{\dd x}{x^2\sqrt{\mathcal F_\eta(x)}}.
+ \label{eq:einstein-transverse-period}
+\end{equation}
+Setting \(t=x_+/x\) holds the singular endpoint fixed. With
+\(s=\eta/x_+^d\), the square root in the resulting integral has
+argument \(1-t^m-s t^m(1-t^2)\) and the prefactor is \(2/x_+\).
+The bound \(t^m(1-t^2)/(1-t^m)\leq2/m\) controls the integral
+on compact subintervals of \(s<m/2\). The same substitution
+at the finite-energy root gives a uniformly integrable cap at
+the turn and an integrable exterior tail. The imaginary-ray
+tail from the outer turn \(r_{\rm b}\sim\ii E\) is \(O(E^{-2})\).
+The full transverse period for \(n\) inner visits is therefore
+\(nE^{q-2}\mathcal J_d(\eta)+o(E^{q-2})\).
+
+The integral increases with \(s\), since the denominator
+decreases and \(x_+^{-1}=(1+s)^{1/m}\). At the collision,
+\(x^d-x^2+\eta=m(x-x_c)^2-(\eta_c-\eta)+O((x-x_c)^3)\).
+Integrating the local inverse square root gives
+\begin{equation}
+ \mathcal J_d(\eta)=
+ \frac{x_c^{(m-2)/2}}{\sqrt m}\log\frac{1}{\eta_c-\eta}+O(1).
+\end{equation}
+This describes the collision in the scaled equation. The
+finite-energy turning-point expansion is uniform away from it.
+At zero momentum, differentiation in the fixed variable \(t\)
+and beta integration give
+\begin{equation}
+ \mathcal J_d(0)=c_d,\qquad
+ j_d\equiv \mathcal J_d'(0)
+     =-\frac{1}{m}B(1+3/m,-1/2)>0.
+ \label{eq:einstein-transverse-slope}
+\end{equation}
+In the derivative integral the endpoint singularities of the
+two beta terms cancel before taking the limit.
+
+The reduced action obeys \(\partial_{P^2}W=-J/2\), where
+\(J=\int \dd r/(r^2Y)\) along the transported contour. There
+are no turning-point endpoint terms in differentiating \(W\)
+since \(Y\) vanishes there. The result for the repeated contour,
+at common \(E\), is
+\begin{equation}
+ W^{(n)}(E,P^2)-W^{(n)}(E,0)
+   =-\frac{n}{2}E^{-q}\mathcal A_d(\eta)+o(E^{-q}),
+ \qquad \mathcal A_d(\eta)=\int_0^\eta\mathcal J_d(s)\,\dd s .
+ \label{eq:einstein-transverse-action}
+\end{equation}
+Differentiating the action at fixed \(P\) gives the time shift
+\begin{equation}
+ T^{(n)}(E,P^2)-T^{(n)}(E,0)
+   =\frac{n}{2}E^{-q-1}
+     \big[q\mathcal A_d(\eta)-4\eta\mathcal J_d(\eta)/m\big]
+        +o(E^{-q-1}).
+ \label{eq:einstein-transverse-time}
+\end{equation}
+The cap and tail estimates apply in a small complex neighborhood
+away from the collision and bound derivatives of the remainder.
+Keeping \(T\) fixed shifts the energy from its
+zero-momentum value by \(O(E^{1-q})\). The dependence of
+\(W(E,0)-ET\) on this shift starts at second order, since \(E\)
+is the stationary point at zero momentum.
+
+Write \(\delta=nT_*-T\) and let \(X\) be the displacement
+along \(\boldsymbol P\), with its sign continued from positive
+real momentum. For \(\delta\to0\) at fixed positive \(X/\delta\),
+one has \(E\sim 2/\delta\) and
+\begin{align}
+ \xi=\frac{2X}{n\delta}&=\sqrt\eta\,\mathcal J_d(\eta),
+ \notag\\
+ L^{(n)}(T,X)-L^{(n)}(T,0)
+ &=n\left(\frac{\delta}{2}\right)^q
+       \left[\eta\mathcal J_d(\eta)-\frac{\mathcal A_d(\eta)}2\right]
+       +o(\delta^q).
+ \label{eq:einstein-transverse-fixed-endpoints}
+\end{align}
+The first line defines the leading \(\eta\) for the scaled
+boundary separation. It follows from
+\(X=PJ\). The \(\eta\mathcal J_d\) term in the length comes from
+the Legendre term \(PX\). Since \(\eta=s/(1+s)^q\) increases
+for \(0\leq s<m/2\), the first line determines \(\eta\) uniquely
+on the real pre-collision branch. Expanding the square bracket
+in \(\xi\) gives
+\begin{equation}
+ \eta\mathcal J_d(\eta)-\frac{\mathcal A_d(\eta)}2
+    =\frac{\xi^2}{2c_d}-\frac{j_d}{4c_d^4}\xi^4+O(\xi^6).
+ \label{eq:einstein-transverse-quartic}
+\end{equation}
+The quadratic term recovers the endpoint Hessian in
+\eqref{eq:jacobi-hessian}. The quartic term is the first
+correction at the same boundary time.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccccc}
+ \hline
+ \(d\) & \(n\) & \(\eta/\eta_c\) & \(E_0=8\) & \(E_0=32\) & \(E_0=128\) \\
+ \hline
+ \input{einstein_geodesic_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative error of the leading length shift at fixed time and
+ spatial separation in \eqref{eq:einstein-transverse-fixed-endpoints}.
+ Here \(E_0\) is the energy of the zero-momentum contour.}
+ \label{tab:einstein-transverse-geodesic}
+\end{table}
+
+In table~\ref{tab:einstein-transverse-geodesic}, \(E_0\) fixes the
+exact zero-momentum time.
+We prescribe \(X=n\sqrt\eta\,\mathcal J_d(\eta)/E_0\) and use
+contour quadrature to solve for the complex energy and momentum.
+Evaluating the leading expression with
+\(2/\delta\) replaced by \(E_0\) changes only subleading terms.
+The direct integrals include the lifted horizon detour and the
+cap at the outer turning point. At \(E_0=128\) the relative
+length errors for two and three visits are below \(3\times10^{-4}\).
+The common-energy action in \eqref{eq:einstein-transverse-action}
+agrees to relative error below \(5\times10^{-4}\) at the same energy.
+
+\subsection{Approach to the merger of the inner turning points}
+\label{sec:critical-transverse-geodesic}
+
+At finite \(E\), define \(\epsilon_E=E^{-2q}\) and
+\begin{equation}
+ H_E(x)=x^2-\frac{x^d}{1-\epsilon_E x^d},\qquad
+ \frac{Y^2}{E^2}=\frac{1-\epsilon_E x^d}{x^d}\,[\eta-H_E(x)] .
+\end{equation}
+Inside the horizon \(H_E\) has one maximum at \(x_E\), with
+\(d x_E^m=2(1-\epsilon_E x_E^d)^2\). The critical momentum
+is \(\eta_E=H_E(x_E)\). Expanding at large \(E\) gives
+\begin{equation}
+ x_E=x_c\left[1-\frac{2x_c^d}{m}\epsilon_E
+                       +O(\epsilon_E^2)\right],\qquad
+ \eta_E=\eta_c-x_c^{2d}\epsilon_E+O(\epsilon_E^2).
+ \label{eq:critical-momentum-shift}
+\end{equation}
+The shift in \(\eta_E\) matters when the distance from the
+merger is comparable to \(E^{-2q}\).
+
+Write \(\Delta_\eta=\eta_E-\eta>0\),
+\(U_E=1-\epsilon_E x_E^d\), and
+\begin{equation}
+ H_2=-\tfrac12 H_E''(x_E)=m+\frac{2d\epsilon_E x_E^d}{U_E},
+ \qquad \kappa_E=\sqrt{\frac{U_E H_2}{x_E^d}} .
+\end{equation}
+The adjacent positive turns are
+\(x_E\pm\sqrt{\Delta_\eta/H_2}+O(\Delta_\eta)\).
+
+On the outer side of the maximum, set
+\(v=\sqrt{H_E(x_E)-H_E(x)}\). The cap integral near the
+larger turn then has denominator \(\sqrt{v^2-\Delta_\eta}\).
+Its constant-numerator part integrates to
+\(\operatorname{arcosh}(v/\sqrt{\Delta_\eta})\). After doubling
+the leg, the resulting coefficient of \(\log(1/\Delta_\eta)\)
+is the value of the numerator at the critical turn. With
+\(r_E=E^{-2/m}x_E\), \(P_E=E^{-2/m}\sqrt{\eta_E}\), and
+\(f_E=f(r_E)\), the coefficients for \(n\) visits are
+\begin{equation}
+ C_L=\frac{n E^{-q}}{\kappa_E},\qquad
+ C_T=\frac{E}{f_E}C_L,\qquad C_X=\frac{P_E}{r_E^2}C_L .
+ \label{eq:critical-log-coefficients}
+\end{equation}
+In particular \(C_T<0\) on the real interior cap. The affine
+length diverges at the merger.
+
+The joint large-\(E\) estimates are
+\begin{align}
+ L^{(n)}&=2\log(2/E)+\ii\pi(n-1)
+           +C_L\log(1/\Delta_\eta)+O(E^{-q}),\notag\\
+ T^{(n)}&=nT_*-\frac2E
+           +C_T\log(1/\Delta_\eta)+O(E^{-q-1}),\notag\\
+ X^{(n)}&=C_X\log(1/\Delta_\eta)+O(E^{-1}).
+ \label{eq:critical-log-endpoints}
+\end{align}
+The errors here are uniform for \(0<\Delta_\eta\) below a
+sufficiently small fixed constant. Subtracting the numerator's
+value at \(v=0\) makes the remaining cap integrand integrable
+uniformly in the gap. Outside this cap, the \(\eta\) derivatives
+of the length and time densities on the rescaled positive ray
+are bounded by integrable multiples of \(E^{-q}\) and
+\(E^{-q-1}\), respectively. The time derivative cancels its
+horizon denominator because \(\partial_\eta Y^2\) is proportional
+to \(f\). The outer-ray integrals vary analytically in the
+small parameter \(P^2/E^2=\epsilon_E\eta\). These estimates
+allow the regular length and time contributions to be compared
+with a reference contour at a fixed gap.
+
+The reduced action remains finite. Indeed,
+\(C_L+EC_T-P_E C_X=0\) by the turning-point equation at \(r_E\).
+At fixed \(E\), integrating \(\partial_\eta W=-E^{-4/m}J/2\)
+then gives
+\begin{equation}
+ W^{(n)}(E,\eta)-W^{(n)}(E,\eta_E)=
+ \frac{C_L}{2x_E^2}\Delta_\eta\log(1/\Delta_\eta)
+    +O_E(\Delta_\eta).
+\end{equation}
+Thus the logarithm in the endpoint data gives a weaker
+nonanalyticity in the reduced action.
+
+In the joint limit with \(\sigma=E^{-q}\log(1/\Delta_\eta)>0\)
+fixed, the time logarithm competes with the exterior
+\(2/E\) deficit. Setting \(\kappa_\infty=\sqrt{m/x_c^d}\)
+in \eqref{eq:critical-log-endpoints} yields
+\begin{equation}
+ E(nT_*-T^{(n)})\longrightarrow
+        2+\frac{n\sigma x_c^m}{\kappa_\infty},
+ \qquad
+ \frac{X^{(n)}}{E^{q-1}}\longrightarrow
+        \frac{n\sigma\sqrt{\eta_c}}{\kappa_\infty x_c^2}.
+\end{equation}
+The length shift from the zero-momentum contour tends to
+\(n\sigma/\kappa_\infty\). This regime occurs at exponentially
+small gaps and extends the finite-\(X/\delta\) limit of
+\eqref{eq:einstein-transverse-fixed-endpoints}.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccccccc}
+ \hline
+ \(d\) & \(n\) & \(E\) & gap interval & \(L\) & \(T\) & \(X\) & \(W\) \\
+ \hline
+ \input{einstein_critical_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative errors of the logarithmic slopes
+ in \eqref{eq:critical-log-coefficients}, from direct quadratic-cap
+ contour integrals with the indicated pairs of \(\Delta_\eta\).
+ The \(W\) column gives the magnitude of its measured slope
+ divided by \(C_L\).}
+ \label{tab:critical-transverse-geodesic}
+\end{table}
+
+For table~\ref{tab:critical-transverse-geodesic} we prescribe the
+larger turn and compute its momentum from \(H_E\).
+The finite differences of \(L,T,X\) with respect to
+\(\log(1/\Delta_\eta)\) approach their predicted coefficients
+as both gaps decrease. In the final intervals the largest
+relative error is below \(8\times10^{-5}\).
+
+\subsection{Elliptic limit for the Lovelock lapse}
+\label{sec:finite-transverse-geodesic}
+
+The lapse \(f=r^2-r^{-2}\), which also occurs in the Lovelock
+family of section~\ref{sec:lovelock}, permits a resummation of the
+transverse response. Write \(P^2=\boldsymbol P^2\) and use
+\(u=E^2r^2\), \(\eta=E^2P^2\). The exact equation is
+\begin{equation}
+ \frac{Y^2}{E^2}=1-\frac1u+\frac{\eta}{u^2}
+       +E^{-4}(u-\eta).
+\end{equation}
+At fixed \(0\leq\eta<1/4\), the inner turn of the optical cycle
+tends to \(u=a_+(\eta)\), with
+\(a_\pm(\eta)=(1\pm\sqrt{1-4\eta})/2\).
+The integral \(\int \dd r/(r^2Y)\) on the doubled positive ray
+converges to the elliptic period
+\begin{align}
+ \mathcal J(\eta)
+ &=\int_{a_+}^{\infty}
+     \frac{\dd u}{\sqrt{u(u-a_+)(u-a_-)}} \notag\\
+ &=\frac{2}{\sqrt{a_+}}\,\mathbb K(a_-/a_+),\qquad
+ \mathbb K(m)=\int_0^{\pi/2}
+      \frac{\dd\theta}{\sqrt{1-m\sin^2\theta}} .
+ \label{eq:jacobi-elliptic}
+\end{align}
+The substitution \(u=a_+/\cos^2\theta\) removes the endpoint
+square root and gives the second line. It also gives convergence
+uniformly on compact \(\eta\) intervals before the two inner
+roots coalesce. The doubled tail from the imaginary outer root
+is \(O(E^{-2})\), since \(r_{\rm b}\sim\ii E\). Thus both the
+reference path and the optical cycle have limiting transverse
+period \(\mathcal J(\eta)\), and the sequence with \(n\) inner
+turns has displacement \(n\boldsymbol P\,\mathcal J(\eta)+o(P)\).
+At \(\eta=0\), \(\mathcal J(0)=\pi\) reproduces the linear
+response. As the inner roots coalesce at \(\eta=1/4\), the
+period diverges logarithmically \cite{NIST:DLMF}.
+
+Let \(W_{\rm opt}=\oint Y\,\dd r/f\) on one optical cycle.
+Differentiation at fixed \(E\) gives
+\(\partial_{P^2}W_{\rm opt}=-\tfrac12\oint\dd r/(r^2Y)\).
+Simple turning points give zero endpoint terms. Integrating
+from zero transverse momentum therefore yields
+\begin{align}
+ W_{\rm opt}(E,P^2)-W_{\rm opt}(E,0)
+   &=-\frac{\mathcal A(\eta)}{2E^2}+o(E^{-2}),\qquad
+    \mathcal A(\eta)=\int_0^\eta\mathcal J(s)\,\dd s,\notag\\
+ \mathcal A(\eta)&=\pi\big(\eta+\tfrac38\eta^2+O(\eta^3)\big).
+ \label{eq:jacobi-elliptic-action}
+\end{align}
+Each additional optical cycle adds this same action shift.
+The reference path contributes one copy to leading order, so
+the shift for \(n\) inner visits has coefficient \(n\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(\eta\) & \(\mathcal J(\eta)\) & \(E=8\) & \(E=32\) & \(E=128\) \\
+ \hline
+ \input{geodesic_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative errors of the finite-energy optical period
+ compared with the elliptic limit in \eqref{eq:jacobi-elliptic}.}
+ \label{tab:geodesic-momentum}
+\end{table}
+
+For table~\ref{tab:geodesic-momentum}, we compute the two
+finite-energy turning points on the optical cycle and subtract
+the imaginary-ray tail from the positive-ray integral.
+Section~\ref{sec:lovelock-crossover} uses the analytic continuation
+from \(\eta=0\) to compare the nonlinear action with the scalar
+connection coefficient.

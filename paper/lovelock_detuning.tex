@@ -1,0 +1,74 @@
+\subsection{Mass dependence of the exact reflection series}
+\label{sec:detuning}
+
+The exact solution persists after varying the bare mass at fixed curvature coupling \(\xi\). Add \(\nu^2-1\) to \(m_0^2\) in \eqref{eq:tuned-mass}, with \(\nu>0\). The boundary weight is now \(\Delta=d/2+\nu\) in standard quantization. The optical geometry is unchanged. In \(v=r^2=\coth z\), the reduced scalar obeys
+\begin{equation}
+ A_{vv}+\frac{2v}{v^2-1}A_v+
+ \left[\frac{w^2 v}{(v^2-1)^2}-\frac{\nu^2-1}{4(v^2-1)}\right]A=0 .
+ \label{eq:detune-v}
+\end{equation}
+It still has three regular singular points. With \(h=(1+\nu)/2\), \(s_\pm=(1\pm\ii)w/2\), and \(y=(1-v)/2\), the ingoing hypergeometric parameters become
+\begin{equation}
+ a_0=1-h-s_+,\qquad b_0=h-s_+,\qquad c_0=1-\ii w .
+\end{equation}
+The horizon prefactor is unchanged. At infinity the two powers of \(A\) are \(r^{\nu-1}\) and \(r^{-\nu-1}\). For \(\nu\notin\mathbb Z\), the ratio of their coefficients, with response over source, is
+\begin{equation}
+ 2^\nu\frac{\Gamma(-\nu)}{\Gamma(\nu)}
+ \frac{\Gamma(h-s_+)\Gamma(h+s_-)}
+ {\Gamma(1-h-s_+)\Gamma(1-h+s_-)} .
+ \label{eq:detuned-g}
+\end{equation}
+For real \(w>0\), the half-flux divided by the squared source is
+\begin{equation}
+ {\cal J}_\nu=
+ w\,2^{\nu-1}
+ \frac{|\Gamma(h-s_+)\Gamma(h+s_-)|^2}
+      {|\Gamma(1-\ii w)|^2\Gamma(\nu)^2}.
+\end{equation}
+The source has no zeros for \({\rm Im}\,\omega>0\): the potential zeros from the reciprocal gamma factors occur at \(\omega=\pm 2(h+n)-2\ii(h+n)\) with \(n\geq0\).
+This flux is finite also at integer \(\nu\), where the boundary expansion has logarithms. The unit-source pure-AdS solution is \(A=(\ii\pi w^\nu/\Gamma(\nu))\,r^{-1}H^{(1)}_\nu(\omega/r)\), giving \({\cal J}_{\rm vac}=\pi w^{2\nu}/\Gamma(\nu)^2\). The gamma reflection identity then yields
+\begin{align}
+ \frac{\rho_\nu}{\rho_{\rm vac}}
+ &=P_\nu(w)\frac{\sinh(\pi w)}{\cosh(\pi w)-\cos\theta},
+ &\theta&=\pi\big(w-\nu-1\big),\notag\\
+ P_\nu(w)
+ &=\frac{1}{(w^2/2)^\nu}
+     \left|\frac{\Gamma(h+s_+)}{\Gamma(1-h+s_+)}\right|^2.
+ \label{eq:detuned-spectrum}
+\end{align}
+After dividing by the exact envelope \(P_\nu\), the \(n\)-th reflection harmonic is \(2e^{-n\pi w}\cos(n\theta)\). The damping time per reflection is independent of \(\nu\), whereas the phase varies with the probe. Equation~\eqref{eq:detuned-spectrum} is a factorization of the full positive-frequency spectrum. For noninteger \(\nu\), identifying its geometric factor with the complete beyond-all-orders expansion would also require controlling the asymptotic expansion of \(P_\nu\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\nu\) & numerical \(\rho_\nu/\rho_{\rm vac}\) &
+ numerical remainder & exact \(n=2\) harmonic \\
+ \hline
+ \input{lovelock_detuned_rows.tex}
+ \end{tabular}
+ \caption{Mass-deformed scalar in \(D=9\) at \(\omega=2.2\).
+ For the remainder we divide the numerical spectrum by \(P_\nu\) and
+ subtract \(1+2e^{-\pi w}\cos\theta\). Terms with \(n\geq3\) remain.}
+ \label{tab:detuned}
+\end{table}
+
+The probe-mass dependence was also checked by integrating the original
+scalar equation, now reading the source from \(r^{d/2-\nu}\phi\).
+For the four masses in Table~\ref{tab:detuned} and frequencies
+\(\omega=2.2,3.0,3.6\), the numerical ratios agree with
+\eqref{eq:detuned-spectrum} within \(2\times10^{-11}\).
+
+For a positive integer \(\nu=N\), the gamma ratio in \(P_N\) is a polynomial in \(s_+\) of degree \(N\). Consequently the reflection expansion is exact with a finite polynomial prefactor in \(\rho_N\). For \(\nu=2\), write the vacuum spectrum as \(C_2\omega^4\). Then
+\begin{equation}
+ \rho_{\rm vac} P_2=C_2(\omega^4+4),\qquad
+ \theta\big|_{\nu=2}=\pi w-\pi \pmod{2\pi}.
+\end{equation}
+Relative to \(\nu=1\), the odd reflection harmonics reverse sign and the even harmonics remain unchanged after removal of the envelope. In complex time the \(\nu=2\) two-bounce poles stay at \(t_\star=\pm\beta+\ii\beta\), with singular part
+\begin{equation}
+ \frac{C_2}{2\pi}
+ \left[\frac{24}{[\ii(t-t_\star)]^5}
+           +\frac{4}{\ii(t-t_\star)}\right].
+ \label{eq:detuned-pole}
+\end{equation}
+To see this, use the same two chiral sums as in \eqref{eq:lovelock-time}, with the factor \((-1)^{j+k}\) for \(\nu=2\). An arbitrary positive frequency cutoff makes their termwise transforms absolutely convergent. The omitted finite frequency interval is entire in \(t\), and the cutoff tail of \((j,k)=(2,0),(0,2)\) has the same poles as the full transform of \(\omega^4+4\). This isolates the two-bounce poles even for a polynomial prefactor containing a constant term.

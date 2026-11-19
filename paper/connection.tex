@@ -1,0 +1,123 @@
+\section{The scalar connection near the singularity}
+\label{sec:connection}
+
+Let \(\Omega^2=-\omega^2\), and choose its phase and a continued logarithm of \(r\) on a specified sector. At \(E>0\) in \(\omega=\ii M E\) we can take \(\Omega=ME\). Near \(r=0\), \eqref{eq:wave} reduces to
+\begin{equation}
+ r^2\phi''+r\phi'+(M^2 r^d-\Omega^2 r^{2(d-1)})\phi=0.
+\end{equation}
+With \(p=d/(d-1)\), set
+\begin{equation}
+ z=\frac{\Omega r^{d-1}}{d-1},\qquad
+ g=(d-1)^{p-2}M^2\Omega^{-p}.
+\end{equation}
+In the double scaling limit \(|\Omega|\to\infty\) with \(g\) fixed, the equation on the inner coordinate plane is
+\begin{equation}
+ (zF')'-zF+g z^{p-1}F=0.
+ \label{eq:bessel-core}
+\end{equation}
+Here \(F(z)=\phi(r)\), and all powers of \(z\) are on the chosen logarithmic cover. The corrections to \eqref{eq:bessel-core} at fixed \(z\) come from \(r^d=O(|\Omega|^{-p})\). In the real-\(E\) scaling of \eqref{eq:inner-wave}, \(g=(d-1)^{p-2}\lambda^{2-p}\). In what follows \(d\geq4\), so that \(1<p<3/2\).
+
+\subsection{Normalization and the first mass correction}
+
+On \(z>0\) let \(F(z;g)\) be the recessive solution normalized by
+\begin{equation}
+ F(z;g)\sim \sqrt{\frac{\pi}{2z}}\,
+ \exp\!\left[-z+\frac{g}{2(p-1)}z^{p-1}\right].
+ \label{eq:decay-at-infty}
+\end{equation}
+The \(g\)-dependent exponent is necessary to compare amplitudes on different rays. Further terms in the radial momentum have convergent tail integrals for \(p<3/2\). In a neighbourhood of \(g=0\), the recessive solution depends analytically on \(g\), for example by writing a Volterra equation at large \(z>0\) after factoring out \eqref{eq:decay-at-infty}. At \(g=0\) it is \(K_0(z)\). At the origin write
+\begin{equation}
+ F(z;g)=b(g)\big[-\log z+c(g)\big]+o(1).
+\end{equation}
+We use \(c(g)\) where \(b(g)\ne0\).
+
+The coefficient of \(g\) in \(F\) can be written as \(a_1(z)I_0(z)+b_1(z)K_0(z)\) by variation of parameters. Since \(W(I_0,K_0)=-1/z\), the no-growth and normalization conditions give
+\begin{align}
+ a_1(z)&=\int_z^\infty t^{p-1}K_0(t)^2\dd t,\\
+ b_1(z)&=\lim_{R\to\infty}\left[
+       \frac{R^{p-1}}{2(p-1)}
+      -\int_z^R t^{p-1}I_0(t)K_0(t)\dd t\right].
+\end{align}
+The growing piece in \(b_1(z)\) at large \(z\) is the linearization of the exponent in \eqref{eq:decay-at-infty}. At the origin these expressions give
+\begin{align}
+ c(0)&=\log 2-\gamma_{\rm E},&
+ C_p\equiv c'(0)&=2^{p-3}\frac{\Gamma(p/2)^4}{\Gamma(p)},\\
+ b(0)&=1,&
+ b'(0)&=-\frac{\tan(\pi p/2)}{\pi}\,C_p.
+ \label{eq:bessel-moments}
+\end{align}
+The first moment is \(\int_0^\infty t^{p-1}K_0(t)^2\dd t\). For the second we use the Mellin transform of \(I_0K_0\), continued from \(0<p<1\) by subtracting \(1/(2t)\) at infinity. The identity
+\begin{equation}
+ I_0(t)K_0(t)=\frac{2}{\pi}\int_0^{\pi/2}K_0(2t\sin\theta)\dd\theta
+\end{equation}
+gives the finite part \(\Gamma(p/2)^2\Gamma((1-p)/2)/[4\sqrt{\pi}\,\Gamma(1-p/2)]\). The gamma reflection identity yields \eqref{eq:bessel-moments}.
+
+\subsection{Three-ray transfer and a reflection coefficient}
+
+Let \(g_k=g e^{\ii k\pi p}\) and define the normalized sector solution
+\begin{equation}
+ F_k(z)=F(e^{-\ii k\pi}z;g_k)
+\end{equation}
+recessive along the lifted ray \(\arg z=k\pi\). The log coefficient is \(-b_k=-b(g_k)\), and the ratio of the constant to \(b_k\) is \(c_k=c(g_k)+\ii k\pi\). The adjacent normalized Wronskian is
+\begin{equation}
+ zW(F_k,F_{k+1})=\ii\pi .
+ \label{eq:adjacent-wronskian}
+\end{equation}
+Indeed the two opposite exponentials on their separating ray have cancelling \(g\)-dependent exponents in \eqref{eq:decay-at-infty}. Their prefactors differ by \(\ii\) from rotating \(z^{-1/2}\) through a half turn. The Wronskian is constant by \eqref{eq:bessel-core}. Equivalently its value at the origin is \(b_k b_{k+1}(c_{k+1}-c_k)\).
+
+It follows that \(F_{k-1}+F_{k+1}=S(g_k)F_k\) with
+\begin{align}
+ S(g)&=\frac{b_{-1}+b_1}{b_0}
+       =\frac{b_{-1}b_1(c_1-c_{-1})}{\ii\pi},\\
+ S(g)&=2+2b'(0)\big[\cos(\pi p)-1\big]g+O(g^2).
+ \label{eq:stokes}
+\end{align}
+The Wronskian form extends across a zero of \(b_0\).
+
+For real \(\omega>0\) choose \(\Omega=\ii\omega\) and take \(\arg z=\pi/2\) at positive real \(r\). Thus \(g=\mu e^{-\ii\pi p/2}\) with \(\mu=(d-1)^{p-2}M^2\omega^{-p}\). At \(g=0\) the limits \(F_0\) and \(F_1\) are \(-\ii\pi H_0^{(2)}/2\) and \(+\ii\pi H_0^{(1)}/2\) on this ray. At finite \(g\) the same phases apply to their WKB-normalized continuations. The solution recessive along \(\arg r=-3\pi/[2(d-1)]\) is \(F_{-1}=S(g)F_0-F_1\). In the convention \(H^{(1)}-R_{\rm core}H^{(2)}\) at \(g=0\), continued in the above WKB normalization, the local reflected amplitude is therefore
+\begin{equation}
+ R_{\rm core}=-S(\mu e^{-\ii\pi p/2}).
+ \label{eq:reflected}
+\end{equation}
+For \(d=4\), \(S'(0)=-3\sqrt 3\,C_{4/3}/\pi\). The mass correction in the core is
+\begin{equation}
+ R_{\rm core}+2=-\frac{3\sqrt{3}\,C_{4/3}}{\pi\,3^{2/3}}\,
+       e^{\ii\pi/3} M^2\omega^{-4/3}+O(\mu^2).
+\end{equation}
+This agrees with the mass-dependent term in eqs.~(25) and (28) of ref.~\cite{AfkhamiJeddi:2025}. At fixed mass, the \(O(r^d)\) terms in the full wave equation give an additional mass-independent correction of the same order.
+
+\begin{table}[t]
+ \centering
+ \small
+ \begin{tabular}{cccc}
+ \hline
+ \(d\) & \(\mu\) & \(R_{\rm core}\) from integration & \(R_{\rm core}\) to first order in \(\mu\) \\
+ \hline
+ \input{connection_rows.tex}
+ \end{tabular}
+ \caption{Numerical scalar connection data for one choice of reflected ray.
+ The adjacent Wronskians from the independently integrated Frobenius
+ coefficients agree with \eqref{eq:adjacent-wronskian} to relative error below
+ \(2\times10^{-6}\) for the values shown.}
+ \label{tab:connection}
+\end{table}
+
+For Table~\ref{tab:connection} we integrate inward on the rotated rays with complex couplings \(g_k\). For each ray we impose decaying WKB data at two large cutoffs, including the integrable part of the tail action. The Wronskian and log-coefficient expressions in \eqref{eq:stokes} provide separate numerical checks. The finite-difference slopes \(S'(0)\) agree with the analytic values to within \(3.0\times10^{-5}\) for \(d=4,5,6\).
+
+\subsection{Composition around the spacelike singularity}
+
+The transfer from one pair of sector solutions to the next is
+\begin{equation}
+ \begin{pmatrix}F_{k+1}\\ F_k\end{pmatrix}
+ ={\cal M}_k\begin{pmatrix}F_k\\ F_{k-1}\end{pmatrix},
+ \qquad {\cal M}_k=\begin{pmatrix}S(g_k)&-1\\1&0\end{pmatrix}.
+\end{equation}
+One full radial winding has \(N=2(d-1)\) such steps. The couplings repeat since \(g_{k+N}=g_k\), while \(c_{k+N}=c_k+\ii\pi N\) at fixed \(z\). This positive shift comes from advancing the ray labels. Analytically continuing the function with its ray label fixed acts by the inverse shear. The ordered product \({\cal P}={\cal M}_{N-1}\cdots{\cal M}_0\) thus satisfies
+\begin{equation}
+ {\cal P}^{n}=\mathbf{1}+n({\cal P}-\mathbf{1}),\qquad
+ ({\cal P}-\mathbf{1})^2=0 .
+ \label{eq:windings}
+\end{equation}
+This recovers the linear dependence of Frobenius monodromy on the winding number. Multiplying the numerical transfer matrices at \(g=0.25\) and applying them to both Frobenius coefficients agrees with the shift of \(c_k\) to absolute error below \(5\times10^{-5}\) for each dimension in the table.
+
+The winding in \eqref{eq:windings}, the projected retracing of \(\mathcal C\), and a boundary-to-singularity round trip are three different radial paths. To infer higher reflection terms in a boundary correlator one must also transport through the exterior Stokes graph and impose the ingoing horizon and AdS boundary conditions. In particular, \eqref{eq:windings} does not imply a geometric series for the boundary observable.

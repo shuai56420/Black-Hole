@@ -1,0 +1,205 @@
+\subsection{Mixed thermal images and their lateral continuations}
+\label{sec:mixed-time}
+
+The poles of the numerator of \(B_\nu\) are on the rays
+\(\arg\omega=\pm3\pi/4\). In the larger open sector
+\(|\arg\omega|<3\pi/4\), the gamma ratios still have uniform
+Stirling expansions on closed subsectors. Therefore, for any
+\(a>0\), the Laplace kernel has two holomorphic continuations
+through \(L=-a\). Denote them by \(\Phi_{\nu,\uparrow}\) and
+\(\Phi_{\nu,\downarrow}\), according to the side of the slit
+from which they are reached. Rotate the frequency tail to
+\(-\theta\) or \(+\theta\), respectively, with
+\(\pi/2<\theta<3\pi/4\). The factor \(e^{-L\omega}\) decays on
+both rays for \(L\) in a neighbourhood of \(-a\).
+
+To calculate their difference, subtract the two deformed contours
+and close on the left. This contour is clockwise. The upper pole
+locations and residues of \(B_\nu\) are
+\begin{align}
+ \omega_{+,m} &=-2(1-\ii)(h+m),\notag\\
+ \mathcal R_{+,m}
+ &=\frac{2(1-\ii)8^\nu}{\Gamma(-\nu)}
+   \frac{(\nu+1)_m}{m!}
+   \frac{\Gamma(h+\ii(h+m))}{\Gamma(1-h+\ii(h+m))},
+ \qquad m=0,1,\ldots ,
+ \label{eq:laplace-pole-residue}
+\end{align}
+and the lower ones are their complex conjugates. Here
+\((q)_m=\Gamma(q+m)/\Gamma(q)\). At the upper pole one has
+\(h+s_+=-m\) and \(s_-=\ii(h+m)\); using
+\(1/\Gamma(-\nu-m)=(-1)^m(\nu+1)_m/\Gamma(-\nu)\) gives
+\eqref{eq:laplace-pole-residue}. The cutoff can be taken below the
+first pole since changing it adds an entire function. On the outer arc,
+choose radii \(2\sqrt{2}(h+m+1/2)\) to stay away from the poles.
+The gamma reflection formula reduces each ratio near its pole ray
+to a bounded ratio of sines times a power-bounded gamma ratio.
+The exponential damping on the left then makes the outer arc vanish.
+It follows that
+\begin{equation}
+ \mathcal D_\nu(a)
+ \equiv \Phi_{\nu,\uparrow}(-a)-\Phi_{\nu,\downarrow}(-a)
+ =-4\pi\ii\,{\rm Re}\sum_{m=0}^\infty
+    e^{a\omega_{+,m}}\mathcal R_{+,m}.
+ \label{eq:laplace-jump}
+\end{equation}
+This sum converges absolutely for \(a>0\). For positive integer
+\(\nu\), \(B_\nu\) is a polynomial and \(\mathcal D_\nu=0\).
+
+The quasinormal residues in \eqref{eq:lovelock-exact-residue}
+give the same discontinuity directly in real time. For the
+positive-real-part tower one has
+\begin{equation}
+ \omega_{+,n}=\ii(\omega_n^+)^*,\qquad
+ \mathcal R_{+,n}=\ii c_\nu(\mathcal R_n^+)^*,\qquad
+ c_\nu=\frac{4^\nu\Gamma(\nu)}{\Gamma(-\nu)} .
+\end{equation}
+Thus the sum under the real part in
+\eqref{eq:laplace-jump} is \(c_\nu\) times the complex
+conjugate of the positive-real-part contribution to
+\(\mathcal G_R(a)\) in \eqref{eq:lovelock-mode-sum}.
+The negative-real-part contribution is its complex conjugate
+for real \(a\). Consequently
+\begin{equation}
+ \mathcal D_\nu(a)=-2\pi\ii c_\nu\,\mathcal G_R(a),
+ \qquad a>0 .
+ \label{eq:laplace-jump-retarded}
+\end{equation}
+In the integer limit \(c_\nu\) vanishes and the retarded kernel
+remains finite at positive real \(a\).
+
+Consider the upper image
+\begin{equation}
+ t_{jk}=\ell\tau+\ii s\tau,\qquad \ell=j-k,\quad s=j+k .
+ \label{eq:upper-image-time}
+\end{equation}
+Continue from the thermal strip along a vertical path slightly to the
+right or left of \({\rm Re}\,t=\ell\tau\), and then approach the
+image from below. A term of \eqref{eq:laplace-image} with
+\(j'-k'=\ell\) and \(s'=j'+k'<s\) has
+\(L^+_{j'k'}=-(s-s')\tau\) at the image. It is locally holomorphic on
+either of the two continuations just constructed. Later terms in
+that column and every negative-frequency term have positive real
+Laplace argument. Other columns have nonzero imaginary Laplace
+argument. Thus the only term singular at the image is
+\(\Phi_\nu(\ii(t-t_{jk}))\). On either continuation within the
+sector reached from below, the leading behaviour is
+\begin{equation}
+ G^>(t)\sim
+ \frac{C_\nu\Gamma(2\nu+1)}{2\pi}
+ \frac{e^{-\ii\ell\varphi_\nu}}{[\ii(t-t_{jk})]^{2\nu+1}}.
+ \label{eq:mixed-coefficient}
+\end{equation}
+The analytic backgrounds depend on the chosen side. At a point
+\(t=\ell\tau+\ii y\) away from the image times, the right-minus-left
+difference is
+\begin{equation}
+ G^>_{\mathrm R}(t)-G^>_{\mathrm L}(t)
+ =2\ii\sin(\pi\nu)e^{-\ii\ell\varphi_\nu}
+ \sum_{\substack{s'=|\ell|,\,|\ell|+2,\ldots\\ s'\tau<y}}
+    \mathcal G_R(y-s'\tau).
+ \label{eq:image-jump}
+\end{equation}
+Here \(C_\nu c_\nu=-2\sin(\pi\nu)\) by gamma reflection.
+Each term is the real-time kernel evaluated at the distance
+above an earlier image in the same column.
+In particular, the mixed image \((1,1)\) at \(t=\ii\beta\) has
+the power in \eqref{eq:mixed-coefficient} even when the cut from the
+coincidence point passes through it. The indices \(j,k\) in this
+calculation count harmonics in the exact spectrum.
+The identity \(G^>(-t-\ii\beta)=G^>(t)\) on the thermal strip
+maps these continuations to the corresponding lower images.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \((j,k)\) & \(\nu\) & \(\epsilon=0.16\) & \(\epsilon=0.08\) &
+ \(\epsilon=0.04\) \\
+ \hline
+ \input{lovelock_mixed_rows.tex}
+ \end{tabular}
+ \caption{Maximum relative error over the two lateral continuations
+ when extracting the leading coefficient at \(t=t_{jk}-\ii\epsilon\).
+ Both numerical continuations use the full spectrum.}
+ \label{tab:mixed-check}
+\end{table}
+
+Table~\ref{tab:mixed-check} compares the scaled correlator on both
+sides with \eqref{eq:mixed-coefficient}. The direct contour integrals
+check \eqref{eq:laplace-jump-retarded} to absolute error below
+\(3\times10^{-9}\) for \(a=0.8,2.5\) and
+\(\nu=0.75,1,1.25,1.5\). At \(\epsilon=0.04\) the difference
+between the two scaled correlators, divided by \(C_\nu/(2\pi)\),
+agrees with the scaled jump in \eqref{eq:image-jump} to absolute
+error below \(5\times10^{-13}\) for the images in the table.
+
+\subsubsection{First subleading term at each image}
+
+The first correction to the image singularity is fixed
+by the exact spectral envelope. The Stirling expansion
+in Bernoulli polynomials \cite{NIST:DLMF} gives
+\begin{equation}
+ B_\nu(\omega)=\omega^{2\nu}
+   \left[1+\frac{b_\nu}{\omega^4}+O(\omega^{-8})\right],
+ \qquad b_\nu=\frac{64}{5}B_5(h)
+   =\frac{2\nu(\nu^2-1)(3\nu^2-7)}{15}.
+ \label{eq:lovelock-envelope-subleading}
+\end{equation}
+Here \(B_5(h)\) denotes the Bernoulli polynomial. The shifts
+\(h\) and \(1-h\) in each gamma ratio leave only even inverse
+powers in its logarithm. Combining \(s_+\) and \(s_-\)
+retains only inverse powers divisible by four. The coefficient
+of \(s_\pm^{-4}\) in each logarithm is \(-B_5(h)/10\).
+Their sum gives \(b_\nu\) after expressing \(s_\pm\) in
+terms of \(\omega\).
+
+With \(u=\ii(t-t_{jk})\), the contribution at \(\nu>3/2\)
+on each continuation from below is
+\begin{equation}
+ G^>(t)=\frac{C_\nu e^{-\ii\ell\varphi_\nu}}{2\pi}
+ \left[\frac{\Gamma(2\nu+1)}{u^{2\nu+1}}
+       +b_\nu\frac{\Gamma(2\nu-3)}{u^{2\nu-3}}\right]
+       +o\!\left(|u|^{-(2\nu-3)}\right).
+ \label{eq:lovelock-subleading-time}
+\end{equation}
+The other image terms are holomorphic locally on the chosen
+side. Equation \eqref{eq:lovelock-subleading-time} follows
+by integrating the two powers in
+\eqref{eq:lovelock-envelope-subleading} on a convergent ray.
+At \(\nu=3/2\), the subleading term in the envelope is
+\(-1/(16\omega)\). Its Laplace transform at fixed cutoff
+gives a logarithm. The two singular terms are
+\begin{equation}
+ \frac{C_{3/2}e^{-\ii\ell\varphi_{3/2}}}{2\pi}
+ \left[\frac{6}{u^4}+\frac{\log u}{16}\right].
+ \label{eq:lovelock-half-integer-log}
+\end{equation}
+The leading pole coexists with a logarithmic branch point.
+In the Laplace kernel, the upper-minus-lower jump tends to
+\(\ii\pi/8\) as \(a\to0^+\). At \(\nu=2\) the
+\(\omega^{-4}\) correction reproduces the simple pole in
+\eqref{eq:detuned-pole}.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \((j,k)\) & \(\nu\) & \(\epsilon=0.12\) & \(\epsilon=0.06\)
+           & \(\epsilon=0.03\) \\
+ \hline
+ \input{lovelock_subleading_time_rows.tex}
+ \end{tabular}
+ \caption{Relative errors of the subleading coefficient in
+ \eqref{eq:lovelock-subleading-time}. We approach the image with
+ \(u=\epsilon>0\) and subtract the leading term from the full
+ Wightman function.}
+ \label{tab:lovelock-subleading-time}
+\end{table}
+
+Table~\ref{tab:lovelock-subleading-time} resolves the subleading
+term at the second and third primitive images and at a mixed
+image. For \(\nu=3/2\) we compare the cut jump with
+the retarded sum and with the logarithmic limit. At \(a=0.08\)
+the direct jump differs from \(\ii\pi/8\) by less than
+\(3\times10^{-4}\) relative.

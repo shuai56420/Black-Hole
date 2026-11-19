@@ -1,0 +1,186 @@
+\subsection{Momentum dependence of the pole residues}
+\label{sec:lovelock-residues}
+
+Use the retarded normalization \(\mathcal G=\mathcal V/\mathcal S\),
+where \(A_{\rm in}\sim\mathcal S r^{\nu-1}+\mathcal V r^{-\nu-1}\)
+in the two boundary branches. First take \(\nu\) noninteger. At
+zero momentum the horizon solution and its source coefficient are
+\begin{align}
+ H_\omega(x)&=x^{-{\ii w}/2}(1-x)^h
+       {}_2F_1(\mathsf a,\mathsf b;\mathsf c;x),\notag\\
+ \mathsf a&=h-s_+,\qquad \mathsf b=h+s_-,
+ \qquad \mathsf c=1-\ii w,\notag\\
+ \mathcal S(\omega)&=2^{1-h}
+  \frac{\Gamma(\mathsf c)\Gamma(\nu)}
+       {\Gamma(\mathsf a)\Gamma(\mathsf b)} ,
+ \label{eq:lovelock-horizon-general}
+\end{align}
+where \(x=(r^2-1)/(r^2+1)\). Here \(\mathcal S\) refers to a
+unit leading horizon coefficient in \(x\).
+
+Let a dot denote the derivative with respect to \(k^2\) at
+fixed \(\omega\) and \(k=0\). The perturbation of the ingoing
+solution with unit source satisfies
+\(\mathcal L_\omega\dot{\widehat A}=\widehat A/r\), with
+\(\widehat A=H_\omega/\mathcal S\) and \(\mathcal L_\omega\)
+the radial operator in \eqref{eq:lovelock-k-radial} at \(k=0\).
+The Wronskian at the boundary is \(-2\nu\dot{\mathcal G}\).
+The horizon term vanishes for \(\operatorname{Im}\omega>0\),
+where the ingoing solution decays. For \(0<\nu<1\) the
+radial integral converges at the boundary. The resulting response
+derivative is
+\begin{align}
+ \dot{\mathcal G}(\omega)
+ &=-\frac{\mathcal I(\omega)}{2\nu\mathcal S(\omega)^2},\notag\\
+ \mathcal I(\omega)&=
+ \operatorname{FP}\!\int_0^1
+ \frac{x^{-\ii w}(1-x)^\nu}{1+x}
+ {}_2F_1(\mathsf a,\mathsf b;\mathsf c;x)^2\,\dd x .
+ \label{eq:lovelock-response-derivative}
+\end{align}
+The finite part continues the horizon integral to the pole
+region and the boundary integral in \(\nu\). For noninteger
+\(\nu>1\) it removes the divergent powers of the cutoff
+from the source branch. At integer \(\nu\) there are local
+logarithmic subtractions. Polynomial contact terms have no
+effect on the pole coefficients.
+
+For \(N=n+h\), the zero-momentum residue on the positive-real-part
+branch follows directly from \eqref{eq:detuned-g}:
+\begin{equation}
+ \mathcal R_n^+=-\frac{4\,2^\nu}{(1+\ii)\Gamma(\nu)}
+ \frac{(\nu+1)_n}{n!}
+ \frac{\Gamma(h-\ii N)}{\Gamma(1-h-\ii N)} .
+ \label{eq:lovelock-exact-residue}
+\end{equation}
+At \(\omega_n^0=2(1-\ii)N\), \(\mathsf a=-n\), and the factor
+\(1/\Gamma(-n-\nu)\) cancels \(\Gamma(-\nu)\) in the
+residue. This gives the finite expression
+\eqref{eq:lovelock-exact-residue} also when \(\nu\) is integer.
+The negative-real-part residue is
+\(\mathcal R_n^-=-[\mathcal R_n^+]^*\).
+
+The expansion of \eqref{eq:lovelock-response-derivative} near
+\(\omega_n^0\) contains a double and a simple pole,
+\begin{equation}
+ \dot{\mathcal G}(\omega)
+ =\frac{\mathcal R_n^+ b_n}{(\omega-\omega_n^0)^2}
+    +\frac{\dot{\mathcal R}_n^+}{\omega-\omega_n^0}+O(1),
+ \label{eq:lovelock-derivative-principal-part}
+\end{equation}
+where \(\dot{\mathcal R}_n^+\) is the change of the residue
+with the pole moving. The two coefficients are
+\begin{align}
+ \mathcal R_n^+ b_n
+ &=-\left.\frac{\mathcal I}{2\nu(\mathcal S')^2}
+                \right|_{\omega_n^0},\notag\\
+ \dot{\mathcal R}_n^+
+ &=-\left.\frac{\mathcal I'-\mathcal I\mathcal S''/\mathcal S'}
+                   {2\nu(\mathcal S')^2}\right|_{\omega_n^0}.
+ \label{eq:lovelock-residue-derivatives}
+\end{align}
+Primes denote \(\omega\) derivatives. Thus the continued integral
+fixes both pieces of the response at order \(k^2\).
+Expanding the shifted pole gives precisely the double-pole
+coefficient determined by \eqref{eq:lovelock-exact-dispersion}.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(\nu\) & \(n\) & \(\dot{\mathcal R}_n^+\) &
+ Double-pole error & Direct response error \\
+ \hline
+ \input{lovelock_residue_rows.tex}
+ \end{tabular}
+ \caption{Momentum derivatives of the retarded residues. The
+ double-pole error compares the integral with \(\mathcal R_n^+ b_n\).
+ The final column gives the maximum absolute error for the
+ simple and double coefficients from the direct finite-momentum response.}
+ \label{tab:lovelock-residues}
+\end{table}
+
+In table~\ref{tab:lovelock-residues} we evaluate
+\eqref{eq:lovelock-response-derivative} using convergent
+hypergeometric series on \(0\leq x\leq1/2\) and
+\(1/2\leq x\leq1\), integrating each power with its
+analytic finite part. We extract the principal part by
+quadrature on a circle around the pole. As an independent
+check, we solve the full finite-momentum equation for the
+source and response on the same circle and extrapolate the
+centered difference in \(k^2\).
+
+\subsection{Primitive times from the zero-momentum mode sum}
+
+The residues \eqref{eq:lovelock-exact-residue} give the
+retarded kernel for real \(t>0\) in the form
+\begin{equation}
+ \mathcal G_R(t)=-\ii\sum_{n=0}^{\infty}
+ \big[\mathcal R_n^+ e^{-\ii\omega_n^+ t}
+      +\mathcal R_n^- e^{-\ii\omega_n^- t}\big],
+ \qquad \omega_n^\pm=\pm 2N-2\ii N .
+ \label{eq:lovelock-mode-sum}
+\end{equation}
+One way to close the inverse Fourier contour is to divide
+by \((\omega+\ii\Lambda)^J\) for \(\Lambda>0\) and a sufficiently
+large integer \(J\). Stirling asymptotics and the gamma reflection
+formula bound the ratios in \eqref{eq:detuned-g} by powers of
+\(|\omega|\) on arcs between successive pole radii \cite{NIST:DLMF}.
+The reflected sine factors are bounded there since the
+contours stay a fixed distance from the pole sequences.
+The regulated arcs vanish for \(t>0\).
+Applying \((\ii\partial_t+\ii\Lambda)^J\) kills the artificial
+pole terms and restores \eqref{eq:lovelock-mode-sum}.
+Integer \(\nu\) is obtained by the contact-subtracted limit,
+whose frequency growth includes at most a logarithm multiplying
+the power bound.
+
+The sum converges locally uniformly in
+\(\operatorname{Re}t>|\operatorname{Im}t|\).
+On its upper edge, at \(t_m=\tau m(1+\ii)\), the
+positive-real-part modes have a common phase
+\(e^{-2\pi\ii m h}\) and the opposite modes still decay.
+In particular, if
+\begin{equation}
+ C_{\rm R}=-\frac{4\,2^\nu e^{-\ii\pi\nu/2}}
+       {(1+\ii)\Gamma(\nu)\Gamma(1+\nu)} ,
+\end{equation}
+then \(\mathcal R_n^+\sim C_{\rm R}N^{2\nu}\), and the leading
+singular term obtained from the mode sum is
+\begin{equation}
+ \mathcal G_R(t)\sim
+ -\ii C_{\rm R} e^{-2\pi\ii m h}\,
+ \frac{\Gamma(2\nu+1)}
+ {[2(1+\ii)(t-t_m)]^{2\nu+1}} .
+ \label{eq:lovelock-retarded-time}
+\end{equation}
+This follows by rescaling the large-overtone sum, for
+example as \(t=t_m+\epsilon\) with \(\epsilon>0\).
+The lower edge is obtained by conjugation. The retarded
+kernel therefore reproduces the primitive optical times
+and their leading powers directly from the pole weights.
+In the normalization \(\rho=2\operatorname{Im}\mathcal G\),
+the vacuum coefficient is
+\(C_\nu=2\pi/[4^\nu\Gamma(\nu)\Gamma(1+\nu)]\).
+Dividing the leading term of \eqref{eq:lovelock-retarded-time}
+by \(\ii\) gives the Wightman coefficient in
+\eqref{eq:primitive-coefficient} at the same time and on the
+corresponding approach from the two domains of continuation.
+
+For positive integer \(\nu\), \(\mathcal R_n^\pm\) are
+polynomials in \(n\). Their mode sums are meromorphic in \(t\).
+For the tuned case \(\nu=1\), set \(q_\pm=e^{-2(1\pm\ii)t}\).
+The exact sum reads
+\begin{equation}
+ \mathcal G_R(t)=-4\ii\left[
+ (1+\ii)\frac{q_+(1+q_+)}{(1-q_+)^3}
+ -(1-\ii)\frac{q_-(1+q_-)}{(1-q_-)^3}
+ \right].
+ \label{eq:lovelock-retarded-tuned}
+\end{equation}
+We check this expression by Fourier transforming the
+commutator spectral density \(2\operatorname{Im}\mathcal G\)
+using \eqref{eq:lovelock-spectral}. The pole and frequency
+sums agree at real \(t>0\). The mixed thermal images are
+a feature of the Wightman function in
+section~\ref{sec:mixed-time}.

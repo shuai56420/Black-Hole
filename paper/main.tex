@@ -1,0 +1,246 @@
+\documentclass[11pt,a4paper]{article}
+\pdfoutput=1
+\usepackage{jheppub}
+\usepackage{tikz}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\AdS}{\mathrm{AdS}}
+
+\title{Geodesic cycles and multiple reflections at spacelike AdS black hole singularities}
+\hypersetup{pdftitle={Geodesic cycles and multiple reflections at spacelike AdS black hole singularities},
+  pdfauthor={Xiao-Shuai Wang}}
+\author{Xiao-Shuai Wang}
+\affiliation{Kavli Institute for Theoretical Sciences and School of Quantum,\\
+University of Chinese Academy of Sciences, Beijing 100190, China}
+\emailAdd{wangxiaoshuai@ucas.ac.cn}
+\abstract{We construct complex spacelike geodesics that turn repeatedly near the singularity of a planar Schwarzschild--AdS black brane. Their limiting boundary times are integer multiples of the single-bounce null time. We calculate the on-shell lengths, the transverse length shift at fixed boundary time, and the action splitting produced by a cycle between two near-singularity turning points. For a tuned scalar in seven bulk dimensions, direct radial matching verifies the first subleading correction to the second and third reflection amplitudes. In a higher-dimensional Lovelock family, we derive exact momentum derivatives of the quasinormal poles and residues and calculate the reflection amplitudes at finite scaled momentum. The large-mass limit relates the momentum dependence of the wave reflection to the optical geodesic action. Using the exact zero-momentum Wightman function, we calculate the singularities at the repeated-bounce times and express the jumps across the cuts through the real-time retarded response. We also compute the first momentum correction to the pole contribution at the repeated-bounce times.}
+\keywords{AdS-CFT Correspondence, Black Holes, Spacetime Singularities}
+
+\begin{document}
+\maketitle
+\flushbottom
+
+\section{Introduction}
+
+In planar Schwarzschild--AdS, a radial spacelike geodesic can approach the spacelike curvature singularity as its energy increases. Its null limit determines a complex-time singularity of the geodesic approximation, reached by analytic continuation of the boundary correlator \cite{Fidkowski:2003}. The large-mass WKB representation relates this geodesic to the momentum-space Wightman function \cite{Festuccia:2005}. The association depends on the continuation and on which saddles the correlator selects \cite{AliAhmad:2026,Grozdanov:2026}. High-frequency calculations provide a complementary description in terms of wave reflection and the Stokes data of the radial equation \cite{AfkhamiJeddi:2025,JiaSpectral:2026,Jia:2026,Valach:2026}. In particular, ref.~\cite{AfkhamiJeddi:2025} identifies a series of repeated singularity-to-boundary reflections for the AdS\(_5\) current correlator.
+
+A cycle between adjacent inner turning points shifts the fixed-time action by a power of the inverse energy. Its time period vanishes as the turning points approach the singularity. A cycle between an inner and an outer turning point gives a finite optical time. The second cycle allows a boundary-to-boundary geodesic to visit the inner turn \(n\) times and reach the limiting time \(nT_*\), where \(T_*\) is the single-bounce null time. We calculate its action, the endpoint Gaussian factor and the length at finite scaled boundary separation. The length gives the first correction to the quadratic endpoint approximation. We also resolve the logarithmic endpoint behaviour when the transverse momentum brings two inner turning points together.
+
+The scalar equation has a separate monodromy when its radial coordinate winds around the singularity. The three-ray connection fixes the local reflected amplitude, and multiplication of the transfer matrices around the origin gives the Frobenius monodromy. To obtain the boundary reflection harmonics we combine the local connection with propagation through the exterior. In planar AdS\(_7\) we test the subleading coefficients of the two- and three-reflection harmonics directly against the radial response near the quasinormal ray.
+
+The Lovelock example connects these calculations to the full continued Wightman function at zero momentum. Its primitive singularities occur at the same times as the limiting optical contours. We calculate the leading and first subleading terms at the primitive and mixed images and express the jumps between lateral continuations in terms of the real-time retarded kernel. The exact pole and residue derivatives give the first momentum correction to the polar part. We also evaluate the repeated-reflection amplitudes at finite scaled momentum and relate their large-mass limit to the nonlinear transverse action.
+
+\section{Radial geodesics and endpoint data}
+\label{sec:radial}
+
+Write the planar black brane metric with unit AdS radius and unit horizon radius as
+\begin{equation}
+ \dd s^2=-f(r)\dd t^2+\frac{\dd r^2}{f(r)}+r^2\dd\boldsymbol{x}^2,
+ \qquad f(r)=r^2-r^{-m},\qquad m=d-2,\qquad \beta=\frac{4\pi}{d}.
+ \label{eq:metric}
+\end{equation}
+We consider \(d\geq 3\) and set the conserved transverse momenta to zero. For a unit-speed spacelike worldline with \(E=f\,\dd t/\dd s\), let \(Y=\dd r/\dd s\). The normalization condition and the conservation of \(E\) give
+\begin{equation}
+ Y^2=E^2+f(r),\qquad
+ \ell=\frac{\dd r}{Y},\qquad
+ \tau=\frac{E}{f(r)}\frac{\dd r}{Y},
+ \qquad \varpi=\frac{Y}{f(r)}\,\dd r=\ell+E\tau .
+ \label{eq:forms}
+\end{equation}
+The three differentials integrate to the length \(L\), the oriented Killing time interval \(T\), and the reduced action \(W\), respectively. The two ends of our reference contour are \(r=R\) on the incoming sheet and \(r=R\) on the outgoing sheet. The contour changes sheet at the positive real turning point \(r_0\). On each leg we use the same upper detour around the pole at \(r=1\) in the projected \(r\) plane. This fixes the branch of the complexified Killing time. The renormalized \(L\) and \(W\) subtract \(2\log R\) as \(R\to\infty\). With fixed endpoint sheets and a continuously transported contour, the Hamilton--Jacobi relations are
+\begin{equation}
+ W=L+ET,\qquad W'(E)=T,\qquad L'(E)=-E T'(E).
+ \label{eq:hj}
+\end{equation}
+Indeed, \(\partial_E(Y/f)=E/(fY)\) and the integrand of \(W\) vanishes at each simple turning point. Its counterterm is independent of \(E\).
+
+The reference contour will be denoted by \(L_0(E),T_0(E)\). Its limiting time is
+\begin{equation}
+ T_*=
+ 2\,\mathrm{PV}\!\int_0^\infty \frac{r^{d-2}}{r^d-1}\,\dd r
+ -\frac{2\pi\ii}{d}
+ =\frac{2\pi}{d}\left(\cot\frac{\pi}{d}-\ii\right).
+ \label{eq:tstar}
+\end{equation}
+Here the imaginary part follows from the upper, clockwise horizon detour on the integral directed from small to large \(r\). This prescription includes the imaginary \(-\ii\beta/2\) in \(T_*\). For large positive \(E\),
+\begin{equation}
+ T_0(E)=T_*-\frac{2}{E}+o(E^{-1}),
+ \qquad T_0'(E)=\frac{2}{E^2}+o(E^{-2}),
+ \qquad L_0(E)=-2\log E+2\log 2+o(1).
+ \label{eq:reference-asymptotics}
+\end{equation}
+The leading time correction comes from the asymptotic region, as can be seen by using \(E/(fY)=1/f-1/[Y(E+Y)]\). On rescaling \(r=E x\) in the second term, its integral over one leg tends to \(E^{-1}\) times
+\begin{equation}
+ \int_0^\infty\frac{\dd x}{\sqrt{1+x^2}(1+\sqrt{1+x^2})}=1 .
+\end{equation}
+Scaling \(r/r_0\) near the simple turning point bounds its contributions to the time difference and length by \(O(r_0/E^2)\) and \(O(r_0/E)\), respectively. For the length the exterior rescaling gives \(\int\dd x/\sqrt{1+x^2}\). The estimates hold in a small sector about \(E>0\) by transporting the contour away from the other roots, so the time derivative follows by Cauchy estimates.
+
+For \(d=4\) the reference length is elementary. Setting \(y=r^2\) changes the doubled length integral to \(\int\dd y/\sqrt{y^2+E^2y-1}\), starting at the positive zero of the quadratic. Subtracting \(2\log R\) at its upper end gives
+\begin{equation}
+ L_0(E)=\log\frac{4}{\sqrt{E^4+4}},\qquad
+ T_0(E)=T_*-\int_E^\infty\frac{2v^2\,\dd v}{v^4+4}\quad(d=4).
+ \label{eq:exact-five}
+\end{equation}
+The time formula uses \eqref{eq:hj} and the limiting time \eqref{eq:tstar}. These relations fix the normalization of the single-turn contour and independently check the subtraction used in the numerical integration.
+
+\section{Local cycles between turning points}
+\label{sec:cycles}
+
+The radial turning points satisfy \(r^m E^2+r^d=1\). Set
+\begin{equation}
+ a=E^{-2/m},\qquad q=\frac{d}{m},\qquad
+ \zeta_j=\exp(2\pi\ii j/m).
+\end{equation}
+There are \(m\) simple roots \(r_j=a\zeta_j[1+O(a^d)]\) close to zero. In the following we choose \(j=0,1\), so \(m\geq2\). At real \(E>0\), the reference turning point is \(r_0\). It is the only real positive root, since \(f'(r)>0\) on \(r>0\). The additional visits below therefore involve complex radial contours.
+
+Choose a lift from \(r_0\) towards the origin on which \(Y=+\ii r^{-m/2}\sqrt{1-E^2r^m-r^d}\). This is the continuation of the positive exterior \(Y\) through the upper side of the simple turning point. Decrease the radius to a small positive value, rotate toward \(\arg r_1\) counterclockwise, and proceed to \(r_1\), transporting the logarithm of \(r\) along the path. Return from \(r_1\) to \(r_0\) on the sheet with opposite \(Y\). At each turning point the coordinate on the radial surface is proportional to \(\sqrt{r-r_j}\), so the lift through the root is regular. This describes a closed cycle \(\mathcal C\) based at \(r_0\). The small arc around the origin is kept at nonzero radius for every path. Its contribution to \(\ell\) vanishes as the radius to the power \(1+m/2\), and its contribution to \(\tau\) vanishes faster. This prescription also fixes the phase for odd \(m\), when \(r=0\) is ramified.
+
+Insert this cycle \(n\) times at \(r_0\). The sequence \(r_0,(r_1,r_0)^n\) has three turns for \(n=1\) and five for \(n=2\). All turns occur at regular nonzero radius for finite \(E\). Keeping the same endpoint sheets and horizon detours, the shifts at common energy are
+\begin{equation}
+ L_n(E)=L_0(E)+n\Pi_L(E),\qquad
+ T_n(E)=T_0(E)+n\Pi_T(E),\qquad
+ \Pi_L=\oint_{\mathcal C}\ell,\quad \Pi_T=\oint_{\mathcal C}\tau .
+ \label{eq:add}
+\end{equation}
+The cap formula for either period is twice the difference between the integrals from zero to \(r_1\) and from zero to \(r_0\) with the transported phase.
+
+\subsection{Asymptotic periods}
+\label{sec:periods}
+
+Set \(\alpha=d/(2m)=q/2\). On the cap in the \(j\)-th sector write \(r=r_j x\), \(0\leq x\leq1\). Then
+\begin{equation}
+ 1-E^2r^m-r^d=
+ E^2 r_j^m(1-x^m)+r_j^d(1-x^d).
+ \label{eq:root-factor}
+\end{equation}
+The ratio \((1-x^d)/(1-x^m)\) is bounded on the whole interval. Thus expanding in \(a^d\) retains uniform relative control even at the turning point. In terms of the leading ray \(r=a\zeta_j x\), the resulting differentials are
+\begin{equation}
+ \ell\simeq-\frac{\ii r^{m/2}}{\sqrt{1-E^2r^m}}\dd r,
+ \qquad \tau\simeq-E r^m\ell .
+\end{equation}
+With the transported phase \(e^{2\pi\ii j\alpha}\), the required integrals are
+\begin{equation}
+ \int_0^1\frac{x^{m/2}\dd x}{\sqrt{1-x^m}}=\frac{B(\alpha,1/2)}m,
+ \qquad
+ \int_0^1\frac{x^{3m/2}\dd x}{\sqrt{1-x^m}}
+   =\frac{B(\alpha+1,1/2)}m .
+\end{equation}
+The period formulas are
+\begin{align}
+ \Pi_L(E)&=A_d E^{-q}+O(E^{-3q}),&
+ A_d&=-\frac{2\ii}{m}
+    \big(e^{2\pi\ii\alpha}-1\big) B(\alpha,1/2),\\
+ \Pi_T(E)&=B_d E^{-q-1}+O(E^{-3q-1}),&
+ B_d&=-\frac{d}{2(d-1)}A_d .
+ \label{eq:periods}
+\end{align}
+As a differential check, \(\Pi_L'=-E\Pi_T'\) from \eqref{eq:hj} gives \(B_d=-q A_d/(q+1)\), in agreement with the beta-function recurrence.
+
+For \(d=4\) the two near roots are opposite. Under the lift \(r\mapsto e^{\ii\pi}r\) the cap integrals agree exactly, since the explicit factor \(r^{m/2}\dd r\) is invariant for \(m=2\) and all other radial factors are even. Hence both local periods vanish identically, not merely to leading order. For \(d=3\) the cluster has a single root, so there is no adjacent-root cycle of the specified kind. For \(d\geq5\), \(1/2<\alpha<1\) and the adjacent-root coefficient in \eqref{eq:periods} is nonzero.
+
+\section{Action splitting at the same boundary time}
+\label{sec:fixedtime}
+
+The physically relevant boundary data for a worldline saddle include the time interval, not the geodesic energy. To compare actions, take \(T=T_0(E)\), and solve \(T_n(E_n)=T\) with \(E_n\) near \(E\). For each fixed integer \(n\), \eqref{eq:reference-asymptotics} and \eqref{eq:periods} give
+\begin{equation}
+ E_n-E=-\frac{n\Pi_T(E)}{T'_0(E)}[1+o(1)]
+       =-\frac{n B_d}{2} E^{1-q}+o(E^{1-q}).
+ \label{eq:energy-shift}
+\end{equation}
+For a nonvanishing period, the derivative \(T'_n\sim2/E^2\) and the analytic implicit solution yields this nearby branch for sufficiently large \(E\). The change in the reference length caused by this energy shift is \(nE\Pi_T\) to leading order. For the unit worldline action,
+\begin{align}
+ \delta L_n(T)&=L_n(E_n)-L_0(E)
+    =n(A_d+B_d)E^{-q}+o(E^{-q}) \notag\\
+   &=n\,\frac{d-2}{2(d-1)}\,A_d
+      \left(\frac{T_*-T}{2}\right)^q
+       +o\big((T_*-T)^q\big).
+ \label{eq:split}
+\end{align}
+The power is defined by continuation from \(E>0\). In AdS\(_5\), the equal-energy periods vanish exactly and the same choice \(E_n=E\) gives zero splitting. For every \(d\) in this construction, any fixed number of local cycles has the same limiting time \(T_*\). The fractional correction in \eqref{eq:split} is a difference of on-shell actions on the chosen contour branches. The leading singular behavior of each individual classical geodesic weight \(e^{-M L}\) is proportional to \((T_*-T)^{-2M}\), where \(M\) is the bulk worldline mass in AdS units. Equation~\eqref{eq:split} describes the relative exponent at large \(M\), before fluctuation determinants and integration-cycle weights are included.
+
+\begin{table}[t]
+ \centering
+ \small
+ \begin{tabular}{ccccc}
+ \hline
+ \(d\) & \(E\) & \(E^{q}\Pi_L\) & \(E^{q+1}\Pi_T\) & \(E^q\delta L_1\)\\
+ \hline
+ \input{period_rows.tex}
+ \end{tabular}
+ \caption{Full finite-energy quadrature and the analytic \(E\to\infty\) limits.
+ The last column uses independently matched boundary times on the two paths.
+ The time residual is below \(6\times10^{-12}\) for all tabulated finite energies.}
+ \label{tab:periods}
+\end{table}
+
+For Table~\ref{tab:periods} we set \(x=1-s^2\) to remove the endpoint divergence. We subtract \(2/[d(r^2-1)]\) from the reference time integrand and add its prescribed integral analytically. We then solve \(T_n(E_n)=T_0(E)\) and evaluate both lengths. The code also checks the AdS\(_5\) cancellation and the two-cycle case in AdS\(_7\).
+
+\input{optical_cycles}
+\input{geodesic_jacobi}
+
+\section{Relation to repeated wave reflections}
+
+In AdS\(_5\), \(T_*=\frac{\beta}{2}(1-\ii)\), and its reflected counterpart is \(-T_*^*\). For real \(\omega>0\) with Fourier phase \(e^{-\ii\omega T}\), the corresponding factors are \(e^{-(1+\ii)\beta\omega/2}\) and \(e^{-(1-\ii)\beta\omega/2}\). The exact zero-momentum current benchmark of ref.~\cite{AfkhamiJeddi:2025} has these actions. Its normalized spectral correction is the geometric sum of the positive powers of both factors, with nonzero terms at two, three and more reflections. In particular the \(n=2\) pair has total weight \(2 e^{-\beta\omega}\cos(\beta\omega)\) in that normalization. Equation \eqref{eq:optical-period-asymptotics} reproduces the spacing of the actions for the geodesic contours. The weights in the current result come from the wave boundary conditions.
+
+The local finite-energy cycle of section~\ref{sec:cycles} sets an action scale for Stokes jumps at large probe dimension. For an ingoing scalar solution the radial wave equation at zero transverse momentum is
+\begin{equation}
+ \frac{1}{r^{d-1}}\frac{\dd}{\dd r}
+ \left(r^{d-1} f\frac{\dd\phi}{\dd r}\right)
+ +\left(\frac{\omega^2}{f}-M^2\right)\phi=0 .
+ \label{eq:wave}
+\end{equation}
+Substituting \(\phi\sim e^{M S(r)}\) and \(\omega=\ii M E\) gives \(\dd S=\pm\varpi\), with the sign fixed by the WKB branch. The inner scaling of the same equation makes explicit when this eikonal treatment of the local cycle is valid. With \(x=r/a\), \(\Phi(x)=\phi(ax)\), and \(\lambda=M E^{-q}\), the leading equation at fixed \(x,\lambda\) as \(E\to\infty\) is
+\begin{equation}
+ x^2\Phi''+x\Phi'+\lambda^2 x^d(1-x^m)\Phi=0 .
+ \label{eq:inner-wave}
+\end{equation}
+This follows by using \(r^{d-1}f=-r(1-r^d)\) in \eqref{eq:wave}; the discarded coefficients are \(O(a^d)\) on compact subsets of the inner coordinate. The roots \(x^m=1\) are ordinary points of the finite-\(\lambda\) differential equation and turning points of its large-\(\lambda\) WKB problem. A uniformly accurate treatment when \(M\delta L_n=O(1)\) at fixed \(n\) must therefore retain the full inner equation.
+
+In the same scaling, finite transverse momentum with
+\(\boldsymbol k=\ii M\boldsymbol P\) replaces \(1-x^m\) in
+\eqref{eq:inner-wave} by \(1-x^m-\eta/x^2\).
+The imaginary momentum is the continuation that gives the
+spacelike radial equation \eqref{eq:geodesic-transverse}.
+For large \(\lambda\) the inner eikonal derivative on the
+doubled positive ray has magnitude \(x^m\sqrt{\mathcal F_\eta(x)}\).
+The \(\eta\) derivative of its doubled integral is
+\(\mathcal J_d(\eta)/2\), because its endpoint at \(x_+\)
+vanishes and \(2\partial_\eta(x^m\sqrt{\mathcal F_\eta})=
+1/[x^2\sqrt{\mathcal F_\eta}]\).
+The decaying WKB branch therefore has the same core action
+shift \(-\lambda\mathcal A_d(\eta)/2\) per turn as
+\eqref{eq:einstein-transverse-action}.
+
+At zero momentum there is an exact local monodromy check. The origin has a repeated zero indicial root. Write the regular solution as \(U(x)=\sum_{k\geq0} c_k x^k\) with \(c_0=1\) and \(c_k=0\) for \(k<0\). Then
+\begin{equation}
+ k^2 c_k=-\lambda^2(c_{k-d}-c_{k-d-m}),\qquad k\geq1.
+\end{equation}
+Reduction of order gives a second solution \(V=U\int \dd x/(x U^2)\). A single counterclockwise circuit of zero sends \(V\mapsto V+2\pi\ii U\). In contrast, the projection of \(\mathcal C\) retraces its arc. Its exact transfer in \eqref{eq:wave} is the identity since the finite-energy turning points are ordinary points. A nonzero WKB period therefore coexists with trivial exact wave transport along this projection.
+
+\input{connection}
+\input{einstein_poles}
+\input{lovelock}
+
+\section{Conclusion}
+
+The cycles between adjacent inner roots and the optical cycles give two scales in the classical problem. The adjacent-root cycle has a time period of order \(E^{-1-d/(d-2)}\) and an action splitting of order \(E^{-d/(d-2)}\) at fixed boundary time. The optical cycle has finite limiting time \(T_*\). Repetition gives \(T\to nT_*\), with an endpoint Gaussian magnitude proportional to \(n^{-(d-1)/2}\) relative to the single visit. The length at finite scaled boundary separation in \eqref{eq:einstein-transverse-fixed-endpoints} extends this result beyond the quadratic approximation. Near the merger of the two inner turns, the logarithms in the endpoint data cancel in the reduced action.
+
+In the wave problem the local winding transfer is unipotent. Exterior propagation gives the repeated-reflection harmonics in the boundary response. In planar AdS\(_7\), the tuned scalar mass removes the \(\omega^{-6/5}\) correction and exposes the \(\omega^{-12/5}\) term in the quasinormal poles and the second and third harmonics. The time dependence derived from those harmonics describes their individual high-frequency contributions.
+
+In the solvable Lovelock family, the full zero-momentum Wightman function has singularities at the primitive optical times and at mixed thermal images. Equation \eqref{eq:image-jump} reconstructs the difference between the two lateral continuations from a finite sum of retarded kernels at positive real times. The first correction from the spectral envelope is four powers weaker than the leading singularity for \(\nu>3/2\) and is logarithmic at \(\nu=3/2\). The order-\(k^2\) polar term has power \(2\nu+1/3\), with coefficient proportional to the number of reflections. The perturbed Airy equation gives the reflection amplitudes at finite scaled momentum. In the large-mass regime its connection reproduces the elliptic transverse action of the optical cycle.
+
+\section*{Acknowledgments}
+
+\href{https://openai.com/codex/}{OpenAI Codex} assisted in deriving analytic results,
+implementing and running the numerical calculations, and drafting and editing the
+manuscript.
+
+\section*{Code availability}
+
+The Python scripts accompanying the manuscript source generate the numerical
+tables and perform the convergence checks. The calculations use no external datasets.
+
+\bibliographystyle{JHEP}
+\bibliography{references}
+\end{document}

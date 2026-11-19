@@ -1,0 +1,116 @@
+\section{An exact repeated-reflection response in Lovelock gravity}
+\label{sec:lovelock}
+
+The Einstein calculation in section~\ref{sec:einstein-poles} isolates a high-frequency sector. We now solve the boundary-value problem and continue the full correlator in an exactly soluble Lovelock background.
+
+\subsection{Background and scalar reduction}
+
+Consider Lovelock gravity of order \(K\geq2\) with a unique AdS vacuum of multiplicity \(K\) and unit AdS radius \cite{Crisostomo:2000,Cai:2001,BravoGaete:2013}. Set the boundary dimension to \(d=4K\). With flat transverse sections and unit horizon radius, the static vacuum first integral is
+\begin{equation}
+ \left(1-\frac{f(r)}{r^2}\right)^K=r^{-d}.
+\end{equation}
+On the branch with \(1-f/r^2>0\), this gives \(f(r)=r^2-r^{-2}\) in bulk dimension \(4K+1\). The background metric is of the form \eqref{eq:metric}, with this new \(f\). Its regular horizon has \(\beta=\pi\), since \(f'(1)=4\). At \(r=0\) its scalar curvature is
+\begin{equation}
+ {\cal R}=-d(d+1)+(d-3)(d-4)r^{-4}.
+\end{equation}
+The divergence and \(g^{rr}<0\) inside the horizon give a spacelike curvature singularity. The radial optical geometry is that of the Einstein AdS\(_5\) brane because the two lapse functions coincide. The higher-dimensional transverse geometry and the scalar field theory below are different.
+
+Take a zero-momentum scalar with effective mass \(m_{\rm eff}^2=m_0^2+\xi{\cal R}\) and time dependence \(e^{-\ii\omega t}\). For \(a=(d-2)/2\), choose
+\begin{equation}
+ \xi=\frac{a(a-2)}{(d-3)(d-4)},\qquad
+ m_0^2=-a(a+2)+\xi d(d+1).
+ \label{eq:tuned-mass}
+\end{equation}
+For example, in \(D=d+1=9\), \(\xi=3/20\) and \(m_0^2=-21/5\). The asymptotic effective mass is \(1-d^2/4\), which is above the Breitenlohner--Freedman bound. We use standard quantization, with \(\Delta=d/2+1\). On substituting \(\phi=r^{-a}A\) into the scalar equation, the coefficient of \(A'\) is \(f'/f+1/r\), and the non-frequency part of the coefficient of \(A\) vanishes because
+\begin{equation}
+ m_{\rm eff}^2=-a^2 f/r^2-a f'/r=-a(a+2)+a(a-2)r^{-4}.
+\end{equation}
+The reduced equation is \((r f A')'+\omega^2 r A/f=0\), with primes here denoting \(r\) derivatives. This is the equation for the transverse current in the known Einstein AdS\(_5\) example \cite{Kovtun:2005,AfkhamiJeddi:2025}. Here its solution gives a scalar boundary response in higher dimension through \eqref{eq:tuned-mass}.
+
+\subsection{Ingoing solution and spectral density}
+
+Define \(z=\operatorname{artanh}(r^{-2})\) and \(w=\omega/2\). The exterior \(1<r<\infty\) maps to \(0<z<\infty\) and \(r f\,\dd z/\dd r=-2\). The reduced equation is
+\begin{equation}
+ A_{zz}+w^2\coth(z) A=0.
+ \label{eq:lovelock-z}
+\end{equation}
+The retarded horizon condition is \(A\propto e^{+\ii wz}\) as \(z\to\infty\). A source-free mode vanishes at \(z=0\). For \({\rm Im}\,\omega>0\) the ingoing solution decays at infinity, and integration by parts for a putative source-free mode would require \(\int |A_z|^2\dd z=w^2\int \coth(z)|A|^2\dd z\). This excludes such a mode in the upper half-plane.
+
+To obtain the response, put \(v=\coth z\), \(s=(1+\ii)w/2\), and \(y=(1-v)/2\). Factoring the exponents at \(v=\pm1\) gives the hypergeometric solution that is ingoing at the real horizon,
+\begin{equation}
+ A_{\rm in}=(v-1)^{-\ii w/2}(v+1)^{-w/2}
+ {}_2F_1(-s,1-s;1-\ii w;y).
+\end{equation}
+The ingoing amplitude has modulus \(2^{-w/2}\) for real \(w>0\). At the boundary \(v\to\infty\), the leading hypergeometric connection term gives the source
+\begin{equation}
+ A^{(0)}=2^{-s}\frac{\Gamma(1-\ii w)}
+                  {\Gamma(1-s)\Gamma(1+\bar s)}.
+\end{equation}
+The logarithmic subleading term does not enter the conserved flux. The original scalar flux reduces to that of \(A\), since
+\begin{equation}
+ r^{d-1} f\,{\rm Im}(\bar\phi\,\partial_r\phi)
+ =r f\,{\rm Im}(\bar A\,\partial_r A)
+ =-2\,{\rm Im}(\bar A\,A_z).
+\end{equation}
+Thus the ingoing flux magnitude, divided by \(2|A^{(0)}|^2\), is
+\begin{equation}
+ w\frac{|\Gamma(1-s)\Gamma(1+\bar s)|^2}{|\Gamma(1-\ii w)|^2}
+ =\pi w^2\frac{\sinh(\pi w)}{\cosh(\pi w)-\cos(\pi w)}.
+\end{equation}
+Here the gamma reflection identity gives the last expression. In pure AdS, the same reduced probe equation has unit-source solution \((\ii\pi/2)(\omega/r)H_1^{(1)}(\omega/r)\) and half-flux \(\pi w^2\). Consequently the exact spectral density, normalized by its positive-frequency vacuum value, is
+\begin{equation}
+ \frac{\rho(\omega)}{\rho_{\rm vac}(\omega)}
+ =\frac{\sinh(\pi w)}{\cosh(\pi w)-\cos(\pi w)}
+ =1+2\sum_{n=1}^{\infty}e^{-n\pi w}\cos(n\pi w),
+ \qquad w=\omega/2>0 .
+ \label{eq:lovelock-spectral}
+\end{equation}
+The radial null round trip has time \(T_*=\frac{\pi}{2}(1-\ii)\), with partner \(-T_*^*\), using the same horizon prescription as \eqref{eq:tstar}. The \(n\)-th term in \eqref{eq:lovelock-spectral} contains exactly the phases \(e^{-\ii n\omega T_*}\) and \(e^{+\ii n\omega T_*^*}\). In particular the two-bounce contribution is
+\begin{equation}
+ \left.\frac{\delta\rho}{\rho_{\rm vac}}\right|_{n=2}
+   =2 e^{-\pi\omega}\cos(\pi\omega).
+ \label{eq:lovelock-twobounce}
+\end{equation}
+These are repeated trips with finite time per reflection. The contractible local cycles of section~\ref{sec:cycles} do not enter the derivation of \eqref{eq:lovelock-spectral}.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\omega\) & numerical residual after \(n=1\) & exact \(n=2\) term & bound on \(n\geq3\)\\
+ \hline
+ \input{lovelock_rows.tex}
+ \end{tabular}
+ \caption{Direct radial integration of the original scalar in bulk dimension
+ \(D=9\), after subtracting the vacuum and the first reflection from
+ \(\rho/\rho_{\rm vac}\). The bound is \(2e^{-3\pi w}/(1-e^{-\pi w})\).}
+ \label{tab:lovelock}
+\end{table}
+
+For Table~\ref{tab:lovelock} we integrate the nonminimally coupled equation for \(\phi\), without using its hypergeometric solution. We start with ingoing wave data at a large value of \(z\) and read the source from \(r^a\phi\) at small \(z\). Halving the integration step and moving both cutoffs checks the convergence. For \(D=9\) and \(13\) the normalized densities agree with \eqref{eq:lovelock-spectral} to absolute error below \(7\times10^{-11}\) at the tested frequencies. This resolves the two-bounce term and its change of sign.
+
+\subsection{The two-bounce poles in complex time}
+
+The spectral result also determines the continued Wightman correlator. Use \(\tau=\beta/2\) in this subsection and \(\rho_{\rm vac}(\omega)=C\omega^2\) for \(\omega>0\), with \(C\) a positive normalization. The thermal relation \(G^>(\omega)=\rho(\omega)/(1-e^{-\beta\omega})\) gives
+\begin{equation}
+ G^>(\omega)=C\omega^2\sum_{j,k\geq0}
+  e^{-(j+k)\tau\omega+\ii(j-k)\tau\omega},\qquad \omega>0 .
+\end{equation}
+For negative frequency use \(G^>(-\omega)=e^{-\beta\omega}G^>(\omega)\) with \(\omega>0\). Fourier transforming with \(e^{-\ii\omega t}\) in the thermal strip \(-\beta<{\rm Im}\,t<0\) gives the meromorphic continuation
+\begin{align}
+ G^>(t)=\frac{C}{\pi}\sum_{j,k\geq0}\Big\{&
+ \big[(j+k)\tau+\ii(t-(j-k)\tau)\big]^{-3}\notag\\
+ &+\big[(j+k+2)\tau-\ii(t+(j-k)\tau)\big]^{-3}\Big\}.
+ \label{eq:lovelock-time}
+\end{align}
+Indeed, at fixed \(j+k=N\) there are \(N+1\) terms and the two denominators grow linearly in \(N\), so the sum converges locally uniformly away from its poles. In particular, the terms \((j,k)=(2,0),(0,2)\) in the first line give third-order poles at \(t=\pm\beta+\ii\beta\). The mixed term \((1,1)\) at \(t=\ii\beta\) has zero real displacement and is a thermal image. Figure~\ref{fig:poles} shows the positive and negative frequency lattices and the physical thermal strip between them.
+
+\input{pole_lattice}
+
+\input{lovelock_detuning}
+\input{lovelock_momentum}
+\input{lovelock_residues}
+\input{lovelock_scaled_momentum}
+\input{lovelock_momentum_time}
+\input{lovelock_time}
+\input{lovelock_mixed}

@@ -1,0 +1,192 @@
+\subsection{Joint mass and overtone limit}
+\label{sec:lovelock-crossover}
+
+The Airy equation also resolves the regime in which the mass
+term in \eqref{eq:lovelock-k-z} remains finite in the inner scaling.
+Let \(N=n+h\) as above, take \(\nu\geq1\), and hold
+\begin{equation}
+ \chi=\frac{\sqrt{\nu^2-1}}{N^{2/3}}
+ \label{eq:lovelock-scaled-mass}
+\end{equation}
+fixed as \(N\to\infty\). We compute the slope at \(k^2=0\).
+Since \(\sinh^2 z_s=-1\), the mass contributes a constant
+\((\nu^2-1)/(4w^{4/3})\) to the leading inner equation in \(y\).
+In the coordinate \(X=e^{\ii\pi/3}y\) of
+\eqref{eq:lovelock-perturbed-airy}, the equation becomes
+\begin{equation}
+ F''-\left(X-\zeta-\frac gX\right) F=0,\qquad
+ \zeta=e^{-\ii\pi/3}\frac{\chi^2}{4\,2^{2/3}}.
+ \label{eq:lovelock-displaced-airy}
+\end{equation}
+Here \(w=(1-\ii)N\) at \(k=0\), and \(g\) has the same
+definition as in \eqref{eq:lovelock-perturbed-airy}.
+The mass displaces the Airy turning point. The momentum
+perturbation remains anchored at the singularity \(X=0\).
+
+\subsubsection{The connection coefficient at fixed scaled mass}
+
+Normalize \(F(X;g,\zeta)\) to \(\operatorname{Ai}(X-\zeta)\)
+at positive large \(X\), and define
+\(a(g,\zeta)=F(0;g,\zeta)\) and
+\(a_1(\zeta)=\partial_g a(0,\zeta)\).
+Variation of parameters gives
+\begin{multline}
+ a_1(\zeta)=\pi\int_0^\infty\frac{\operatorname{Ai}(t-\zeta)}t
+ \big[\operatorname{Bi}(-\zeta)\operatorname{Ai}(t-\zeta)\\
+       -\operatorname{Ai}(-\zeta)\operatorname{Bi}(t-\zeta)\big]\dd t .
+ \label{eq:lovelock-shifted-variation}
+\end{multline}
+The bracket vanishes linearly at the origin, and the product
+\(\operatorname{Ai}\operatorname{Bi}\) decays as \(t^{-1/2}\)
+at large positive \(t\). With \(\sigma=e^{2\pi\ii/3}\), the
+rotated solutions now use
+\((X,g,\zeta)\mapsto(\sigma^{-j}X,\sigma^j g,\sigma^{-j}\zeta)\).
+Each adjacent Wronskian keeps its \(g=0\) value by the
+same large-\(X\) normalization as in section~\ref{sec:lovelock-airy}.
+At \(g=0\) the connection relation is the Airy identity
+with argument \(X-\zeta\), so \(S_{\rm A}(0,\zeta)=-\sigma^{-1}\).
+Taking its \(g\) derivative at the origin gives
+\begin{equation}
+ D_{\rm A}(\zeta)\equiv\partial_g\log S_{\rm A}(0,\zeta)
+ =-\frac{a_1(\zeta)+a_1(\sigma\zeta)+a_1(\sigma^{-1}\zeta)}
+         {\operatorname{Ai}(-\zeta)} .
+ \label{eq:lovelock-displaced-connection}
+\end{equation}
+At \(\zeta=0\) this equals \(\Gamma(1/3)^2/3^{1/3}\), recovering
+\eqref{eq:lovelock-airy-limit}.
+
+At fixed \(\chi\), the shifted Airy region has size
+\(|w|^{-2/3}\) in \(z\). The exterior momentum derivative
+is subleading by the same overlap estimate as in the
+fixed-mass calculation, since the mass shift in \(z\) is
+of this order as well. The matched pole condition
+therefore predicts
+\begin{equation}
+ N^{2/3} b_n\ \longrightarrow\
+ \mathcal B(\chi)=
+ \frac{\ii e^{-\ii\pi/3}}{8\mathcal Z_{\rm L}(1-\ii)^{2/3}}
+ D_{\rm A}(\zeta).
+ \label{eq:lovelock-crossover}
+\end{equation}
+Only the \(k^2\) coefficient of the pole condition is varied
+here. Its value at zero momentum follows from the exact spectrum.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\chi\) & \(\mathcal B(\chi)\) & Error at \(n=64\) & Error at \(n=256\) \\
+ \hline
+ \input{lovelock_crossover_rows.tex}
+ \end{tabular}
+ \caption{Joint mass and overtone limit of the momentum slopes.
+ The errors compare \eqref{eq:lovelock-crossover} with
+ \(N^{2/3}b_n\) computed from \eqref{eq:lovelock-exact-dispersion}
+ at the indicated fixed \(\chi\).}
+ \label{tab:lovelock-crossover}
+\end{table}
+
+Table~\ref{tab:lovelock-crossover} compares the local connection
+calculation with the exact moments of the boundary-value problem.
+For each \(n\), the mass parameter in the exact formula is chosen
+to satisfy \eqref{eq:lovelock-scaled-mass}. In the Airy integrals
+we use the Maclaurin series on a finite interval and integrate
+the asymptotic expansion of \(\operatorname{Ai}\operatorname{Bi}\)
+in the tail \cite{NIST:DLMF}. Changing the matching radius
+from 13 to 16 and increasing the truncation order checks that
+this numerical error is below the finite-overtone effect.
+
+\subsubsection{Geometric action at finite scaled transverse momentum}
+
+Take \(\chi\) large after the joint limit and keep
+\(\eta=-g/\zeta^2\) fixed. In \(u=X/\zeta\) the shifted
+Airy potential is \(\zeta(u-1+\eta/u)\), with the two turning
+points \(a_\pm\) of section~\ref{sec:finite-transverse-geodesic}.
+Consider the continuation from \(\eta=0\) on which the reflection
+follows the simple turn at \(X_+=\zeta a_+\).
+The WKB parameter is \(\zeta^{3/2}\).
+The action \(\mathcal S\) from that turning point to large \(X\)
+has a finite momentum difference. At fixed \(\zeta\),
+\begin{equation}
+ \partial_g\mathcal S
+ =-\frac12\int_{X_+}^\infty
+      \frac{\dd X}{X\sqrt{X-\zeta-g/X}}
+ =-\frac{\mathcal J(\eta)}{2\sqrt\zeta}.
+ \label{eq:lovelock-displaced-action}
+\end{equation}
+The turning-point contribution to this derivative vanishes.
+The square root and contour are continued from positive \(\zeta\)
+and small real \(\eta\) to the optical branch. The local Airy
+multiplier is unchanged at a simple turn. Relative to zero
+momentum the normalization at infinity gives minus twice
+the action difference in the logarithm of the multiplier.
+Since \(\dd g=-\zeta^2\dd\eta\), the leading result is
+\begin{equation}
+ \log\frac{S_{\rm A}(g,\zeta)}{S_{\rm A}(0,\zeta)}
+ =-\zeta^{3/2}\mathcal A(\eta)+o(|\zeta|^{3/2}).
+ \label{eq:lovelock-nonlinear-wkb}
+\end{equation}
+The logarithm is continued from \(\eta=0\).
+
+To compare with the geodesic on the positive-real-part
+quasinormal ray, choose \(E=\ii\omega/M\) and
+\(\boldsymbol P=\ii\boldsymbol k/M\), with
+\(M=\sqrt{\nu^2-1}\) in the scalar reduction. In the radial
+eikonal equation these assignments give \(Y^2=E^2+f(1-P^2/r^2)\).
+On the lower horizon detour, the propagation factor of the
+cycle is \(e^{ME T_*^*}=e^{2\ii\omega\mathcal Z_{\rm L}}\).
+Using
+\(\zeta=e^{-2\pi\ii/3}M^2/(4w^{4/3})\) and
+\(g=e^{-\pi\ii/3}k^2/(4w^{2/3})\) gives
+\begin{equation}
+ \eta=E^2P^2=-g/\zeta^2,\qquad
+ \zeta^{3/2}=\frac{M}{2E^2}.
+\end{equation}
+Equation \eqref{eq:lovelock-nonlinear-wkb} thus agrees with
+\(M[W_{\rm opt}(E,P^2)-W_{\rm opt}(E,0)]\) from
+\eqref{eq:jacobi-elliptic-action}. A term with \(m\) reflections
+has \(m\) times that action in its logarithm.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\eta\) & \(\chi=3\) & \(\chi=4\) & \(\chi=5\) \\
+ \hline
+ \input{lovelock_geometric_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative error of the elliptic action
+ in \eqref{eq:lovelock-nonlinear-wkb} compared with the direct
+ shifted Airy connection.}
+ \label{tab:lovelock-geometric-momentum}
+\end{table}
+
+Table~\ref{tab:lovelock-geometric-momentum} tests the nonlinear
+action for two \(\eta\) on the physical ray. We integrate the
+three recessive solutions of \eqref{eq:lovelock-displaced-airy}
+and obtain the multiplier from their values at the origin as in
+\eqref{eq:lovelock-scaled-reflection}, with both parameters rotated.
+Factoring the Airy asymptotic form in \(X-\zeta\) gives initial
+data on each ray. The changes in the multiplier under cutoff
+and step refinement are below \(10^{-6}\) relative. The
+geodesic action agrees with the logarithm of the full connection
+coefficient to within \(0.24\%\) at \(\chi=5\).
+
+The linear term in \(\mathcal A\) gives
+\(D_{\rm A}(\zeta)\sim\pi/\sqrt\zeta\), equivalently a
+logarithmic \(k^2\) derivative \(\pi/(2M)\). In the pole condition
+this gives \(b_n\sim(1+\ii)/(2M)\), or
+\begin{equation}
+ \mathcal B(\chi)\sim\frac{1+\ii}{2\chi}.
+ \label{eq:lovelock-massive-limit}
+\end{equation}
+For \(\chi=5\), the Airy quadrature gives
+\(\chi\mathcal B(\chi)=0.50139+0.50137\ii\).
+For \(\chi=10\) and \(n=256\), the exact pole slope gives
+\(\chi N^{2/3}b_n\simeq0.500019(1+\ii)\).
+The overlap condition \(M|E|^{-2}\gg1\) is \(\chi^3/8\gg1\).
+The transverse Gaussian from this quadratic term has the
+repetition dependence of \eqref{eq:jacobi-ratio}.
+The calculation fixes the part of the reflection amplitude
+set by the optical action. Section~\ref{sec:lovelock-residues}
+derives the separate variation of the pole weights.

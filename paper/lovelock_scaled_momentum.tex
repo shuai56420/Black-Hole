@@ -1,0 +1,117 @@
+\subsection{Repeated reflections at finite scaled momentum}
+\label{sec:lovelock-scaled-momentum}
+
+At fixed \(\nu\), let \(N\to\infty\) with
+\(\kappa=k^2/(4N^{2/3})\) fixed and
+\(\omega-\omega_n^0\) bounded. On this ray the coupling in
+\eqref{eq:lovelock-perturbed-airy} tends to
+\(g_\kappa=2^{-1/3}e^{-\ii\pi/6}\kappa\). The full connection
+relation of the rotated solutions gives the normalized reflection
+coefficient
+\begin{equation}
+ \mathfrak r(g)=\frac{S_{\rm A}(g)}{S_{\rm A}(0)}
+ =-\sigma\frac{a(\sigma^{-1}g)+\sigma a(\sigma g)}{a(g)}.
+ \label{eq:lovelock-scaled-reflection}
+\end{equation}
+The denominator is nonzero on the physical ray. If \(a(g)=0\),
+the recessive solution is \(O(X)\) at zero, and integration by parts
+gives
+\begin{equation}
+ g\int_0^\infty\frac{|F|^2}{X}\,\dd X
+  =\int_0^\infty (|F'|^2+X|F|^2)\,\dd X .
+\end{equation}
+This would require \(g\) to be positive real.
+
+Define the optical symbol
+\(\xi=e^{2\ii\omega\mathcal Z_{\rm L}-2\pi\ii h}\), which equals one
+at every \(\omega_n^0\). The ingoing and outgoing boundary waves are
+proportional to
+\(r^{-1}H_\nu^{(1,2)}(\sqrt{\omega^2-k^2}/r)\).
+The Airy connection sets their coefficient ratio to
+\(Q=\xi\,\mathfrak r(g_\kappa)\) at leading order. The additive
+error from the exterior momentum term in the transport action is
+\(O(k^2|w|^{-1}\varepsilon_z^{-1/2})=o(1)\), where
+\(\varepsilon_z\to0\) and \(\varepsilon_z|w|^{2/3}\to\infty\).
+For example, at \(\varepsilon_z=|w|^{-1/2}\) the cubic correction
+to the linear turning-point potential also has vanishing phase
+integral, of order \(|w|\varepsilon_z^{7/2}\).
+The source and response coefficients from the small-argument
+Hankel expansions then give \cite{Valach:2026,Jia:2026}
+\begin{align}
+ \frac{\mathcal G/\mathcal G_{\rm vac}-1}{1-e^{2\pi\ii\nu}}
+ &\longrightarrow \frac{Q}{1-Q},\qquad Q=\xi\,\mathfrak r(g_\kappa),
+ \notag\\
+ \mathcal G_{\rm vac} &=
+ \frac{\Gamma(-\nu)}{\Gamma(\nu)}e^{-\ii\pi\nu}
+ \left(\frac{\omega}{2}\right)^{2\nu}
+ \left(1-\frac{k^2}{\omega^2}\right)^\nu .
+ \label{eq:lovelock-scaled-transfer}
+\end{align}
+The branches are continued from positive real timelike frequency.
+This normalization uses noninteger \(\nu\) and bounded frequency
+offsets away from the limiting poles. At zero momentum the gamma
+reflection formula applied to \eqref{eq:detuned-g} gives the
+same response with \(Q=\xi\), multiplied by a gamma envelope
+tending to its vacuum value.
+
+For the branch of the pole continued from \(\kappa=0\), the limit
+of the pole shift is
+\begin{equation}
+ \Delta\omega_{\rm A}(\kappa)
+   =\frac{\ii}{2\mathcal Z_{\rm L}}\log\mathfrak r(g_\kappa),
+ \label{eq:lovelock-scaled-shift}
+\end{equation}
+where the log is continued from zero wherever the reflection
+coefficient stays nonzero. Expanding \eqref{eq:lovelock-scaled-transfer}
+at \(|Q|<1\) gives \(\mathfrak r(g_\kappa)^m\) for the coefficient of
+\(\xi^m\). The square and cube therefore measure the full complex
+connection amplitude at the same scaled momentum. In particular,
+at \(\kappa=0.45\) the calculation gives
+\(\mathfrak r=3.01667-2.21406\ii\), whose magnitude is \(3.74198\).
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccccc}
+ \hline
+ \(\kappa\) & \(\nu\) & \(n\) &
+ \(\lvert\Delta\omega_n-\Delta\omega_{\rm A}\rvert\) &
+ \(\lvert c_2-1\rvert\) & \(\lvert c_3-1\rvert\) \\
+ \hline
+ \input{lovelock_scaled_momentum_rows.tex}
+ \end{tabular}
+ \caption{Finite scaled-momentum tests of the pole shift and reflection
+ harmonics. The coefficients \(c_m\) are the projected harmonics of the
+ full radial response divided by \(\mathfrak r(g_\kappa)^m\).}
+ \label{tab:lovelock-scaled-momentum}
+\end{table}
+
+We compute \(a(g)\) by factoring
+\(F=e^{-2X^{3/2}/3}X^{-1/4}H/(2\sqrt\pi)\). For
+\(v=X^{-1/2}\), the large-\(X\) expansion
+\(H\sim\sum_{j\geq0}d_jv^j\) has \(d_0=1\) and recurrence
+\begin{equation}
+ (j+1)d_{j+1}=-g\,d_j-\frac{(2j+1)(2j-3)}{16}d_{j-2},
+ \qquad d_{-2}=d_{-1}=0 .
+\end{equation}
+From this asymptotic data we integrate inward and extract the
+constant \(a(g)\). We check both adjacent Wronskians using
+\(F'(X)=-g a(g)\log X+b(g)+o(1)\) at the origin and compare with
+their Airy values at \(g=0\).
+
+Table~\ref{tab:lovelock-scaled-momentum} compares these results with
+independent horizon-to-boundary matching of
+\eqref{eq:lovelock-k-radial}. We track the poles from \(k=0\) and
+project the response along
+\(\omega=\omega_n^0+(\theta-\ii\log\chi_0)/(2\mathcal Z_{\rm L})\),
+for \(-\pi<\theta<\pi\) and
+\(\chi_0=1/(2|\mathfrak r(g_\kappa)|)\).
+At \(n=64\), changing the matching radius in \(u=r^{-2}\) from
+\(0.56\) to \(0.53\) and increasing both the number of series
+terms and the number of angular samples changes the pole by
+less than \(10^{-8}\) and the harmonics by less than \(0.1\%\)
+relative. The errors decrease with \(n\) at both values of
+\(\kappa\), reaching below \(1\%\) for both harmonics at \(n=64\).
+These finite-\(\kappa\) coefficients describe the
+frequency-space response near the quasinormal ray. The order-\(k^2\)
+polar time-domain limit can be obtained by differentiating this
+connection at \(k=0\).
