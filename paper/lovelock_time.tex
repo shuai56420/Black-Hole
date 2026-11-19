@@ -1,0 +1,116 @@
+\subsection{Primitive reflection singularities for arbitrary mass}
+\label{sec:primitive-time}
+
+The full gamma-function envelope in \eqref{eq:detuned-spectrum} can be
+retained when locating a particular family of complex-time singularities.
+Define \(s_\pm=(1\pm\ii)\omega/4\) and
+\begin{equation}
+ B_\nu(\omega)=8^\nu
+ \frac{\Gamma(h+s_+)\Gamma(h+s_-)}
+      {\Gamma(1-h+s_+)\Gamma(1-h+s_-)} .
+ \label{eq:analytic-envelope}
+\end{equation}
+It equals \(\omega^{2\nu}P_\nu(\omega/2)\) on positive real \(\omega\).
+The numerator gamma functions have no poles in the closed sector
+\(|\arg\omega|\leq\pi/2\), and the reciprocal gamma functions are entire
+in their arguments. In this sector Stirling asymptotics give
+\(B_\nu(\omega)/\omega^{2\nu}\to1\) uniformly at infinity, with the
+power continued from real positive \(\omega\).
+
+Let \(\tau=\beta/2\), \(\varphi_\nu=\pi(\nu+1)\), and
+\(\rho_{\rm vac}(\omega)=C_\nu\omega^{2\nu}\) for \(\omega>0\).
+The exact thermal Wightman function has a high-frequency sum over
+the two geometric factors. With any fixed cutoff \(\omega_0>0\),
+introduce
+\begin{equation}
+ \Phi_\nu(L)=\int_{\omega_0}^\infty
+      \dd\omega\, e^{-L\omega}B_\nu(\omega).
+\end{equation}
+This converges initially for \({\rm Re}\,L>0\). For
+\({\rm Im}\,L>0\), rotate the frequency tail to the negative
+imaginary axis and include the finite arc from \(\omega_0\) to
+\(-\ii\omega_0\). For \({\rm Im}\,L<0\), rotate to the positive
+imaginary axis. No poles cross either deformation. Thus
+\(\Phi_\nu\) continues on the \(L\) plane slit along the nonpositive
+real axis. Its leading singular behaviour on this branch is
+\begin{equation}
+ \Phi_\nu(L)\sim\frac{\Gamma(2\nu+1)}{L^{\,2\nu+1}},
+ \qquad L\longrightarrow0
+ \label{eq:laplace-asymptotic}
+\end{equation}
+on closed subsectors of the slit plane. Rescaling the integral
+on a convergent ray gives \eqref{eq:laplace-asymptotic}. The finite
+arc and any change of the lower cutoff are analytic in \(L\).
+
+On the thermal strip, the part of the two-sided frequency integral
+with \(|\omega|\geq\omega_0\) is
+\begin{align}
+ G^>_{\rm tail}(t)
+ &=\frac{C_\nu}{2\pi}\sum_{j,k\geq0}
+ e^{-\ii(j-k)\varphi_\nu}\!
+ \left[\Phi_\nu(L^+_{jk})+\Phi_\nu(L^-_{jk})\right],\notag\\
+ L^+_{jk}&=(j+k)\tau+\ii[t-(j-k)\tau],\notag\\
+ L^-_{jk}&=(j+k+2)\tau-\ii[t+(j-k)\tau].
+ \label{eq:laplace-image}
+\end{align}
+The finite-frequency remainder is entire in \(t\), since it
+integrates an integrable spectral kernel over a bounded interval.
+The sum over sufficiently large \(j+k\) converges locally uniformly:
+the cutoff supplies exponential suppression as \({\rm Re}\,L^\pm\)
+increases, while the number of terms per \(j+k\) grows only linearly.
+The continuation therefore reduces to a finite number of rotated
+Laplace integrals in any bounded region of complex time.
+
+Define the primitive reflection times
+\begin{equation}
+ t_n^\pm=\pm n\tau+\ii n\tau,\qquad n=1,2,\ldots .
+\end{equation}
+These are the first upper singularities along their respective
+vertical lines. Approach each from the thermal strip at fixed
+\({\rm Re}\,t=\pm n\tau\). For a positive-frequency term with
+\(j-k\ne\pm n\), \(L^+_{jk}\) has nonzero imaginary part along
+the path, so the continuation avoids its slit. When \(j-k=\pm n\),
+one has \(j+k\geq n\), and exactly one term has \(L^+_{jk}=0\) at
+the target. Every negative-frequency \(L^-_{jk}\) has positive
+real part near the target. Hence the full continued correlator
+has the leading contribution
+\begin{equation}
+ G^>(t)\sim
+ \frac{C_\nu\,\Gamma(2\nu+1)}{2\pi}\,
+ \frac{e^{\mp\ii n\varphi_\nu}}
+      {[\ii(t-t_n^\pm)]^{2\nu+1}} .
+ \label{eq:primitive-coefficient}
+\end{equation}
+For nonintegral \(2\nu+1\) this is a branch point. At integral
+\(2\nu+1\) it gives the leading pole power; weaker terms can
+depend on \(\nu\). The result identifies the primitive echoes of
+the full correlator, including the \(n=2\) pair, without splitting
+the envelope into perturbative and exponentially small pieces.
+Mixed images with \(j,k>0\) can lie on a cut from an earlier
+primitive echo, so this argument does not determine their sheet
+structure.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccccc}
+ \hline
+ \(n\) & \(\nu\) & \(\epsilon=0.16\) & \(\epsilon=0.08\) &
+ \(\epsilon=0.04\) \\
+ \hline
+ \input{lovelock_time_rows.tex}
+ \end{tabular}
+ \caption{Relative error in extracting the full leading coefficient
+ in \eqref{eq:primitive-coefficient} at \(t=t_n^+-\ii\epsilon\).
+ The integral keeps the exact gamma envelope, the finite-frequency
+ remainder and both frequency signs.}
+ \label{tab:time-check}
+\end{table}
+
+Table~\ref{tab:time-check} shows the numerical approach to the
+coefficient. We rotate the necessary finite set of Laplace integrals
+and sum the higher harmonics geometrically before integrating the
+convergent tails. At the final \(\epsilon\), rotating by \(\pi/3\)
+instead of \(\pi/2\) changes the scaled correlator by less than
+\(1.3\times10^{-11}\) in these examples. The coefficient at
+\(t_n^-\) is the complex conjugate of that at \(t_n^+\), as
+expected from the real frequency spectral data.

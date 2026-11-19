@@ -9,6 +9,8 @@ windings. The final calculation solves a tuned scalar problem in a
 higher-dimensional Lovelock family, including the two-bounce contribution
 to the spectrum and its complex-time poles. Changing the bare scalar mass
 at fixed curvature coupling gives a continuous family of exact spectra.
+A contour deformation of the full gamma envelope isolates the primitive
+reflection singularities at noninteger probe dimensions as well.
 
 Run the following from this directory:
 
@@ -16,6 +18,7 @@ Run the following from this directory:
 python check_periods.py
 python check_connection.py
 python check_lovelock.py
+python check_time_continuation.py
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 bibtex main
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
@@ -29,6 +32,8 @@ product against Frobenius monodromy. The third integrates the original
 nonminimally coupled scalar equation in nine and thirteen dimensions
 and compares its retarded spectrum with the exact result, including
 four bare-mass variations in nine dimensions.
+The fourth evaluates the continued Wightman function and checks the
+leading singular coefficient for one, two and three reflections.
 
 The Lovelock example gives the boundary response with both endpoint
 conditions imposed. The global higher-reflection coefficients for
