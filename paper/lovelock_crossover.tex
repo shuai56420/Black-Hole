@@ -1,0 +1,148 @@
+\subsection{Joint mass and overtone limit}
+\label{sec:lovelock-crossover}
+
+The Airy equation also resolves the regime in which the mass
+term in \eqref{eq:lovelock-k-z} remains finite in the inner scaling.
+Let \(N=n+h\) as above, take \(\nu\geq1\), and hold
+\begin{equation}
+ \chi=\frac{\sqrt{\nu^2-1}}{N^{2/3}}
+ \label{eq:lovelock-scaled-mass}
+\end{equation}
+fixed as \(N\to\infty\). We compute the slope at \(k^2=0\).
+Since \(\sinh^2 z_s=-1\), the mass contributes a constant
+\((\nu^2-1)/(4w^{4/3})\) to the leading inner equation in \(y\).
+In the coordinate \(X=e^{\ii\pi/3}y\) of
+\eqref{eq:lovelock-perturbed-airy}, the equation becomes
+\begin{equation}
+ F''-\left(X-\zeta-\frac gX\right) F=0,\qquad
+ \zeta=e^{-\ii\pi/3}\frac{\chi^2}{4\,2^{2/3}}.
+ \label{eq:lovelock-displaced-airy}
+\end{equation}
+Here \(w=(1-\ii)N\) at \(k=0\), and \(g\) has the same
+definition as in \eqref{eq:lovelock-perturbed-airy}.
+The mass displaces the Airy turning point. The momentum
+perturbation remains anchored at the singularity \(X=0\).
+
+\subsubsection{The connection coefficient at fixed scaled mass}
+
+Normalize \(F(X;g,\zeta)\) to \(\operatorname{Ai}(X-\zeta)\)
+at positive large \(X\), and define
+\(a(g,\zeta)=F(0;g,\zeta)\) and
+\(a_1(\zeta)=\partial_g a(0,\zeta)\).
+Variation of parameters gives
+\begin{multline}
+ a_1(\zeta)=\pi\int_0^\infty\frac{\operatorname{Ai}(t-\zeta)}t
+ \big[\operatorname{Bi}(-\zeta)\operatorname{Ai}(t-\zeta)\\
+       -\operatorname{Ai}(-\zeta)\operatorname{Bi}(t-\zeta)\big]\dd t .
+ \label{eq:lovelock-shifted-variation}
+\end{multline}
+The bracket vanishes linearly at the origin, and the product
+\(\operatorname{Ai}\operatorname{Bi}\) decays as \(t^{-1/2}\)
+at large positive \(t\). With \(\sigma=e^{2\pi\ii/3}\), the
+rotated solutions now use
+\((X,g,\zeta)\mapsto(\sigma^{-j}X,\sigma^j g,\sigma^{-j}\zeta)\).
+Each adjacent Wronskian keeps its \(g=0\) value by the
+same large-\(X\) normalization as in section~\ref{sec:lovelock-airy}.
+At \(g=0\) the connection relation is the Airy identity
+with argument \(X-\zeta\), so \(S_{\rm A}(0,\zeta)=-\sigma^{-1}\).
+Taking its \(g\) derivative at the origin gives
+\begin{equation}
+ D_{\rm A}(\zeta)\equiv\partial_g\log S_{\rm A}(0,\zeta)
+ =-\frac{a_1(\zeta)+a_1(\sigma\zeta)+a_1(\sigma^{-1}\zeta)}
+         {\operatorname{Ai}(-\zeta)} .
+ \label{eq:lovelock-displaced-connection}
+\end{equation}
+At \(\zeta=0\) this equals \(\Gamma(1/3)^2/3^{1/3}\), recovering
+\eqref{eq:lovelock-airy-limit}.
+
+At fixed \(\chi\), the shifted Airy region has size
+\(|w|^{-2/3}\) in \(z\). The exterior momentum derivative
+is subleading by the same overlap estimate as in the
+fixed-mass calculation, since the mass shift in \(z\) is
+of this order as well. The matched pole condition
+therefore predicts
+\begin{equation}
+ N^{2/3} b_n\ \longrightarrow\
+ \mathcal B(\chi)=
+ \frac{\ii e^{-\ii\pi/3}}{8\mathcal Z_{\rm L}(1-\ii)^{2/3}}
+ D_{\rm A}(\zeta).
+ \label{eq:lovelock-crossover}
+\end{equation}
+Only the \(k^2\) coefficient of the pole condition is varied
+here. Its value at zero momentum follows from the exact spectrum.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccc}
+ \hline
+ \(\chi\) & \(\mathcal B(\chi)\) & Error at \(n=64\) & Error at \(n=256\) \\
+ \hline
+ \input{lovelock_crossover_rows.tex}
+ \end{tabular}
+ \caption{Joint mass and overtone limit of the momentum slopes.
+ The errors compare \eqref{eq:lovelock-crossover} with
+ \(N^{2/3}b_n\) computed from \eqref{eq:lovelock-exact-dispersion}
+ at the indicated fixed \(\chi\).}
+ \label{tab:lovelock-crossover}
+\end{table}
+
+Table~\ref{tab:lovelock-crossover} compares the local connection
+calculation with the exact moments of the boundary-value problem.
+For each \(n\), the mass parameter in the exact formula is chosen
+to satisfy \eqref{eq:lovelock-scaled-mass}. In the Airy integrals
+we use the Maclaurin series on a finite interval and integrate
+the asymptotic expansion of \(\operatorname{Ai}\operatorname{Bi}\)
+in the tail \cite{NIST:DLMF}. Changing the matching radius
+from 13 to 16 and increasing the truncation order checks that
+this numerical error is below the finite-overtone effect.
+
+\subsubsection{The geometric limit of the momentum derivative}
+
+Take \(\chi\) large after the joint limit. In \(X/\zeta\) the
+simple-turning-point problem has large WKB parameter
+\(\zeta^{3/2}\), and the distant pole at \(X=0\) stays outside
+the connection from the outer oscillatory region to the
+displaced turning point. The leading \(g\) derivative of
+the WKB action from the turning point to infinity is
+\begin{equation}
+ -\frac12\int_0^\infty\frac{\dd t}{(\zeta+t)\sqrt t}
+    =-\frac{\pi}{2\sqrt\zeta}.
+ \label{eq:lovelock-displaced-action}
+\end{equation}
+The endpoint derivative of the action vanishes at the
+turning point. The path \(X=\zeta+t\) and the square root
+are continued from positive \(\zeta\) to the optical branch.
+The simple-turning-point multiplier at the root has its universal
+Airy value. Expressing the incoming and outgoing modes in the
+normalization at infinity multiplies their ratio by the exponential
+of minus twice the action shift in \eqref{eq:lovelock-displaced-action}.
+Thus the leading WKB term is \(D_{\rm A}(\zeta)\sim\pi/\sqrt\zeta\),
+and \eqref{eq:lovelock-crossover} gives
+\begin{equation}
+ \mathcal B(\chi)\sim\frac{1+\ii}{2\chi}.
+ \label{eq:lovelock-massive-limit}
+\end{equation}
+For example, at \(\chi=5\) the Airy quadrature gives
+\(\chi\mathcal B(\chi)=0.50139+0.50137\ii\).
+For \(\chi=10\) and \(n=256\), the exact pole slope gives
+\(\chi N^{2/3}b_n\simeq0.500019(1+\ii)\).
+
+The same momentum derivative follows from the optical geodesic.
+In this metric the inner-to-outer cycle has
+\(J_{\rm opt}=\pi\), as in \eqref{eq:jacobi-ads5}.
+If \(M\simeq\nu\) is the large worldline mass and \(k=MP\),
+then the optical cycle action satisfies
+\(\partial_{P^2}W_{\rm opt}=-J_{\rm opt}/2\).
+Consequently the logarithmic \(k^2\) derivative of
+\(\exp(-MW_{\rm opt})\) equals \(\pi/(2M)\). In the
+pole condition with optical phase \(2\omega\mathcal Z_{\rm L}\)
+this yields \(b_n\sim\ii\pi/(4M\mathcal Z_{\rm L})=(1+\ii)/(2M)\),
+in agreement with \eqref{eq:lovelock-massive-limit}.
+For \(|E|=|\omega|/M\), the condition \(M|E|^{-2}\gg1\) for the
+geodesic approximation is \(\chi^3/8\gg1\) in this limit.
+Each additional optical reflection adds the same quadratic
+momentum term in the exponent. Its Gaussian integral has the
+transverse multiplicity \(d-1\) and the repetition dependence
+of \eqref{eq:jacobi-ratio}. The comparison fixes this part of the
+amplitude in the overlap regime. The full correlator also requires
+the residues and contour weights.

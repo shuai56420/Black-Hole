@@ -28,6 +28,7 @@ python check_connection.py
 python check_einstein_poles.py
 python check_lovelock.py
 python check_lovelock_momentum.py
+python check_lovelock_crossover.py
 python check_time_continuation.py
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 bibtex main
@@ -50,7 +51,9 @@ and compares its retarded spectrum with the exact result, including
 four bare-mass variations in nine dimensions.
 The fifth checks the exact small-momentum dispersion and its Airy limit
 against finite-momentum pole matching and high overtones.
-The sixth evaluates the continued Wightman function, checks the leading
+The sixth compares the joint mass and overtone limit with the displaced
+Airy connection integral and checks the geometric momentum derivative.
+The seventh evaluates the continued Wightman function, checks the leading
 singular coefficients for primitive and mixed images, and compares the
 residue series with direct integration on tilted contours.
 
