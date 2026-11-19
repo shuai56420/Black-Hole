@@ -70,9 +70,9 @@ with finite-energy geodesic quadratures and tests the nonlinear optical action
 against the shifted Airy connection at large scaled mass.
 The perturbative time-domain check verifies the reflection harmonics and the
 leading coefficient of the pole-motion term at the primitive times.
-The final check evaluates the continued Wightman function, checks the leading
-singular coefficients for primitive and mixed images, and compares the
-residue series with direct integration on tilted contours.
+The final check evaluates the continued Wightman function at primitive and
+mixed images, extracts the leading and first subleading singular terms, and
+compares the cut jump from the retarded modes with direct contour integration.
 
 The Lovelock example gives a sheet-resolved continuation of the exact
 boundary response. The Einstein calculation checks the repeated

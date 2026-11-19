@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 
 from check_lovelock import log_gamma
+from check_lovelock_residues import zero_momentum_residue
 from check_periods import integrate
 
 
@@ -129,16 +130,32 @@ def laplace_jump(a, nu, terms=100):
     return -4j*math.pi * (normalization * pole_sum).real
 
 
+def jump_from_retarded_modes(time, nu, terms=100):
+    """Use the positive- and negative-frequency towers of the retarded kernel."""
+    h = (1+nu)/2
+    retarded = 2*math.fsum(
+        (zero_momentum_residue(nu, n)*cmath.exp(-2*(1+1j)*(n+h)*time)).imag
+        for n in range(terms)
+    )
+    vacuum = 2*math.pi/(4**nu*math.gamma(nu)*math.gamma(1+nu))
+    return 4j*math.pi*math.sin(math.pi*nu)*retarded/vacuum
+
+
 def check_mixed_images():
     largest_kernel_error = 0
+    largest_mode_error = 0
     for nu in (0.75, 1, 1.25, 1.5):
         for a in (0.8, 2.5):
             direct = tilted_laplace(-a, nu, -2*math.pi/3) - tilted_laplace(-a, nu, 2*math.pi/3)
             residue = laplace_jump(a, nu)
             error = abs(direct - residue)
             largest_kernel_error = max(largest_kernel_error, error)
+            mode_error = abs(direct-jump_from_retarded_modes(a, nu))
+            largest_mode_error = max(largest_mode_error, mode_error)
             assert error < 1e-7
+            assert mode_error < 1e-7
     print(f"Maximum absolute difference for kernel jump: {largest_kernel_error:.2e}")
+    print(f"Maximum absolute difference from the real-time retarded sum: {largest_mode_error:.2e}")
 
     rows = []
     for j, k, nu in ((1, 1, 0.75), (2, 1, 0.75), (2, 1, 1.25), (2, 2, 1.5)):
@@ -153,7 +170,8 @@ def check_mixed_images():
             errors.append(max(abs(right/limit-1), abs(left/limit-1)))
         assert errors[2] < errors[1] < errors[0] and errors[2] < 5e-4
         expected = epsilon**(2*nu+1) * phase * sum(
-            laplace_jump((n-s)*TAU-epsilon, nu) for s in range(abs(column), n, 2)
+            jump_from_retarded_modes((n-s)*TAU-epsilon, nu)
+            for s in range(abs(column), n, 2)
         )
         assert abs(right-left-expected) < 2e-9
         alternate = scaled_image(j, k, nu, epsilon, cut_tilt=5*math.pi/8)
@@ -165,6 +183,39 @@ def check_mixed_images():
     Path(__file__).with_name("lovelock_mixed_rows.tex").write_text(
         "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
     )
+
+
+def check_subleading_singularities():
+    rows = []
+    for j, k, nu in ((2, 0, 2), (3, 0, 2.25), (2, 1, 2.25)):
+        leading = math.gamma(2*nu+1)
+        phase = cmath.exp(-1j*(j-k)*math.pi*(nu+1))
+        envelope_coefficient = 2*nu*(nu**2-1)*(3*nu**2-7)/15
+        expected = envelope_coefficient*math.gamma(2*nu-3)
+        errors = []
+        for epsilon in (0.12, 0.06, 0.03):
+            normalized = scaled_image(j, k, nu, epsilon)/phase
+            measured = (normalized-leading)/epsilon**4
+            errors.append(abs(measured/expected-1))
+        assert errors[0] > errors[1] > errors[2]
+        assert errors[-1] < 0.001
+        cells = " & ".join(f"{error:.3e}" for error in errors)
+        rows.append(f"$({j},{k})$ & {nu:g} & {cells} " + r"\\")
+        print(f"({j},{k}) at nu={nu:g}: subleading coefficient errors {errors}")
+    Path(__file__).with_name("lovelock_subleading_time_rows.tex").write_text(
+        "\n".join(rows+[r"\hline"])+"\n", encoding="ascii"
+    )
+
+    errors = []
+    for time in (0.25, 0.125, 0.08):
+        angle = 2*math.pi/3
+        direct = tilted_laplace(-time, 1.5, -angle)-tilted_laplace(-time, 1.5, angle)
+        from_modes = jump_from_retarded_modes(time, 1.5, terms=600)
+        assert abs(direct-from_modes) < 5e-8
+        errors.append(abs(direct/(1j*math.pi/8)-1))
+    assert errors[0] > errors[1] > errors[2]
+    assert errors[-1] < 4e-4
+    print(f"nu=1.5: relative errors from the logarithmic jump {errors}")
 
 
 def main():
@@ -188,6 +239,7 @@ def main():
         "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
     )
     check_mixed_images()
+    check_subleading_singularities()
 
 
 if __name__ == "__main__":
