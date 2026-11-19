@@ -214,9 +214,102 @@ def optical_cycle_quadrature(d, energy, root, radius, detour_side=1):
         r, length_form = path(s)
         return energy*length_form/(r*r-r**(-m))
 
+    def transverse_form(path, s):
+        r, length_form = path(s)
+        return length_form/r**2
+
     length = 2*sum(integrate(lambda s: path(s)[1]) for path in paths)
     time = 2*sum(integrate(lambda s: time_form(path, s)) for path in paths)
-    return length, time
+    transverse = 2*sum(integrate(lambda s: transverse_form(path, s)) for path in paths)
+    return length, time, transverse
+
+
+def transverse_reference(d, energy):
+    """Endpoint displacement per unit transverse momentum on the reference contour."""
+    m = d-2
+    root, _ = turning_point(d, energy)
+    scaled_radius = (root/energy)**2
+
+    def integrand(s):
+        u = 1-s*s
+        regular = cmath.sqrt(u*u*geometric_sum(u, m) + scaled_radius*geometric_sum(u, m+2))
+        return 2*u/regular
+
+    return 2*integrate(integrand)/(energy*root)
+
+
+def transverse_outer_tail(d, root):
+    def integrand(s):
+        u = 1-s*s
+        return 2*u/cmath.sqrt(1+u+root**(-d)*u*u*geometric_sum(u, d-2))
+
+    return 2*integrate(integrand)/root**2
+
+
+def transverse_local_cycle(d, energy):
+    """The transverse Jacobi period of the upper arc between adjacent inner roots."""
+    m = d-2
+    if d == 4:
+        # The radial caps cancel exactly. The small arc supplies the residue.
+        radius = 0.1*abs(turning_point(d, energy)[0])
+
+        def arc(s):
+            r = radius*cmath.exp(1j*math.pi*s)
+            return math.pi/cmath.sqrt(1-energy**2*r*r-r**4)
+
+        return 2*integrate(arc)
+
+    def cap(index):
+        root, log_root = turning_point(d, energy, index)
+        u = energy**2*root**m
+        v = root**d
+
+        def integrand(s):
+            z = 1-s*s
+            x = z**4
+            regular = u*geometric_sum(x, m) + v*geometric_sum(x, d)
+            return z**(2*m-5)/cmath.sqrt(geometric_sum(z, 4)*regular)
+
+        return -8j*cmath.exp((m/2-1)*log_root)*integrate(integrand)
+
+    return 2*(cap(1)-cap(0))
+
+
+def check_transverse_response():
+    rows = []
+    for d in (4, 5, 6, 8):
+        m = d-2
+        q = d/m
+        coefficient = 2/m*math.gamma(1/m)*math.gamma(0.5)/math.gamma(0.5+1/m)
+        adjacent = 1-cmath.exp(-2j*math.pi/m)
+        for energy in (8, 32, 128):
+            root = outer_turning_point(d, energy)
+            reference = transverse_reference(d, energy)
+            exterior = transverse_outer_tail(d, root)
+            local = transverse_local_cycle(d, energy)
+            _, _, direct = optical_cycle_quadrature(d, energy, root, 2*energy)
+            assert abs(reference-exterior-direct) < 5e-11
+            if d == 4:
+                assert abs(reference-math.pi+math.atan(2/energy**2)) < 2e-11
+                assert abs(reference-exterior-math.pi) < 2e-11
+                assert abs(local-2*math.pi) < 2e-11
+
+            # Three visits from the optical contour and one adjacent-root cycle.
+            combined = reference + 2*direct + local
+            leading = coefficient*(3+adjacent)*energy**(q-2)
+            subleading = (combined-leading)*energy**2
+            if energy == 128:
+                assert abs(subleading+2) < 0.01
+                assert abs(local/energy**(q-2)/coefficient-adjacent) < 0.0002
+            if energy in (8, 128):
+                row = f"{d} & {energy} & ${complex_tex(subleading)}$"
+                rows.append(row + r" \\")
+            print(f"d={d}, E={energy}: transverse subleading={subleading:.8g}, "
+                  f"cycle residual={abs(reference-exterior-direct):.2e}")
+
+    Path(__file__).with_name("jacobi_rows.tex").write_text(
+        "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
+    )
 
 
 def check_optical_cycles():
@@ -238,10 +331,10 @@ def check_optical_cycles():
             tail_length, tail_time = outer_tail(d, energy, root)
             cycle_length = ref_length-tail_length
             cycle_time = ref_time-tail_time
-            quadrature_length, quadrature_time = optical_cycle_quadrature(d, energy, root, 2*energy)
+            quadrature_length, quadrature_time, _ = optical_cycle_quadrature(d, energy, root, 2*energy)
             residual = max(abs(cycle_length-quadrature_length), abs(cycle_time-quadrature_time))
             assert residual < 5e-11
-            lower_length, lower_time = optical_cycle_quadrature(d, energy, root, 3*energy, -1)
+            lower_length, lower_time, _ = optical_cycle_quadrature(d, energy, root, 3*energy, -1)
             assert abs(lower_length-cycle_length) < 5e-11
             assert abs(lower_time-cycle_time-4j*math.pi/d) < 5e-11
             if d == 4:
@@ -324,6 +417,7 @@ def main():
     )
     print("Local-period, zero-period, and fixed-time checks passed.")
     check_optical_cycles()
+    check_transverse_response()
 
 
 if __name__ == "__main__":

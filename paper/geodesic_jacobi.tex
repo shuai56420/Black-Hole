@@ -1,0 +1,176 @@
+\section{Endpoint response of the repeated geodesics}
+\label{sec:geodesic-jacobi}
+
+Let \(\boldsymbol P=r^2\dd\boldsymbol{x}/\dd s\) be the conserved
+transverse momentum per unit worldline mass. Allow it to vary near
+zero while transporting the turning points and the contour. The
+radial equation becomes
+\begin{equation}
+ Y^2=E^2+f(r)\left(1-\frac{\boldsymbol P^2}{r^2}\right).
+ \label{eq:geodesic-transverse}
+\end{equation}
+Write \(\boldsymbol X\) for the spatial separation of the
+endpoints. At \(\boldsymbol P=0\), the Jacobi map for each transverse
+direction is given by a single radial integral,
+\begin{equation}
+ \left.\frac{\partial X_i}{\partial P_j}\right|_{E,\boldsymbol P=0}
+   =\delta_{ij}J,\qquad
+ J=\int_{\rm contour}\frac{\dd r}{r^2Y}.
+ \label{eq:geodesic-jacobi-integral}
+\end{equation}
+Indeed \(\dd\boldsymbol{x}=\boldsymbol P\,\dd s/r^2\), and the
+variation of \(r\) starts at order \(\boldsymbol P^2\). The
+turning points are simple, so their contributions to the
+linearization are regular in the square-root coordinate.
+The time response is even in \(\boldsymbol P\), and at
+\(\boldsymbol P=0\) the mixed time--space response vanishes.
+
+Consider the contour of section~\ref{sec:optical-cycles} with \(n-1\)
+optical cycles and insert \(k\geq0\) copies of the adjacent-root
+cycle of section~\ref{sec:cycles}. The response is additive at
+common energy,
+\begin{equation}
+ J_{n,k}=J_0+(n-1)(J_0-J_{\rm ext})+k\Pi_J,\qquad
+ \Pi_J=\oint_{\mathcal C}\frac{\dd r}{r^2Y}.
+ \label{eq:jacobi-additivity}
+\end{equation}
+Here \(J_0\) is for the reference path and \(J_{\rm ext}\) is twice
+the integral from \(r_{\rm b}\) to infinity on the sheet used in
+\eqref{eq:optical-outer-factor}. These integrals converge at
+infinity. The integrand is regular at a horizon, so the horizon
+detour does not affect \(J\).
+
+\subsection{Transverse periods in the null limit}
+
+For the reference path, let \(y=r/r_0\) and
+\(\mu=(r_0/E)^2\). The exact integral is
+\begin{equation}
+ J_0=\frac{2}{Er_0}\int_1^\infty
+ \frac{\dd y}{y^2\sqrt{1-y^{-m}+\mu(y^2-y^{-m})}}.
+ \label{eq:jacobi-reference}
+\end{equation}
+At \(\mu=0\) the integral gives \(B(1/m,1/2)/m\).
+The first correction comes from the exterior scaling
+\(z=\sqrt{\mu}\,y\) in the difference between the integrals
+at \(\mu\) and zero. Dividing the difference by \(\sqrt\mu\)
+gives the limit
+\begin{equation}
+ \int_0^\infty\frac{(1+z^2)^{-1/2}-1}{z^2}\,\dd z=-1 .
+\end{equation}
+On \(1\leq y\leq2\) the difference contributes \(O(\mu)\).
+For \(y\geq2\), the subtracted integrand in \(z\) is bounded
+by a constant times \(\min(1,z^{-2})\).
+Using \(r_0=E^{-2/m}[1+O(E^{-2q})]\) therefore gives
+\begin{equation}
+ J_0=c_d E^{q-2}-2E^{-2}+o(E^{-2}),\qquad
+ c_d=\frac{2}{m}B(1/m,1/2).
+ \label{eq:jacobi-reference-asymptotic}
+\end{equation}
+The exterior integral in \eqref{eq:jacobi-additivity} uses the same
+leading integral as the exterior time in section~\ref{sec:optical-cycles},
+with factor \(2/r_{\rm b}^{\,2}\). It equals
+\(-2E^{-2}+O(E^{-d-2})\).
+
+For \(d>4\), each cap of \(\Pi_J\) has the leading differential
+\(-\ii r^{m/2-2}\dd r/\sqrt{1-E^2r^m}\). With
+\(\alpha_J=1/2-1/m>0\), the transported phase on the next cap
+is \(e^{2\pi\ii\alpha_J}\). Factoring the simple root as in
+\eqref{eq:root-factor} gives the leading period
+\begin{align}
+ \Pi_J(E)&=
+ -\frac{2\ii}{m}(e^{2\pi\ii\alpha_J}-1)B(\alpha_J,1/2)
+       E^{q-2}+O(E^{-q-2})\notag\\
+ &= c_d(1-e^{-2\pi\ii/m})E^{q-2}+O(E^{-q-2}).
+ \label{eq:jacobi-local-period}
+\end{align}
+The second equality uses the gamma reflection identity. In AdS\(_5\),
+the two cap integrals cancel by \(r\mapsto-r\), with the logarithm
+transported through the upper half-plane. The arc at \(r=0\)
+now has the leading differential \(-\ii\dd r/r\). Its contribution
+on the half-turn is \(\pi\), doubled by the return on the other
+sheet. Consequently \(\Pi_J=2\pi\) exactly. This is also the
+\(m\to2\) limit of the coefficient in \eqref{eq:jacobi-local-period}.
+
+Combining the optical and local periods yields
+\begin{equation}
+ J_{n,k}(E)
+ =c_d\big[n+k(1-e^{-2\pi\ii/m})\big] E^{q-2}
+       -2E^{-2}+o(E^{-2}).
+ \label{eq:jacobi-combined}
+\end{equation}
+The \(E^{-2}\) term comes solely from the two endpoint legs in
+this formula for fixed \(n,k\). In AdS\(_5\), using \(u=r^{-2}\)
+reduces \(J_0\) to the integral of
+\(\dd u/\sqrt{1+E^2u-u^2}\) from zero to its positive root.
+The exterior integral has the same antiderivative with the
+negative root as endpoint and the orientation from \(r_{\rm b}\)
+toward infinity. These integrals give
+\begin{equation}
+ J_{n,k}^{\mathrm{AdS}_5}(E)
+     =(n+2k)\pi-\arctan(2/E^2).
+ \label{eq:jacobi-ads5}
+\end{equation}
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{ccc}
+ \hline
+ \(d\) & \(E\) & \(E^2\big\{J_{3,1}-c_d(4-e^{-2\pi\ii/m})E^{q-2}\big\}\) \\
+ \hline
+ \input{jacobi_rows.tex}
+ \end{tabular}
+ \caption{Transverse response for three optical visits and one
+ additional adjacent-root cycle. The entries approach \(-2\).}
+ \label{tab:geodesic-jacobi}
+\end{table}
+
+For table~\ref{tab:geodesic-jacobi} the optical part is integrated
+along the caps, horizon detour and arc used in section~\ref{sec:optical-cycles}.
+The direct optical integral and the reference-minus-exterior result
+agree to absolute error below \(10^{-12}\). The AdS\(_5\) values
+also reproduce the exact reference integral and both cycle periods.
+
+\subsection{Endpoint Hessian and Gaussian factor}
+
+The endpoint variation of the length is
+\(\dd L=-E\dd T+\boldsymbol P\cdot\dd\boldsymbol X\).
+At \(\boldsymbol X=0\) this yields
+\begin{equation}
+ \partial_T^2 L=-(T'_{n,k})^{-1},\qquad
+ \partial_T\partial_{X_i}L=0,\qquad
+ \partial_{X_i}\partial_{X_j}L=\delta_{ij}J_{n,k}^{-1},
+ \label{eq:jacobi-hessian}
+\end{equation}
+where \(T_{n,k}\) includes the two types of cycle.
+The leading transverse coefficient has positive real part
+for \(n\geq1\) and \(k\geq0\), so the endpoint map is invertible
+at sufficiently large finite \(E\).
+In particular, the first spatial correction at fixed
+\(T\) is \(\boldsymbol X^2/(2J_{n,k})\). In AdS\(_5\) the
+adjacent-root cycle has zero radial length and time periods
+at every \(E\), while \eqref{eq:jacobi-ads5} gives distinct
+quadratic responses for different \(k\).
+
+The reduced action \(W=L+ET-\boldsymbol P\cdot\boldsymbol X\)
+has time block \(T'_{n,k}\) and spatial block
+\(-J_{n,k}\mathbf 1_{d-1}\) in its Hessian.
+The endpoint Gaussian factor on the associated saddle is
+\(\mathcal D_{n,k}=(T'_{n,k}J_{n,k}^{d-1})^{-1/2}\), up to
+the phase of the Gaussian contour. For fixed \(n,k\),
+the endpoint time tails give \(T'_{n,k}\sim 2/E^2\).
+At a common small deficit \(\delta\) from the respective optical
+times, each energy satisfies \(E\sim2/\delta\).
+The ratio of endpoint Gaussian magnitudes is therefore
+\begin{equation}
+ \left|\frac{\mathcal D_{n,k}}{\mathcal D_{1,0}}\right|
+ \longrightarrow
+ \big|n+k(1-e^{-2\pi\ii/m})\big|^{-(d-1)/2}.
+ \label{eq:jacobi-ratio}
+\end{equation}
+For the pure optical family the factors are \(n^{-(d-1)/2}\).
+The Gaussian approximation in transverse momentum requires a
+width \((M|J_{n,k}|)^{-1/2}\) small compared with \(r_0\).
+For fixed \(n,k\) this means \(ME^{-q}\gg1\). The endpoint factor
+describes that semiclassical regime. The contribution to a
+correlator additionally requires the weight of each complex
+saddle on its integration contour.

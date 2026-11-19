@@ -5,6 +5,8 @@ planar Schwarzschild–AdS black brane. The cycle joining two near-singularity
 turning points shifts the action at fixed boundary time. The cycle joining
 an inner and an outer turning point yields the finite optical round trip.
 Repeated inner turns then give limiting boundary times \(nT_*\).
+The endpoint Jacobi map gives the transverse response and the Gaussian
+factor for contours that combine both cycles.
 A second calculation
 obtains the local scalar connection and the transfer for repeated radial
 windings. The AdS₇ scalar calculation checks the pole shifts and the
@@ -33,8 +35,9 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ~~~
 
 The scripts use only the Python standard library. The first checks the
-finite-energy periods, the action at fixed boundary time, and the optical
-limits of geodesics with two and three inner turns. The second
+finite-energy periods, the action at fixed boundary time, the optical
+limits of geodesics with two and three inner turns, and their transverse
+Jacobi maps. The second
 integrates the scalar modes on rotated rays and checks their transfer
 product against Frobenius monodromy. The third matches the ingoing and
 normalizable scalar series to compute AdS₇ quasinormal frequencies.
