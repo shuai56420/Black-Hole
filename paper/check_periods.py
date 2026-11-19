@@ -148,6 +148,138 @@ def complex_tex(z):
     return f"{z.real:.6f}{z.imag:+.6f}i"
 
 
+def outer_turning_point(d, energy):
+    """Root that approaches +iE, obtained in the exterior scale r/E."""
+    m = d - 2
+    perturbation = energy**(-d)
+    x = 1j
+    for _ in range(12):
+        step = (1+x*x-perturbation*x**(-m)) / (2*x+m*perturbation*x**(-m-1))
+        x -= step
+        if abs(step) < 1e-15:
+            return energy*x
+    raise ArithmeticError("outer turning point did not converge")
+
+
+def outer_tail(d, energy, root):
+    """Doubled integrals from the outer root to positive-real infinity."""
+    eps = root**(-d)
+
+    def inverse_radius(s, time):
+        u = 1-s*s
+        regular = cmath.sqrt(1+u+eps*u*u*geometric_sum(u, d-2))
+        if time:
+            return 2*u / ((1-eps*u**d)*regular)
+        return 2*u*(1-eps*(1-u**(d-2))) / (regular*(1+s*regular))
+
+    length = 2*(integrate(lambda s: inverse_radius(s, False)) - cmath.log(root))
+    time = 2*energy/root**2 * integrate(lambda s: inverse_radius(s, True))
+    return length, time
+
+
+def optical_cycle_quadrature(d, energy, root, radius, detour_side=1):
+    """Integrate the finite cycle along a horizon detour and an exterior arc."""
+    m = d - 2
+    inner, _ = turning_point(d, energy)
+    phi = cmath.phase(root)
+    outgoing_span = 0.8-inner.real
+    incoming_span = radius/abs(root)-1
+
+    def straight_cap(s):
+        r = inner+outgoing_span*s*s
+        regular = cmath.sqrt(r+inner+inner**(-m)*geometric_sum(inner/r, m)/r)
+        return r, 2*math.sqrt(outgoing_span)/regular
+
+    def horizon_detour(s):
+        offset = 0.2*cmath.exp(detour_side*1j*math.pi*(1-s))
+        r = 1+offset
+        return r, -detour_side*1j*math.pi*offset/cmath.sqrt(energy**2+r*r-r**(-m))
+
+    def real_exterior(s):
+        r = 1.2+(radius-1.2)*s
+        return r, (radius-1.2)/cmath.sqrt(energy**2+r*r-r**(-m))
+
+    def outer_arc(s):
+        r = radius*cmath.exp(1j*phi*s)
+        return r, 1j*phi/cmath.sqrt(1+energy**2/r**2-r**(-d))
+
+    def outer_cap(s):
+        y = 1+incoming_span*s*s
+        regular = cmath.sqrt(y+1+root**(-d)*geometric_sum(1/y, m)/y)
+        return root*y, -2*math.sqrt(incoming_span)/regular
+
+    paths = (straight_cap, horizon_detour, real_exterior, outer_arc, outer_cap)
+
+    def time_form(path, s):
+        r, length_form = path(s)
+        return energy*length_form/(r*r-r**(-m))
+
+    length = 2*sum(integrate(lambda s: path(s)[1]) for path in paths)
+    time = 2*sum(integrate(lambda s: time_form(path, s)) for path in paths)
+    return length, time
+
+
+def check_optical_cycles():
+    rows = []
+    for d, bounces in ((4, 2), (5, 2), (6, 3), (8, 3)):
+        m = d-2
+        power = d/m
+        optical_time = 2*math.pi/d * (1/math.tan(math.pi/d)-1j)
+        coefficient = 0 if d == 4 else (
+            2/m*math.gamma(-1/m)*math.gamma(0.5)/math.gamma(0.5-1/m)
+        )
+        target_length = bounces*coefficient
+        target_time = -bounces*power/(power+1)*coefficient
+        errors = []
+        fixed_time_errors = []
+        for energy in (8, 32, 128):
+            root = outer_turning_point(d, energy)
+            ref_length, ref_time = reference_path(d, energy)
+            tail_length, tail_time = outer_tail(d, energy, root)
+            cycle_length = ref_length-tail_length
+            cycle_time = ref_time-tail_time
+            quadrature_length, quadrature_time = optical_cycle_quadrature(d, energy, root, 2*energy)
+            residual = max(abs(cycle_length-quadrature_length), abs(cycle_time-quadrature_time))
+            assert residual < 5e-11
+            lower_length, lower_time = optical_cycle_quadrature(d, energy, root, 3*energy, -1)
+            assert abs(lower_length-cycle_length) < 5e-11
+            assert abs(lower_time-cycle_time-4j*math.pi/d) < 5e-11
+            if d == 4:
+                assert abs(cycle_length-1j*math.pi) < 2e-11
+                assert abs(cycle_time-optical_time) < 2e-11
+                print(f"d=4, E={energy}: exact cycle residual="
+                      f"{max(abs(cycle_length-1j*math.pi), abs(cycle_time-optical_time)):.2e}")
+                continue
+
+            length = ref_length+(bounces-1)*cycle_length
+            time = ref_time+(bounces-1)*cycle_time
+            scaled_length = energy**power*(length-2*math.log(2/energy)-1j*math.pi*(bounces-1))
+            scaled_time = energy**(power+1)*(time-bounces*optical_time+2/energy)
+            delta = bounces*optical_time-time
+            fixed_time = (length-2*cmath.log(delta)-1j*math.pi*(bounces-1)) / (delta/2)**power
+            fixed_time_errors.append(abs(fixed_time-target_length/(power+1)))
+            assert max(abs(scaled_length.imag), abs(scaled_time.imag)) < 0.1
+            error = max(abs(scaled_length-target_length), abs(scaled_time-target_time))
+            errors.append(error)
+            if energy <= 32:
+                rows.append(f"{d} & {bounces} & {energy} & ${complex_tex(scaled_length)}$ & "
+                            f"${complex_tex(scaled_time)}$ " + r"\\")
+            print(f"d={d}, bounces={bounces}, E={energy}: "
+                  f"scaled length={scaled_length:.8g}, scaled time={scaled_time:.8g}, "
+                  f"direct-contour residual={residual:.2e}, asymptotic error={error:.2e}")
+        if d > 4:
+            assert errors[1] < errors[0] and errors[1] < 0.0002
+            assert fixed_time_errors[2] < fixed_time_errors[1] < fixed_time_errors[0]
+            assert fixed_time_errors[2] < 0.003
+            print(f"d={d}: fixed-time scaled action residual at E=128: {fixed_time_errors[2]:.2e}")
+            rows.append(f"{d} & {bounces} & $\\infty$ & ${target_length:.6f}$ & "
+                        f"${target_time:.6f}$ " + r"\\")
+
+    Path(__file__).with_name("optical_cycle_rows.tex").write_text(
+        "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
+    )
+
+
 def main():
     rows = []
     for d in (4, 5, 6, 8):
@@ -191,6 +323,7 @@ def main():
         "\n".join(rows + [r"\hline"]) + "\n", encoding="ascii"
     )
     print("Local-period, zero-period, and fixed-time checks passed.")
+    check_optical_cycles()
 
 
 if __name__ == "__main__":
