@@ -24,6 +24,7 @@ Run the following from this directory:
 
 ~~~text
 python check_periods.py
+python check_einstein_geodesic_momentum.py
 python check_connection.py
 python check_einstein_poles.py
 python check_lovelock.py
@@ -43,21 +44,23 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 The scripts use only the Python standard library. The first checks the
 finite-energy periods, the action at fixed boundary time, the optical
 limits of geodesics with two and three inner turns, and their transverse
-Jacobi maps. The second
+Jacobi maps. The finite-separation geodesic calculation matches complex
+contours at the same boundary time and prescribed spatial displacement.
+The connection calculation
 integrates the scalar modes on rotated rays and checks their transfer
-product against Frobenius monodromy. The third matches the ingoing and
+product against Frobenius monodromy. The AdS₇ calculation matches the ingoing and
 normalizable scalar series to compute AdS₇ quasinormal frequencies.
 It also includes the source series to extract two- and three-reflection
 coefficients from the retarded response.
-The fourth integrates the original
+The Lovelock benchmark integrates the original
 nonminimally coupled scalar equation in nine and thirteen dimensions
 and compares its retarded spectrum with the exact result, including
 four bare-mass variations in nine dimensions.
-The fifth checks the exact small-momentum dispersion and its Airy limit
+The small-momentum check tests the exact dispersion and its Airy limit
 against finite-momentum pole matching and high overtones.
-The sixth compares the joint mass and overtone limit with the displaced
+The crossover check compares the joint mass and overtone limit with the displaced
 Airy connection integral and checks the geometric momentum derivative.
-The seventh checks the momentum derivative of the retarded response,
+The residue check verifies the momentum derivative of the retarded response,
 its pole residues, and the zero-momentum time-domain mode sum.
 The finite scaled-momentum check solves the Airy connection and compares
 the shifted pole and two- and three-reflection amplitudes with direct

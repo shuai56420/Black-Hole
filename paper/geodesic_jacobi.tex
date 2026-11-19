@@ -175,7 +175,148 @@ describes that semiclassical regime. The contribution to a
 correlator additionally requires the weight of each complex
 saddle on its integration contour.
 
-\subsection{Finite transverse momentum for the Lovelock lapse}
+\subsection{Finite transverse separation at the repeated-bounce times}
+\label{sec:einstein-transverse-geodesic}
+
+Consider the optical family with \(n\) inner visits and no
+adjacent-root insertions. Write \(P^2=\boldsymbol P^2\) and scale
+the momentum with the inner turning radius by setting
+\(x=rE^{2/m}\) and \(\eta=P^2 E^{4/m}\). The exact radial equation is
+\begin{equation}
+ \frac{Y^2}{E^2}=\mathcal F_\eta(x)+E^{-2q}(x^2-\eta),
+ \qquad \mathcal F_\eta(x)=1-x^{-m}+\eta x^{-m-2},
+ \qquad q=d/m .
+ \label{eq:einstein-transverse-core}
+\end{equation}
+The larger positive root \(x_+(\eta)\) of \(x^d-x^2+\eta=0\)
+continues the inner turning point from \(x_+(0)=1\).
+It stays simple for \(0\leq\eta<\eta_c\), where
+\begin{equation}
+ x_c=(2/d)^{1/m},\qquad \eta_c=\frac{m}{d}x_c^2 .
+\end{equation}
+At this value the two positive turning points coalesce.
+
+The rescaled transverse integral on the doubled positive ray
+is
+\begin{equation}
+ \mathcal J_d(\eta)=2\int_{x_+(\eta)}^\infty
+    \frac{\dd x}{x^2\sqrt{\mathcal F_\eta(x)}}.
+ \label{eq:einstein-transverse-period}
+\end{equation}
+Setting \(t=x_+/x\) holds the singular endpoint fixed. With
+\(s=\eta/x_+^d\), the square root in the resulting integral has
+argument \(1-t^m-s t^m(1-t^2)\) and the prefactor is \(2/x_+\).
+The bound \(t^m(1-t^2)/(1-t^m)\leq2/m\) controls the integral
+on compact subintervals of \(s<m/2\). The same substitution
+at the finite-energy root gives a uniformly integrable cap at
+the turn and an integrable exterior tail. The imaginary-ray
+tail from the outer turn \(r_{\rm b}\sim\ii E\) is \(O(E^{-2})\).
+The full transverse period for \(n\) inner visits is therefore
+\(nE^{q-2}\mathcal J_d(\eta)+o(E^{q-2})\).
+
+The integral increases with \(s\), since the denominator
+decreases and \(x_+^{-1}=(1+s)^{1/m}\). At the collision,
+\(x^d-x^2+\eta=m(x-x_c)^2-(\eta_c-\eta)+O((x-x_c)^3)\).
+Integrating the local inverse square root gives
+\begin{equation}
+ \mathcal J_d(\eta)=
+ \frac{x_c^{(m-2)/2}}{\sqrt m}\log\frac{1}{\eta_c-\eta}+O(1).
+\end{equation}
+This describes the collision in the scaled equation. The
+finite-energy turning-point expansion is uniform away from it.
+At zero momentum, differentiation in the fixed variable \(t\)
+and beta integration give
+\begin{equation}
+ \mathcal J_d(0)=c_d,\qquad
+ j_d\equiv \mathcal J_d'(0)
+     =-\frac{1}{m}B(1+3/m,-1/2)>0.
+ \label{eq:einstein-transverse-slope}
+\end{equation}
+In the derivative integral the endpoint singularities of the
+two beta terms cancel before taking the limit.
+
+The reduced action obeys \(\partial_{P^2}W=-J/2\), where
+\(J=\int \dd r/(r^2Y)\) along the transported contour. There
+are no turning-point endpoint terms in differentiating \(W\)
+since \(Y\) vanishes there. The result for the repeated contour,
+at common \(E\), is
+\begin{equation}
+ W^{(n)}(E,P^2)-W^{(n)}(E,0)
+   =-\frac{n}{2}E^{-q}\mathcal A_d(\eta)+o(E^{-q}),
+ \qquad \mathcal A_d(\eta)=\int_0^\eta\mathcal J_d(s)\,\dd s .
+ \label{eq:einstein-transverse-action}
+\end{equation}
+Differentiating the action at fixed \(P\) gives the time shift
+\begin{equation}
+ T^{(n)}(E,P^2)-T^{(n)}(E,0)
+   =\frac{n}{2}E^{-q-1}
+     \big[q\mathcal A_d(\eta)-4\eta\mathcal J_d(\eta)/m\big]
+        +o(E^{-q-1}).
+ \label{eq:einstein-transverse-time}
+\end{equation}
+The cap and tail estimates apply in a small complex neighborhood
+away from the collision and bound derivatives of the remainder.
+Keeping \(T\) fixed shifts the energy from its
+zero-momentum value by \(O(E^{1-q})\). The dependence of
+\(W(E,0)-ET\) on this shift starts at second order, since \(E\)
+is the stationary point at zero momentum.
+
+Write \(\delta=nT_*-T\) and let \(X\) be the displacement
+along \(\boldsymbol P\), with its sign continued from positive
+real momentum. For \(\delta\to0\) at fixed positive \(X/\delta\),
+one has \(E\sim 2/\delta\) and
+\begin{align}
+ \xi=\frac{2X}{n\delta}&=\sqrt\eta\,\mathcal J_d(\eta),
+ \notag\\
+ L^{(n)}(T,X)-L^{(n)}(T,0)
+ &=n\left(\frac{\delta}{2}\right)^q
+       \left[\eta\mathcal J_d(\eta)-\frac{\mathcal A_d(\eta)}2\right]
+       +o(\delta^q).
+ \label{eq:einstein-transverse-fixed-endpoints}
+\end{align}
+The first line defines the leading \(\eta\) for the scaled
+boundary separation. It follows from
+\(X=PJ\). The \(\eta\mathcal J_d\) term in the length comes from
+the Legendre term \(PX\). Since \(\eta=s/(1+s)^q\) increases
+for \(0\leq s<m/2\), the first line determines \(\eta\) uniquely
+on the real pre-collision branch. Expanding the square bracket
+in \(\xi\) gives
+\begin{equation}
+ \eta\mathcal J_d(\eta)-\frac{\mathcal A_d(\eta)}2
+    =\frac{\xi^2}{2c_d}-\frac{j_d}{4c_d^4}\xi^4+O(\xi^6).
+ \label{eq:einstein-transverse-quartic}
+\end{equation}
+The quadratic term recovers the endpoint Hessian in
+\eqref{eq:jacobi-hessian}. The quartic term is the first
+correction at the same boundary time.
+
+\begin{table}[t]
+ \centering\small
+ \begin{tabular}{cccccc}
+ \hline
+ \(d\) & \(n\) & \(\eta/\eta_c\) & \(E_0=8\) & \(E_0=32\) & \(E_0=128\) \\
+ \hline
+ \input{einstein_geodesic_momentum_rows.tex}
+ \end{tabular}
+ \caption{Relative error of the leading length shift at fixed time and
+ spatial separation in \eqref{eq:einstein-transverse-fixed-endpoints}.
+ Here \(E_0\) is the energy of the zero-momentum contour.}
+ \label{tab:einstein-transverse-geodesic}
+\end{table}
+
+In table~\ref{tab:einstein-transverse-geodesic}, \(E_0\) fixes the
+exact zero-momentum time.
+We prescribe \(X=n\sqrt\eta\,\mathcal J_d(\eta)/E_0\) and use
+contour quadrature to solve for the complex energy and momentum.
+Evaluating the leading expression with
+\(2/\delta\) replaced by \(E_0\) changes only subleading terms.
+The direct integrals include the lifted horizon detour and the
+cap at the outer turning point. At \(E_0=128\) the relative
+length errors for two and three visits are below \(3\times10^{-4}\).
+The common-energy action in \eqref{eq:einstein-transverse-action}
+agrees to relative error below \(5\times10^{-4}\) at the same energy.
+
+\subsection{Elliptic limit for the Lovelock lapse}
 \label{sec:finite-transverse-geodesic}
 
 The lapse \(f=r^2-r^{-2}\), which also occurs in the Lovelock
