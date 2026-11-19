@@ -7,7 +7,8 @@ on-shell actions at the same complex boundary time. A second calculation
 obtains the local scalar connection and the transfer for repeated radial
 windings. The final calculation solves a tuned scalar problem in a
 higher-dimensional Lovelock family, including the two-bounce contribution
-to the spectrum and its complex-time poles.
+to the spectrum and its complex-time poles. Changing the bare scalar mass
+at fixed curvature coupling gives a continuous family of exact spectra.
 
 Run the following from this directory:
 
@@ -26,7 +27,8 @@ finite-energy periods and the action at fixed boundary time. The second
 integrates the scalar modes on rotated rays and checks their transfer
 product against Frobenius monodromy. The third integrates the original
 nonminimally coupled scalar equation in nine and thirteen dimensions
-and compares its retarded spectrum with the exact two-bounce result.
+and compares its retarded spectrum with the exact result, including
+four bare-mass variations in nine dimensions.
 
 The Lovelock example gives the boundary response with both endpoint
 conditions imposed. The global higher-reflection coefficients for
